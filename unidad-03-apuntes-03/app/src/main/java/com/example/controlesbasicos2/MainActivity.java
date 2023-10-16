@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         // CREO EL ADAPTADOR PARA EL SEGUNDO SPINNER
         ArrayAdapter<CharSequence> adapter =
-                ArrayAdapter.createFromResource(this, R.array.valores, android.R.layout.simple_spinner_item);
+                ArrayAdapter.createFromResource(this, R.array.valores,
+                        android.R.layout.simple_spinner_item);
 
         final Spinner spinner2 = findViewById(R.id.miSpinner2);
         spinner2.setAdapter(adapter);
@@ -85,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // -------------- SWITCH
-
         final Switch pulsador = findViewById(R.id.miSwitch);
         pulsador.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
