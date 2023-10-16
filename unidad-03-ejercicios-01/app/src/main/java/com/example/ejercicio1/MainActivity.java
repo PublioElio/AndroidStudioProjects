@@ -5,20 +5,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ImageView camiseta;
+    private SeekBar rojo, verde, azul;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ejercicio12);
+        setContentView(R.layout.ejercicio13);
 
         // la parte de abajo está comentada, porque es la del ejercicio nº10 - descomentar para ese ejercicio
         /*
@@ -38,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         });*/
 
         // --------------- EJERCICIO Nº12 ----------------------------
-
+/*
         // Primero voy a capturar todos los checkboxes y guardarlos en variables
         final CheckBox lectura = findViewById(R.id.lectura);
         final CheckBox teatro = findViewById(R.id.teatro);
@@ -122,5 +131,94 @@ public class MainActivity extends AppCompatActivity {
                 resumenAficiones.setVisibility(View.INVISIBLE);
             }
         });
+
+ */
+
+        // ------------------- EJERCICIO 13
+
+        camiseta = findViewById(R.id.camiseta);
+        rojo = findViewById(R.id.rSeekBar);
+        verde = findViewById(R.id.gSeekBar);
+        azul = findViewById(R.id.bSeekBar);
+
+        Spinner spinner = (Spinner) findViewById(R.id.tallas);
+        String[] valores = {"talla XS", "talla S", "talla M", "talla L", "talla XL"};
+        spinner.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, valores));
+
+        rojo.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                updateImageColor();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        verde.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                updateImageColor();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        azul.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                updateImageColor();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+
+        });
+
+        // -------------- RATING BAR
+        final RatingBar valoracion = findViewById(R.id.mirb);
+        final TextView comentario = findViewById(R.id.comentario);
+
+        valoracion.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener()
+
+        {
+            @Override
+            public void onRatingChanged (RatingBar ratingBar,float rating, boolean fromUser){
+                int valor = (int) rating;
+                if(valor <= 2){
+                    comentario.setText("¡Ouch!");
+                } else if (valor == 3) {
+                    comentario.setText("OK");
+                } else{
+                    comentario.setText("¡Bravo!");
+                }
+            }
+        });
+    }
+
+    private void updateImageColor() {
+        int red = rojo.getProgress();
+        int green = verde.getProgress();
+        int blue = azul.getProgress();
+
+        int color = Color.rgb(red, green, blue);
+        camiseta.setBackgroundColor(color);
     }
 }
