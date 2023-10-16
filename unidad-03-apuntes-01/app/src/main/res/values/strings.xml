@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">test</string>
+    <string name="primer_textview">TextView 1</string>
+    <string name="segundo_textview">TextView 2</string>
+    <string name="tercer_textview">Textview 3</string>
+    <string name="boton_1">boton 1</string>
+    <string name="boton_2">boton 2</string>
+    <string name="boton_3">boton 3</string>
+</resources>

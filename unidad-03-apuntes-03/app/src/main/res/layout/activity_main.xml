@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/miSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp" />
+
+    <Spinner
+        android:id="@+id/miSpinner2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/valores"
+        android:minHeight="48dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ff9090"/>
+
+    <TextView
+        android:id="@+id/lbl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <CheckBox
+        android:id="@+id/myCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pulsa una opción"
+        android:checked="false"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ff9090"/>
+
+    <RadioGroup
+        android:id="@+id/grupo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opción 1"/>
+
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opción 2"/>
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ff9090"/>
+
+    <Switch
+        android:id="@+id/miSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ff9090"/>
+
+        <!-- Siempre hay que poner wrap content para que no haya problemas con el tamaño de las
+        estrellas -->
+    <RatingBar
+        android:id="@+id/miRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:rating="2.0"
+        android:stepSize="0.5" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ff9090"/>
+
+    <TextView
+        android:id="@+id/lblSeek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Texto transparencias con SeekBar"/>
+
+    <SeekBar
+        android:id="@+id/miSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="60"
+        android:progress="0" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ff9090"/>
+
+    <ProgressBar
+        android:id="@+id/miProgreso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyle" />
+
+    <ProgressBar
+        android:id="@+id/miProgreso2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100"
+        android:indeterminate="true"/>
+
+
+</LinearLayout>

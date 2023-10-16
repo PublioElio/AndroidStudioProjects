@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+
+    <TableRow android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:gravity="center"
+            android:text="Formulario"
+            android:textSize="20sp"
+            android:typeface="serif" />
+    </TableRow>
+
+    <!--Primera fila-->
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Código de producto" />
+
+        <EditText
+            android:id="@+id/prod_cod"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <!--Segunda fila-->
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre de producto" />
+
+        <EditText
+            android:id="@+id/prod_name"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <!--Tercera fila-->
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precio de producto" />
+
+        <EditText
+            android:id="@+id/prod_price"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:id="@+id/add_button"
+            android:layout_height="wrap_content"
+            android:text="AÑADIR" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_height="wrap_content"
+            android:text="CANCELAR" />
+    </TableRow>
+
+</TableLayout>
