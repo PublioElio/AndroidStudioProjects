@@ -2,8 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="">
-<!--añadir un background al layout principal-->
+    android:background="@drawable/background">
+<!--Añadir un background al layout principal-->
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -16,7 +16,7 @@
             android:text="Birthday reminder!"
             android:layout_marginTop="200dp"
             android:textSize="25sp"
-            android:textColor="#E91E63"
+            android:textColor="#7260A1"
             android:textStyle="bold|italic"/>
 
     </FrameLayout>
@@ -39,13 +39,27 @@
         android:layout_gravity="center"
         android:layout_marginTop="150dp">
 
-        <Button
-            android:id="@+id/acceder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Acceder"
+        <!-- Este LinearLayout está anidado para situar los botones centrados -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            />
+            <Button
+                android:id="@+id/acceder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ACCEDER"
+                android:onClick="onClick"
+                android:layout_marginRight="5dp"/>
+
+            <Button
+                android:id="@+id/encuesta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ENCUESTA"
+                android:onClick="onClick"/>
+
+        </LinearLayout>
 
     </FrameLayout>
 

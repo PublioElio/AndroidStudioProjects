@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "com.example.unidad_03_practica_de_evaluacion"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.unidad_03_practica_de_evaluacion"
         minSdk = 17
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
