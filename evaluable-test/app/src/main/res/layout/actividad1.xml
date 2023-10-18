@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="#00E5FF"
+    >
+
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BIENVENIDO A MI PRIMERA APLICACION"
+        android:textSize="50sp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textStyle="bold|italic"
+        android:textColor="#3908A3"
+        />
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#651FFF"
+        android:layout_below="@+id/txt1"
+        />
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@android:drawable/arrow_down_float"
+        android:layout_below="@id/view1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        />
+
+    <ImageView
+        android:id="@+id/img2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/img1"
+        android:src="@android:drawable/arrow_up_float"
+        android:rotation="90"
+        />
+
+    <Button
+        android:id="@+id/boton"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_below="@+id/img1"
+        android:layout_marginRight="3dp"
+        android:layout_toLeftOf="@+id/img3"
+        android:layout_toRightOf="@+id/img2"
+        android:backgroundTint="#651FFF"
+        android:text="Continuar"
+        android:textSize="30sp"
+        />
+
+    <ImageView
+        android:id="@+id/img3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_below="@+id/img1"
+        android:layout_alignParentRight="true"
+        android:rotation="270"
+        />
+
+    <ImageView
+        android:id="@+id/img4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/img2"
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        />
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#651FFF"
+        android:layout_below="@+id/img4"
+        />
+
+    <Switch
+        android:id="@+id/inicioSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view2"
+        android:text="*Aceptas los \ntérminos y \ncondiciones"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/txtCondiciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Debes aceptar los terminos para poder continuar."
+        android:layout_below="@+id/inicioSwitch"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        />
+
+
+</RelativeLayout>
