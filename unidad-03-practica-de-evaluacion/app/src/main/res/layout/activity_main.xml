@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="#424242">
 
+    <!-- CAMBIAR POR UN GRID LAYOUT -->
 
     <TableRow android:layout_margin="5dp">
 
@@ -11,47 +12,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:layout_span="1"
             android:text="Nombre:"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_weight="1" />
 
 
         <EditText
             android:id="@+id/nombre"
-            android:layout_width="240dp"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="@color/white" />
+            android:background="@color/white"
+            android:layout_weight="5"/>
 
     </TableRow>
+
 
     <TableRow android:layout_margin="5dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:layout_span="1"
             android:text="Fecha Nacimiento:"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_weight="1"/>
 
         <EditText
             android:id="@+id/fNacimiento"
-            android:layout_width="240dp"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@color/white"
-            android:inputType="date"/>
+            android:inputType="date"
+            android:layout_weight="5" />
 
     </TableRow>
 
 
     <TableRow android:layout_margin="5dp">
-
-        <RelativeLayout
-            >
-            <!-- Este layout está aquí para cuadrar el checkbox -->
-        </RelativeLayout>
 
         <CheckBox
             android:id="@+id/recordatorio"
@@ -59,7 +58,9 @@
             android:layout_height="wrap_content"
             android:text="Crear recordatorio"
             android:textColor="@color/white"
-            android:buttonTint="@color/white"/>
+            android:buttonTint="@color/white"
+            android:layout_gravity="right"
+            android:layout_span="3"/>
 
     </TableRow>
 
@@ -73,7 +74,8 @@
             android:id="@+id/aceptar"
             android:textColor="@color/white"
             android:text="ACEPTAR"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:layout_gravity="right"/>
 
     </TableRow>
 
@@ -82,13 +84,12 @@
         <EditText
             android:id="@+id/resultado"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_span="2"
+            android:layout_height="match_parent"
+            android:layout_span="3"
             android:text=""
             android:textColor="@color/white"
             android:visibility="invisible"/>
 
     </TableRow>
-
 
 </TableLayout>

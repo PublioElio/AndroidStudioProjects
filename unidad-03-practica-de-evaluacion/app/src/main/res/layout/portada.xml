@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Birthday reminder!"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="30dp"
             android:textSize="25sp"
             android:textColor="#7260A1"
             android:textStyle="bold|italic"/>
@@ -48,15 +48,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ACCEDER"
-                android:onClick="onClick"
                 android:layout_marginRight="5dp"/>
 
             <Button
                 android:id="@+id/encuesta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ENCUESTA"
-                android:onClick="onClick"/>
+                android:text="ENCUESTA" />
 
         </LinearLayout>
 
