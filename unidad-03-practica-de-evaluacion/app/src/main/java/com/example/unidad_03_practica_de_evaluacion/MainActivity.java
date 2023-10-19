@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,13 +15,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.portada);
 
-       portada();
-       activity_main();
-       encuesta();
+        portada();
+        // activity_main();
+        // encuesta();
 
     }
 
-    private void portada(){ // esta es la portada de la aplicación
+    private void portada() { // esta es la portada de la aplicación
         setContentView(R.layout.portada);
 
         final Button acceder = findViewById(R.id.acceder);
@@ -44,5 +46,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void activity_main() {
+
+        final EditText nombre = findViewById(R.id.nombre);
+        final EditText fecha = findViewById(R.id.fNacimiento);
+        final Button aceptar = findViewById(R.id.aceptar);
+        final TextView resultado = findViewById(R.id.resultado);
+
+
+
+        aceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (nombre.getText().toString().isEmpty() && fecha.getText().toString().isEmpty()) {
+                    resultado.setText("ERROR. Debe escribir nombre y fecha válidos");
+                }
+            }
+        });
+
+
     }
 }
