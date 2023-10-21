@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- el frame layout inferior es para enmarcar el contenido de la encuesta -->
+    <!-- el frame layout sigiente es para enmarcar el contenido de la encuesta -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" >
+        android:layout_gravity="center">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,6 +23,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+            <!-- Este elemento View sirve como separador -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
@@ -62,25 +63,23 @@
 
             </RadioGroup>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Número de felicitaciones al año: "
-                android:layout_marginTop="2dp"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
-            <Spinner
-                android:id="@+id/miSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="2dp"
+                    android:text="Número de felicitaciones al año: " />
 
-        </LinearLayout>
+                <Spinner
+                    android:id="@+id/miSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -88,15 +87,20 @@
                 android:layout_gravity="center"
                 android:orientation="vertical">
 
-
-
                 <Switch
+                    android:id="@+id/boletin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="Quiero recibir ofertas: "/>
+                    android:text="Quiero recibir ofertas: " />
 
-
+                <TextView
+                    android:id="@+id/notificacionBoletin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Te has suscrito al boletín de ofertas."
+                    android:layout_gravity="center"
+                    android:visibility="invisible"/>
 
             </LinearLayout>
 
@@ -114,39 +118,34 @@
                 android:layout_width="150dp"
                 android:layout_height="3dp"
                 android:layout_columnSpan="5"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_gravity="center"
                 android:background="#8A8A8A" />
 
             <RatingBar
+                android:id="@+id/valoracion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="5"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"/>
+                android:layout_margin="5dp"
+                android:stepSize="1" />
+
+            <TextView
+                android:id="@+id/resultadoEncuesta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Prueba"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:visibility="invisible" />
+
 
         </LinearLayout>
+
 
     </FrameLayout>
 
 </FrameLayout>
-
-
-<!--
-
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:columnCount="5"
-    android:rowCount="10">
-
-
-
-
-
-
-
-</GridLayout>
-
--->
