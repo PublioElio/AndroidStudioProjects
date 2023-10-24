@@ -30,12 +30,14 @@
         android:layout_marginTop="10dp"/>
 
     <EditText
+        android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_marginLeft="3dp"
         android:layout_marginTop="3dp"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:saveEnabled="false"/>
 
 
 </LinearLayout>
