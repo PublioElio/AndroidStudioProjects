@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">unidad-04-apuntes-01</string>
+
+    <string name="cadena">
+        Orden de ejecución de los métodos: \n\n
+        1. Al crear la aplicación se lanzán los métodos onCreate(), onStart() y onResume().\n\n
+        2. Si haces click en el botón "Volver atrás", se lanzan los métodos onPause(), onStop() y onDestroy().\n\n
+        3. Al hacer click en "Home" se lanzan los métodos: onPause() y onStop().\n\n
+        4. Cuando la aplicación finaliza, se lanzan los métodos onPause(), onStop() y onDestroy().\n\n
+        5. Si volvemos a ejecutar una aplicación destruida o en espera, se lanzan los métodos: onRestart(), onStart() y onResume().\n\n
+    </string>
+</resources>
