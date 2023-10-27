@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         final MultiAutoCompleteTextView textoLeido2 = findViewById(R.id.macText);
         ArrayAdapter<String> adaptador2 =
                 new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,opciones);
+        // Este es el separador de los elementos
         textoLeido2.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
         textoLeido2.setAdapter(adaptador2);
 
