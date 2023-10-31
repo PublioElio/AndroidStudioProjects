@@ -141,10 +141,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:visibility="invisible" />
-
-
         </LinearLayout>
-
 
     </FrameLayout>
 

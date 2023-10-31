@@ -1,97 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#424242">
-
-    <!-- CAMBIAR POR UN GRID LAYOUT -->
-
-    <TableRow android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:text="Nombre:"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+    android:background="@drawable/background">
 
 
-        <EditText
-            android:id="@+id/nombre"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_weight="5"
-            android:background="@color/white" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
-    </TableRow>
-
-
-    <TableRow android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Fecha Nacimiento:"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/fNacimiento"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_weight="5"
-            android:background="@color/white"
-            android:inputType="date" />
-
-    </TableRow>
-
-    <TableRow>
-
+        <!-- Los elementos están todos dentro de un LinearLayout, centrados en la pantalla con un FrameLayout-->
         <LinearLayout
-            android:layout_weight="1"/>
-
-        <CheckBox
-            android:id="@+id/recordatorio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/white"
-            android:text="Crear recordatorio"
-            android:textColor="@color/white"
-            android:layout_weight="5"
-            android:layout_gravity="right" />
+            android:orientation="vertical">
 
-    </TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Birthday reminder!"
+                android:textColor="#7260A1"
+                android:textSize="25sp"
+                android:textAlignment="center"
+                android:textStyle="bold|italic" />
 
-    <TableRow>
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:src="@drawable/cake"/>
 
-        <LinearLayout
-            android:layout_weight="1"/>
+            <!-- Este LinearLayout está anidado para situar los botones centrados -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
-        <Button
-            android:id="@+id/aceptar"
-            android:layout_gravity="right"
-            android:layout_marginRight="10dp"
-            android:text="ACEPTAR"
-            android:textColor="@color/white"
-            android:layout_weight="5" />
+                <Button
+                    android:id="@+id/acceder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="ACCEDER"
+                    android:onClick="onClick"
+                    android:layout_weight="1"/>
 
-    </TableRow>
+                <Button
+                    android:id="@+id/encuesta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ENCUESTA"
+                    android:layout_weight="1"/>
 
-    <TableRow>
+            </LinearLayout>
 
-        <EditText
-            android:id="@+id/resultado"
-            android:layout_width="396dp"
-            android:layout_height="wrap_content"
-            android:layout_span="2"
-            android:text=""
-            android:textColor="@color/white"
-            android:visibility="invisible"
-            android:layout_weight="1"/>
+        </LinearLayout>
 
-    </TableRow>
+    </FrameLayout>
 
-</TableLayout>
+</FrameLayout>
