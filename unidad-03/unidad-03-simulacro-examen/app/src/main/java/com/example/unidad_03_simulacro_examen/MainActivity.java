@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             handler.postDelayed(() -> {
                 Intent intent = new Intent(MainActivity.this, activity2.class);
                 startActivity(intent);
-            }, 2000); //1 segundo de retardo
+            }, 2000);
         }
     }
 }
