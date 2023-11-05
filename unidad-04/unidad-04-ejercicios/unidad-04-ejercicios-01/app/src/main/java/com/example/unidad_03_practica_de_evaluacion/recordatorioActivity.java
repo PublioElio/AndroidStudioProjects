@@ -2,6 +2,7 @@ package com.example.unidad_03_practica_de_evaluacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,13 +16,13 @@ public class recordatorioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recordatorio_activity);
-        setContentView(R.layout.recordatorio_activity);
 
         // Delacración de elementos
         final EditText nombre = findViewById(R.id.nombre);
         final EditText fecha = findViewById(R.id.fNacimiento);
         final CheckBox recordatorio = findViewById(R.id.recordatorio);
         final Button aceptar = findViewById(R.id.aceptar);
+        final Button volver = findViewById(R.id.volver);
         final TextView resultado = findViewById(R.id.resultado); // este TextView estará oculto hasta que el usuario pulse el botón
 
         aceptar.setOnClickListener(view -> {
@@ -35,6 +36,14 @@ public class recordatorioActivity extends AppCompatActivity {
                         + fecha.getText() + "'.");
                 if (recordatorio.isChecked())
                     resultado.append("Se ha creado un recordatorio.");
+            }
+        });
+
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(recordatorioActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -18,6 +19,9 @@ public class encuestaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.encuesta_activity);
+
+        final Button portada = findViewById(R.id.portada);
+        final Button volver = findViewById(R.id.volver);
 
         // Creo el Spinner con sus elementos
         final Spinner miSpinner = findViewById(R.id.miSpinner);
@@ -43,6 +47,22 @@ public class encuestaActivity extends AppCompatActivity {
         valoracion.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
             resultadoEncuesta.setText("¡Gracias por tu valoración!");
             resultadoEncuesta.setVisibility(View.VISIBLE);
+        });
+
+        portada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(encuestaActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(encuestaActivity.this, recordatorioActivity.class);
+                startActivity(intent);
+            }
         });
 
     }

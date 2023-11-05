@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // la activity_main es la portada de la aplicación
 
-        // Un botón lo voy a hacer con el método onClick() -más abajo- y otro capturando el evento, para practicar
+        // Un botón lo voy a hacer con el método onClick()
+        // -más abajo- y otro capturando el evento, para practicar
         final Button encuesta = findViewById(R.id.encuesta);
 
         encuesta.setOnClickListener(new View.OnClickListener() {
@@ -35,6 +36,4 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, recordatorioActivity.class);
         startActivity(intent);
     }
-
-
 }
