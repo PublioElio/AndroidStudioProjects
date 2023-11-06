@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.t4_ejercicio4"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.t4_ejercicio4"
