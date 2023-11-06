@@ -18,19 +18,20 @@ public class MainActivity extends AppCompatActivity {
     public void mandar_mensaje(View view) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, "¿A qué hora quedamos?");
+        intent.putExtra(Intent.EXTRA_TEXT, "¿Te está gustando el cómic que te presté?");
         startActivity(intent);
     }
     public void abrirPagina(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.iesbelen.org/"));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://boardgamegeek.com/"));
         startActivity(intent);
     }
     public void llamarTelefono(View view) {
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:000000000"));
+        // Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:000000000")); // Está comentado porque no puedo usar este intent, al no tener permisos
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:652111838"));
         startActivity(intent);
     }
     public void verMapa(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:36.695804,-4.457127?z=18"));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:51.53723727830385, -0.18344577301573692"));
         startActivity(intent);
     }
     public void tomarFoto(View view) {
@@ -40,12 +41,18 @@ public class MainActivity extends AppCompatActivity {
     public void mandarCorreo(View view) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "asunto");
-        intent.putExtra(Intent.EXTRA_TEXT, "texto del correo");
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"rbaebar@g.educaand.es"});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Fotos del concierto");
+        intent.putExtra(Intent.EXTRA_TEXT, "Te adjunto las fotos del concierto");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"musera24@gmail.com"});
         startActivity(intent);
     }
     public void streetView(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.streetview:cbll=38.996766,-0.1652696&cbp=0,250,0,0,0")); //cbll=latitud,longitud&cbp=0,azimut,0,zoom,altura startActivity(intent);
+        double latitud = 36.95038964026492;
+        double longitud = -4.546720595064295;
+        String uri = "google.streetview:cbll=" + latitud + "," + longitud;
+        Uri gmmIntentUri = Uri.parse(uri);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");  // Esto asegura que se abra en la aplicación de Google Maps
+        startActivity(mapIntent);
     }
 }
