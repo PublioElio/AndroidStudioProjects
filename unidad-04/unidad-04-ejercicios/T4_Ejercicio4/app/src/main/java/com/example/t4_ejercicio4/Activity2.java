@@ -13,20 +13,20 @@ public class Activity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
-
-        final Button fantasmas = findViewById(R.id.fantasmas);
-        final Button calabazas = findViewById(R.id.calabazas);
-
-        fantasmas.setOnClickListener(view -> {
-            Intent intent = new Intent(Activity2.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        calabazas.setOnClickListener(view -> {
-            Intent intent = new Intent(Activity2.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        });
     }
+
+    public void onClick(View view) {
+        Intent intent = new Intent();
+        // Comprobamos qué vista (botón) ha invocado al método
+        int id = view.getId();
+        if (id == R.id.fantasmas) {
+            intent.putExtra("fondo_boton", "fantasma");
+            setResult(RESULT_OK, intent);
+        } else if (id == R.id.calabazas) {
+            intent.putExtra("fondo_boton", "calabaza");
+            setResult(RESULT_OK, intent);
+        }
+        finish();
+    }
+
 }

@@ -8,26 +8,27 @@
         android:id="@+id/fantasmas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/transparente"
-        android:textColor="@color/white"
-        android:text="Fantasmas"
-        android:textStyle="bold"
-        android:textSize="30sp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:backgroundTint="@color/transparente"
+        android:onClick="onClick"
+        android:text="Fantasmas"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/calabazas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/transparente"
-        android:textColor="@color/white"
-        android:text="Calabazas"
-        android:textStyle="bold"
-        android:textSize="30sp"
         android:layout_below="@+id/fantasmas"
-        android:layout_centerHorizontal="true"/>
-
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/transparente"
+        android:onClick="onClick"
+        android:text="Calabazas"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
