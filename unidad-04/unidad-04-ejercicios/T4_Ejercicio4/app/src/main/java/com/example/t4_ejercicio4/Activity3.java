@@ -16,8 +16,10 @@ public class Activity3 extends AppCompatActivity {
         final Button preparate = findViewById(R.id.preparate);
 
         preparate.setOnClickListener(view -> {
-            Intent intent = new Intent(Activity3.this, MainActivity.class);
-            startActivity(intent);
+            Intent intent = new Intent();
+            intent.putExtra("fondo_pantalla", "fondo6");
+            setResult(RESULT_OK, intent);
+            finish();
         });
     }
 }
