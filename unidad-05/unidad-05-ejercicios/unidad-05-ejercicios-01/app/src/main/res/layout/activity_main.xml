@@ -10,7 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:divider="#E61515"
-        android:dividerHeight="4dp" />
+        android:dividerHeight="4dp"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true" />
 
     <ListView
         android:id="@+id/lista2"
