@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,9 +17,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Defino el elemento TextView
+        final TextView selection = findViewById(R.id.txtSelection);
+
         // Recupero el elemento del layout y defino los valores del listado
         final ListView listaSeries = findViewById(R.id.SeriesList);
-        String[] datos = {"The Wire", "Succession", "The Expanse", "Daredevil", "WandaVision"};
+        String[] datos = {"The Wire", "Succession", "Dirk Gently", "The Expanse", "Daredevil",
+                "Bojack Horseman", "The Last Of Us", "WandaVision", "Arcane", "Love, Death & Robots"};
 
         // Creo el adaptador
         ArrayAdapter<String> adaptador =
@@ -31,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         listaSeries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> listado, View view, int position, long id) {
-
+                    selection.setText(adaptador.getItem(position));
             }
         });
     }
