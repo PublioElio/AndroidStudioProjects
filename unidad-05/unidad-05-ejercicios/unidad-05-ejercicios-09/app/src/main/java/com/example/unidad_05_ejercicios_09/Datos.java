@@ -2,21 +2,21 @@ package com.example.unidad_05_ejercicios_09;
 
 public class Datos {
 
-    private String texto1;
-    private String texto2;
+    private String texto;
+    private boolean checked;
     private int imagen;
 
-    public Datos(int imagen, String texto1, String texto2) {
+    public Datos(int imagen, String texto, boolean checked) {
         this.imagen = imagen;
-        this.texto1 = texto1;
-        this.texto2 = texto2;
+        this.texto = texto;
+        this.checked = checked;
     }
-    public String getTexto1() {
-        return texto1;
+    public String getTexto() {
+        return texto;
     }
 
-    public String getTexto2() {
-        return texto2;
+    public boolean isChecked() {
+        return checked;
     }
 
     public int getImagen() { return imagen; }

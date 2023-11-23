@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">unidad-05-ejercicios-09</string>
+    <string name="texto_superior">Selecciona los dispositivos que usas para navegar por Internet y pulsa \'Aceptar\'</string>
+    <string name="aceptar">Aceptar</string>
 </resources>
