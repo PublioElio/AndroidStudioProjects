@@ -31,7 +31,6 @@ public class Adaptador extends ArrayAdapter {
         View elemento = mostrado.inflate(R.layout.elementos,parent,false);
 
         // Asigno contenido al elemento
-
         ImageView imagen = elemento.findViewById(R.id.imagen1);
         imagen.setImageResource(datos.get(position).getImagen());
 

@@ -20,7 +20,7 @@
             android:id="@+id/miTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PULSA UNA OPCION"
+            android:text="@string/pulsa_una_opcion"
             android:textStyle="bold"
             android:textSize="18sp"
             android:textAlignment="center"

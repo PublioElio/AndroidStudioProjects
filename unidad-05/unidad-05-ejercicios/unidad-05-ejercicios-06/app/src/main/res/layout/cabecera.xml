@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:text="AGENDA TELEFÓNICA"
+        android:text="@string/agenda_telefonica"
         android:textStyle="bold"
         android:textSize="20sp"
         android:fontFamily="serif"

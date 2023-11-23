@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         // Defino el elemento TextView
         final TextView selection = findViewById(R.id.txtSelection);
 
-        // Recupero el elemento del layout y defino los valores del listado
+        // Recupero el elemento del layout y defino los valores del GridView
         final GridView listaSeries = findViewById(R.id.SeriesList);
         String[] datos = {"The Wire", "Succession", "Dirk Gently", "The Expanse", "Daredevil",
                 "Bojack Horseman", "The Last Of Us", "WandaVision", "Arcane", "Love, Death & Robots"};
