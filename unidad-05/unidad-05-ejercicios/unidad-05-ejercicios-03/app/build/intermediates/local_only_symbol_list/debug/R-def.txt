@@ -1,0 +1,18 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id miGridView
+id miTexto1
+id miTexto2
+layout activity_main
+layout elementos
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.Unidad05ejercicios03
+style Theme.Unidad05ejercicios03
+xml backup_rules
+xml data_extraction_rules
