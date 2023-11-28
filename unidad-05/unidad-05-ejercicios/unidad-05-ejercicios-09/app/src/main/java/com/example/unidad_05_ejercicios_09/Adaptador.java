@@ -36,6 +36,7 @@ public class Adaptador extends ArrayAdapter {
 
         // Asigno contenido al elemento
         CheckBox checkBox = elemento.findViewById(R.id.checkBox);
+        checkBox.setChecked(datos.get(position).isChecked());
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
