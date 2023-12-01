@@ -21,6 +21,7 @@
         android:layout_below="@+id/mainLogo"
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/black"
-        android:text="@string/acceder" />
+        android:text="@string/acceder"
+        android:textSize="28sp"/>
 
 </RelativeLayout>
