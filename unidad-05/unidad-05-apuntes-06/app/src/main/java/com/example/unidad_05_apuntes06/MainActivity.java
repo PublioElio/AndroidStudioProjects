@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 // Creo menú desde XML
-/*    @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_principal,menu);
         return true;
@@ -46,42 +46,42 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
     // Creo menú con Java
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        menu.add(Menu.NONE, menuOp1, menu.NONE, "Opción A desde Java");
-
-        SubMenu subMenu = menu.addSubMenu(Menu.NONE, menuOp2, Menu.NONE, "Opción B desde Java");
-        subMenu.add(Menu.NONE, menuOp2_1, menu.NONE, "Opción B.1 desde Java");
-        subMenu.add(Menu.NONE, menuOp2_2, menu.NONE, "Opción B.2 desde Java");
-
-        menu.add(Menu.NONE, menuOp3, menu.NONE, "Opción C desde Java");
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case menuOp1:
-                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
-                break;
-            case menuOp2:
-                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
-                break;
-            case menuOp3:
-                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
-                break;
-            case menuOp2_1:
-                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
-                break;
-            case menuOp2_2:
-                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
-                break;
-        }
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//
+//        menu.add(Menu.NONE, menuOp1, menu.NONE, "Opción A desde Java");
+//
+//        SubMenu subMenu = menu.addSubMenu(Menu.NONE, menuOp2, Menu.NONE, "Opción B desde Java");
+//        subMenu.add(Menu.NONE, menuOp2_1, menu.NONE, "Opción B.1 desde Java");
+//        subMenu.add(Menu.NONE, menuOp2_2, menu.NONE, "Opción B.2 desde Java");
+//
+//        menu.add(Menu.NONE, menuOp3, menu.NONE, "Opción C desde Java");
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//
+//        switch (item.getItemId()) {
+//            case menuOp1:
+//                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+//                break;
+//            case menuOp2:
+//                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+//                break;
+//            case menuOp3:
+//                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+//                break;
+//            case menuOp2_1:
+//                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+//                break;
+//            case menuOp2_2:
+//                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+//                break;
+//        }
+//        return true;
+//    }
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menuOp1" android:title="Equipos de Súper héroes">
+    <menu>
+        <item android:id="@+id/menuOp2_1" android:title="Vengadores"/>
+        <item android:id="@+id/menuOp2_2" android:title="Xmen"/>
+    </menu>
+    </item>
+    <item android:id="@+id/menuOp2" android:title="Tiendas de cómics"/>
+
+    <item android:id="@+id/menuOp3" android:title="Contacto"/>
+</menu>
