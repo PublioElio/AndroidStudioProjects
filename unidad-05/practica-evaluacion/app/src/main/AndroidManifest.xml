@@ -21,7 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PrincipalActivity"/>
+        <activity android:name="principal.activity.PrincipalActivity"/>
+        <activity android:name="grupos.activity.VengadoresActivity"/>
+
 
     </application>
 

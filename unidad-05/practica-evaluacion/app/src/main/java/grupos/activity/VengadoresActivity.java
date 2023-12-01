@@ -1,4 +1,4 @@
-package com.example.practica_evaluacion;
+package grupos.activity;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,34 +10,27 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
+import com.example.practica_evaluacion.R;
 import java.util.ArrayList;
 
-public class PrincipalActivity extends AppCompatActivity {
+public class VengadoresActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.principal);
+        setContentView(R.layout.vengadores);
 
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         // -------------- Lógica de la lista ------------------
-        final ListView miLista = findViewById(R.id.miLista);
+        final ListView miLista = findViewById(R.id.listaVengadores);
 
         // Creo los datos de la lista
-        ArrayList<DatosPrincipal> datos = new ArrayList<>();
-        datos.add(new DatosPrincipal(R.drawable.vengadores));
-        datos.add(new DatosPrincipal(R.drawable.xmen));
-        datos.add(new DatosPrincipal(R.drawable.fantastic_4));
-        datos.add(new DatosPrincipal(R.drawable.guardians));
-        datos.add(new DatosPrincipal(R.drawable.thunderbolts));
-        datos.add(new DatosPrincipal(R.drawable.defenders));
-        datos.add(new DatosPrincipal(R.drawable.alphaflight));
-        datos.add(new DatosPrincipal(R.drawable.new_warriors));
+        ArrayList<DatosGrupos> datos = new ArrayList<>();
+        introducirDatos(datos);
 
         // Creo el adaptador de la lista
-        AdaptadorPrincipal adaptador = new AdaptadorPrincipal(this, datos);
+        AdaptadorGrupos adaptador = new AdaptadorGrupos(this, datos);
         miLista.setAdapter(adaptador);
 
         // Inserto el listener de la lista
@@ -47,6 +40,13 @@ public class PrincipalActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private static void introducirDatos(ArrayList<DatosGrupos> datos) {
+        datos.add(new DatosGrupos(R.drawable.capi_small, "CAPITÁN AMÉRICA", false));
+        datos.add(new DatosGrupos(R.drawable.ironman_small, "IRON MAN", false));
+        datos.add(new DatosGrupos(R.drawable.blackwidow_small, "VIUDA NEGRA", false));
     }
 
     // -------------- Lógica del menú ---------------
@@ -66,4 +66,5 @@ public class PrincipalActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

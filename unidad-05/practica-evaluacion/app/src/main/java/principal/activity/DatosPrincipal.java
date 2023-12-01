@@ -1,4 +1,4 @@
-package com.example.practica_evaluacion;
+package principal.activity;
 
 public class DatosPrincipal {
     private final int logoEquipo;
