@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/lunes" android:title="LUNES"/>
+    <item android:id="@+id/martes" android:title="MARTES"/>
+    <item android:id="@+id/miercoles" android:title="MIÉRCOLES"/>
+    <item android:id="@+id/jueves" android:title="JUEVES"/>
+    <item android:id="@+id/viernes" android:title="VIERNES"/>
+    <item android:id="@+id/sabado" android:title="SÁBADO"/>
+    <item android:id="@+id/domingo" android:title="DOMINGO"/>
+</menu>
