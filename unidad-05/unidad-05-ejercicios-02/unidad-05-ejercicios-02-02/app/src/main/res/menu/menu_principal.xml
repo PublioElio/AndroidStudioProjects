@@ -1,13 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/dias_semana" android:title="Días de la semana">
-        <item android:id="@+id/lunes" android:title="LUNES"/>
-        <item android:id="@+id/martes" android:title="MARTES"/>
-        <item android:id="@+id/miercoles" android:title="MIÉRCOLES"/>
-        <item android:id="@+id/jueves" android:title="JUEVES"/>
-        <item android:id="@+id/viernes" android:title="VIERNES"/>
-        <item android:id="@+id/sabado" android:title="SÁBADO"/>
-        <item android:id="@+id/domingo" android:title="DOMINGO"/>
+    <item
+        android:id="@+id/dias"
+        android:title="DÍAS DE LA SEMANA">
+        <menu>
+            <item
+                android:id="@+id/lunes"
+                android:title="LUNES" />
+            <item
+                android:id="@+id/martes"
+                android:title="MARTES" />
+            <item
+                android:id="@+id/miercoles"
+                android:title="MIÉRCOLES" />
+            <item
+                android:id="@+id/jueves"
+                android:title="JUEVES" />
+            <item
+                android:id="@+id/viernes"
+                android:title="VIERNES" />
+            <item
+                android:id="@+id/sabado"
+                android:title="SÁBADO" />
+            <item
+                android:id="@+id/domingo"
+                android:title="DOMINGO" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/meses"
+        android:title="MESES DEL AÑO">
+        <menu>
+            <item
+                android:id="@+id/enero"
+                android:title="ENERO" />
+            <item
+                android:id="@+id/febrero"
+                android:title="FEBRERO" />
+            <item
+                android:id="@+id/marzo"
+                android:title="MARZO" />
+            <item
+                android:id="@+id/abril"
+                android:title="ABRIL" />
+        </menu>
     </item>
 
 </menu>
