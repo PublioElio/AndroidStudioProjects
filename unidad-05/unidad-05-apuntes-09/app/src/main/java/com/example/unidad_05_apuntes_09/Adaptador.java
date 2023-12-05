@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,8 +32,16 @@ public class Adaptador extends ArrayAdapter<Datos> {
         TextView texto = elemento.findViewById(R.id.etiqueta);
         texto.setText(datos.get(position).getTexto());
 
+        CheckBox seleccionado = elemento.findViewById(R.id.miCheck);
+        seleccionado.setChecked(datos.get(position).isCheck());
+        seleccionado.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                datos.get(position).setCheck(isChecked);
+            }
+        });
 
 
-        return super.getView(position, convertView, parent);
+        return elemento;
     }
 }
