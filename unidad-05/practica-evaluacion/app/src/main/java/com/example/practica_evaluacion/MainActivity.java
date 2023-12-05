@@ -7,6 +7,9 @@ import android.widget.Button;
 
 import principal.activity.PrincipalActivity;
 
+/**
+ * El main activity es la portada de la aplicación, con un botón de acceso y el logo
+ */
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

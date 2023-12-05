@@ -15,11 +15,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.practica_evaluacion.MainActivity;
 import com.example.practica_evaluacion.R;
+
 import java.util.ArrayList;
 
 import grupos.activity.VengadoresActivity;
 import grupos.activity.XmenActivity;
 
+/**
+ * Esta activity es donde aparecen los equipos de súper héroes. También tiene un menú superior donde
+ * se pueden acceder a otras actividades de la aplicación
+ */
 public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +37,7 @@ public class PrincipalActivity extends AppCompatActivity {
         // -------------- Lógica de la lista ------------------
         final ListView miLista = findViewById(R.id.miLista);
 
-        // Creo los datos de la lista
+        // Creo la lista de datos he introduzco los logos
         ArrayList<DatosPrincipal> datos = new ArrayList<>();
         introducirDatos(datos);
 
@@ -40,12 +45,12 @@ public class PrincipalActivity extends AppCompatActivity {
         AdaptadorPrincipal adaptador = new AdaptadorPrincipal(this, datos);
         miLista.setAdapter(adaptador);
 
-        // Inserto el listener de la lista
+        // Acciones que tendrán lugar cuando se pulse en cualquiera de los elementos de la lista
         miLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent;
-                switch (position){
+                switch (position) {
                     case 0:
                         intent = new Intent(PrincipalActivity.this, VengadoresActivity.class);
                         startActivity(intent);
@@ -55,6 +60,9 @@ public class PrincipalActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     default:
+                        // solo se han implementado dos equipos (Vengadores y Xmen), este es el
+                        // mensaje que aparecerá cuando se pulse un equipo que aún no tiene información
+                        // personalizar Toast -> https://stackoverflow.com/questions/7571917/adding-image-to-toast
                         Toast.makeText(PrincipalActivity.this, "¡Próximamente!", Toast.LENGTH_SHORT).show();
                 }
 
@@ -62,6 +70,11 @@ public class PrincipalActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Este métdo introduce los logotipos de los equipos en el listado
+     *
+     * @param datos
+     */
     private static void introducirDatos(ArrayList<DatosPrincipal> datos) {
         datos.add(new DatosPrincipal(R.drawable.vengadores));
         datos.add(new DatosPrincipal(R.drawable.xmen));
@@ -76,18 +89,18 @@ public class PrincipalActivity extends AppCompatActivity {
     // -------------- Lógica del menú ---------------
     // Creo menú desde XML
     @Override
-    public boolean onCreateOptionsMenu (Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_principal, menu);
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().setLogo(R.drawable.logo_horizontal_small);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setTitle(""); // quito el téxto del título
+        getSupportActionBar().setLogo(R.drawable.logo_horizontal_small); // introduzco el logo en el menú
+        getSupportActionBar().setDisplayUseLogoEnabled(true); // muestro el logo
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int opcion = item.getItemId();
-
+// TODO - opciones de selección de actividades
         return super.onOptionsItemSelected(item);
     }
 }
