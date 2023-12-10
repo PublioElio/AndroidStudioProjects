@@ -7,6 +7,9 @@
     android:orientation="vertical"
     tools:ignore="ExtraText">
 
+    <!-- En este layout se mostrará el listado de equipos de súper héroes disponible en la
+    aplicación -->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

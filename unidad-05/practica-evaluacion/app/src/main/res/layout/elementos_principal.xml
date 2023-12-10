@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <!-- Este layout es el modelo de datos para cargar el listado de logotipos de los equipos de
+    héroes en Principal Activity -->
     <ImageView
         android:id="@+id/logoEquipo"
         android:layout_width="wrap_content"

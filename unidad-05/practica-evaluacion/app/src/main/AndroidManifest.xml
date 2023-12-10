@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name="principal.activity.PrincipalActivity"/>
-        <activity android:name="grupos.activity.VengadoresActivity"/>
+        <activity android:name="grupos.activity.GruposActivity"/>
 
 
     </application>

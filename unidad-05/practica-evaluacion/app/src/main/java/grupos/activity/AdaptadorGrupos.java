@@ -17,12 +17,15 @@ import com.example.practica_evaluacion.R;
 
 import java.util.ArrayList;
 
+/**
+ * Este es el adaptador que muestra los integrantes de un grupo de súper héroes
+ */
 public class AdaptadorGrupos extends ArrayAdapter {
 
     private ArrayList<DatosGrupos> datos;
 
     public AdaptadorGrupos(Context context, ArrayList<DatosGrupos> datos) {
-        super(context, R.layout.elementos_grupos, datos);
+        super(context, R.layout.elementos_equipos, datos);
         this.datos = datos;
     }
 
@@ -32,7 +35,7 @@ public class AdaptadorGrupos extends ArrayAdapter {
 
         // Inflo el elemento
         LayoutInflater mostrado = LayoutInflater.from(getContext());
-        View elemento = mostrado.inflate(R.layout.elementos_grupos,parent,false);
+        View elemento = mostrado.inflate(R.layout.elementos_equipos,parent,false);
 
         // Asigno contenido al elemento
         ImageView imagen = elemento.findViewById(R.id.retratoHeroe);
@@ -40,15 +43,6 @@ public class AdaptadorGrupos extends ArrayAdapter {
 
         TextView texto = elemento.findViewById(R.id.nombreHeroe);
         texto.setText(datos.get(position).getNombreHeroe());
-
-        CheckBox checkBox = elemento.findViewById(R.id.checkGrupos);
-        checkBox.setChecked(datos.get(position).isSeleccionado());
-        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                datos.get(position).setSeleccionado(isChecked);
-            }
-        });
 
         return elemento;
     }

@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/background3"
     android:orientation="vertical"
-    tools:ignore="ExtraText">
+    tools:ignore="ExtraText"
+    android:id="@+id/padre">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -16,23 +17,11 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
     <!-- el ListView no tiene divider intencionadamente -->
-    <ListView
-        android:id="@+id/listaVengadores"
+    <GridView
+        android:id="@+id/gridViewHeroes"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="@null"/>
+        android:layout_height="wrap_content"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/marvel_red"
-            android:text="@string/escoje"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="25sp" />
-    </RelativeLayout>
 </LinearLayout>
