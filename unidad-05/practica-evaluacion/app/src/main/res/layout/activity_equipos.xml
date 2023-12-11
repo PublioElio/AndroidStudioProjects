@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/padre"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background3"
     android:orientation="vertical"
-    tools:ignore="ExtraText"
-    android:id="@+id/padre">
+    tools:ignore="ExtraText">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -22,6 +22,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numColumns="3"
-        android:stretchMode="columnWidth"/>
+        android:stretchMode="columnWidth" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/manten_pulsado"
+            android:textAlignment="center"
+            android:textColor="@color/marvel_red"
+            android:textSize="30sp"
+            android:layout_marginTop="50dp"/>
+    </RelativeLayout>
 </LinearLayout>

@@ -4,20 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import com.example.practica_evaluacion.R;
-
 import java.util.ArrayList;
-
+import java.util.Objects;
+import contacto.activity.ContactoActivity;
 import grupos.activity.GruposActivity;
+import tiendas.activity.TiendasActivity;
 
 /**
  * Esta activity es donde aparecen los equipos de súper héroes. También tiene un menú superior donde
@@ -27,7 +24,7 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.principal);
+        setContentView(R.layout.activity_principal);
 
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -35,7 +32,7 @@ public class PrincipalActivity extends AppCompatActivity {
         // -------------- Lógica de la lista ------------------
         final ListView miLista = findViewById(R.id.miLista);
 
-        // Creo la lista de datos he introduzco los logos
+        // Creo la lista de datos he introduzco los logos y nombres de los equipos
         ArrayList<DatosPrincipal> datos = new ArrayList<>();
         introducirDatos(datos);
 
@@ -44,32 +41,28 @@ public class PrincipalActivity extends AppCompatActivity {
         miLista.setAdapter(adaptador);
 
         // Acciones que tendrán lugar cuando se pulse en cualquiera de los elementos de la lista
-        miLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        miLista.setOnItemClickListener((parent, view, position, id) -> {
 
-                // Guardamos el nombre del equipo que ha pulsado el usuario
-                String nombreEquipo = ((DatosPrincipal) parent.getItemAtPosition(position)).getNombreEquipo();
-                if ("vengadores".equals(nombreEquipo) || "xmen".equals(nombreEquipo)) {
-                    Intent intent = new Intent(PrincipalActivity.this, GruposActivity.class);
-                    intent.putExtra("equipo", nombreEquipo);
-                    setResult(RESULT_OK, intent);
-                    startActivity(intent);
-                } else {
-                    // solo se han implementado dos equipos (Vengadores y Xmen), este es el
-                    // mensaje que aparecerá cuando se pulse un equipo que aún no tiene información
-                    // personalizar Toast -> https://stackoverflow.com/questions/7571917/adding-image-to-toast
-                    Toast.makeText(PrincipalActivity.this, "¡Próximamente!", Toast.LENGTH_SHORT).show();
-                }
-
+            // Guardamos el nombre del equipo que ha pulsado el usuario
+            String nombreEquipo = ((DatosPrincipal) parent.getItemAtPosition(position)).getNombreEquipo();
+            if ("vengadores".equals(nombreEquipo) || "xmen".equals(nombreEquipo)) {
+                Intent intent = new Intent(PrincipalActivity.this, GruposActivity.class);
+                intent.putExtra("equipo", nombreEquipo);
+                setResult(RESULT_OK, intent);
+                startActivity(intent);
+            } else {
+                // solo se han implementado dos equipos (Vengadores y Xmen), este es el
+                // mensaje que aparecerá cuando se pulse un equipo que aún no tiene información
+                // personalizar Toast -> https://stackoverflow.com/questions/7571917/adding-image-to-toast
+                Toast.makeText(PrincipalActivity.this, "¡Próximamente!", Toast.LENGTH_SHORT).show();
             }
+
         });
     }
 
     /**
      * Este método introduce los logotipos de los equipos en el listado
      *
-     * @param datos
      */
     private static void introducirDatos(ArrayList<DatosPrincipal> datos) {
         datos.add(new DatosPrincipal(R.drawable.vengadores, "vengadores"));
@@ -87,16 +80,44 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_principal, menu);
-        getSupportActionBar().setTitle(""); // quito el téxto del título
+        Objects.requireNonNull(getSupportActionBar()).setTitle(""); // quito el téxto del título
         getSupportActionBar().setLogo(R.drawable.logo_horizontal_small); // introduzco el logo en el menú
         getSupportActionBar().setDisplayUseLogoEnabled(true); // muestro el logo
         return true;
     }
 
+    /**
+     * Este método realiza las acciones derivadas de seleccionar un elemento del menú
+     * @param item The menu item that was selected.
+     *
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int opcion = item.getItemId();
-// TODO - opciones de selección de actividades
+        String opcion = Objects.requireNonNull(item.getTitle()).toString();
+        Intent intent;
+        switch (opcion) {
+            case "Vengadores":
+                seleccionarGrupoDesdeMenu(opcion.toLowerCase());
+                break;
+            case "Xmen":
+                seleccionarGrupoDesdeMenu(opcion.toLowerCase());
+                break;
+            case "Tiendas de cómics":
+                intent = new Intent(PrincipalActivity.this, TiendasActivity.class);
+                startActivity(intent);
+                break;
+            case "Contacto":
+                intent = new Intent(PrincipalActivity.this, ContactoActivity.class);
+                startActivity(intent);
+                break;
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void seleccionarGrupoDesdeMenu(String nombreEquipo) {
+        Intent intent = new Intent(PrincipalActivity.this, GruposActivity.class);
+        intent.putExtra("equipo", nombreEquipo);
+        setResult(RESULT_OK, intent);
+        startActivity(intent);
     }
 }

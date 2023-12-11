@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Practica_evaluacion"
         tools:targetApi="31">
         <activity
+            android:name="contacto.activity.ContactoActivity"
+            android:exported="false" />
+        <activity
+            android:name="tiendas.activity.TiendasActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,10 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="principal.activity.PrincipalActivity"/>
-        <activity android:name="grupos.activity.GruposActivity"/>
-
-
+        <activity android:name="principal.activity.PrincipalActivity" />
+        <activity android:name="grupos.activity.GruposActivity" />
+        <activity android:name="grupos.activity.PersonajeActivity" />
     </application>
 
 </manifest>

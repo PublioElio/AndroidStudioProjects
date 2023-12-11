@@ -5,16 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.example.practica_evaluacion.R;
-
 import java.util.ArrayList;
 
 /**
@@ -22,7 +17,7 @@ import java.util.ArrayList;
  */
 public class AdaptadorGrupos extends ArrayAdapter {
 
-    private ArrayList<DatosGrupos> datos;
+    private final ArrayList<DatosGrupos> datos;
 
     public AdaptadorGrupos(Context context, ArrayList<DatosGrupos> datos) {
         super(context, R.layout.elementos_equipos, datos);

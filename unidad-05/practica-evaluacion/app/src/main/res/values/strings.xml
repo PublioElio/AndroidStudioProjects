@@ -1,6 +1,71 @@
 <resources>
     <string name="app_name">MARVEL Team UP!</string>
-    <string name="acceder">ACCEDER</string>
     <string name="marvel_team_up">Marvel Team UP!</string>
     <string name="escoje">¡Escoje a tus héroes favoritos!</string>
+    <string name="imagen_del_personaje">Imagen del personaje</string>
+    <string name="ficha">FICHA DE PERSONAJE</string>
+    <string name="recomendacion_lectura">LECTURA RECOMENDADA</string>
+
+    <!-- botones -->
+    <string name="volver">VOLVER</string>
+    <string name="acceder">ACCEDER</string>
+    <!-- descripciones de personajes -->
+    <string name="des_ficha_capi">
+        Nombre: Capitán América\n
+        Primera aparción: Captain America Comics #1 (marzo de 1941)\n
+        Creado por: Joe Simon y Jack Kirby\n
+        Nombre real:  Steven \'Steve\' Rogers\n
+        El Capitán América, creado por Joe Simon y Jack Kirby, es Steve Rogers, un joven frágil que se convierte en un super soldado gracias a un suero durante la Segunda Guerra Mundial.
+        Lucha con un escudo indestructible contra nazis y supervillanos.
+        Tras quedar congelado, despierta en la actualidad, defendiendo la justicia y los valores estadounidenses como un símbolo de esperanza y liderazgo.
+    </string>
+    <string name="des_ficha_iron_man">
+        Nombre: Iron Man\n
+        Primera aparición: Tales of Suspense #39 (marzo de 1963)\n
+        Creado por: Stan Lee, Larry Lieber, Don Heck, y Jack Kirby\n
+        Nombre real: Anthony Edward Stark\n
+        Iron Man es el alter ego de Anthony Stark, un genio multimillonario, filántropo y playboy.
+        Después de sufrir una lesión grave en el pecho, Stark crea un traje blindado para mantenerse con vida.
+        Con su armadura equipada con armas y tecnología de vanguardia, Iron Man combate contra numerosos enemigos, villanos y amenazas alienígenas.
+    </string>
+    <string name="des_ficha_viuda">
+    Nombre: Viuda Negra\n
+    Primera aparición: Tales of Suspense #52 (abril de 1964)\n
+    Creado por: Stan Lee, Don Rico y Don Heck\n
+    Nombre real: Natalia Alianovna Romanova (Natasha Romanoff)\n
+    La Viuda Negra es una agente rusa entrenada en el programa llamado "Sala Roja" desde joven, convirtiéndose en una espía y asesina sin parangón.
+    Dotada de habilidades de combate excepcionales, destrezas en el uso de armas y experta en espionaje, se ha unido a los Vengadores, convirtiéndose en una valiosa aliada.
+    </string>
+    <string name="des_ficha_cyclops">
+    Nombre: Cíclope\n
+    Primera aparición: X-Men #1 (septiembre de 1963)\n
+    Creado por: Stan Lee y Jack Kirby\n
+    Nombre real: Scott Summers\n
+    Cíclope es un mutante y líder de los X-Men, conocido por disparar potentes rayos de energía óptica de sus ojos.
+    Puede controlar esta habilidad mediante visores especiales y así evitar dañar accidentalmente a otros.
+    Es un estratega hábil y un líder nato.
+    Su responsabilidad y compromiso con la visión del profesor Xavier lo convierten en uno de los personajes más importantes dentro de los X-Men.
+    </string>
+    <string name="des_ficha_jeangrey">
+    Nombre: Jean Grey\n
+    Primera aparición: X-Men #1 (septiembre de 1963)\n
+    Creado por: Stan Lee y Jack Kirby\n
+    Nombre real: Jean Elaine Grey Summers\n
+    Jean Grey es una mutante con poderes telepáticos y telequinéticos extraordinarios.
+    A lo largo de su historia, ha sido anfitriona del poderoso Fénix, una entidad cósmica, lo que la convierte en una de las mutantes más poderosas y volátiles.
+    Como miembro clave de los X-Men, Jean ha luchado con su poder y la responsabilidad que conlleva.
+    Su conexión con el Fénix ha sido una fuente tanto de poder increíble como de lucha interna, ya que busca controlar su lado más oscuro y destructivo.
+    </string>
+    <string name="des_ficha_wolverine">
+    Nombre: Lobezno\n
+    Primera aparición: The Incredible Hulk #180 (octubre de 1974)\n
+    Creado por: Len Wein y John Romita Sr.\n
+    Nombre real: James Howlett (Logan)\n
+    Lobezno es un mutante con habilidades regenerativas, garras retráctiles de adamantium y sentidos aumentados.
+    Es un luchador feroz y experto en combate cuerpo a cuerpo, con un pasado misterioso y violento que ha sido explorado a lo largo de su historia.
+    Con un temperamento fiero y una moralidad ambigua, Lobezno es conocido por su actitud antisocial y su capacidad para sobrevivir a situaciones extremas.
+    A pesar de su naturaleza solitaria, ha sido un miembro valioso de los X-Men y otros equipos de héroes.
+    </string>
+    <string name="manten_pulsado">¡mantén pulsado sobre tu héroe favorito para ver las opciones!</string>
+
 </resources>
