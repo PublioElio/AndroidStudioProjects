@@ -97,8 +97,6 @@ public class PrincipalActivity extends AppCompatActivity {
         Intent intent;
         switch (opcion) {
             case "Vengadores":
-                seleccionarGrupoDesdeMenu(opcion.toLowerCase());
-                break;
             case "Xmen":
                 seleccionarGrupoDesdeMenu(opcion.toLowerCase());
                 break;
