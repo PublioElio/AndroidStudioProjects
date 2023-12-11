@@ -2,16 +2,25 @@ package principal.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import com.example.practica_evaluacion.R;
+
 import java.util.ArrayList;
 import java.util.Objects;
+
 import contacto.activity.ContactoActivity;
 import grupos.activity.GruposActivity;
 import tiendas.activity.TiendasActivity;
@@ -53,10 +62,18 @@ public class PrincipalActivity extends AppCompatActivity {
             } else {
                 // solo se han implementado dos equipos (Vengadores y Xmen), este es el
                 // mensaje que aparecerá cuando se pulse un equipo que aún no tiene información
-                // personalizar Toast -> https://stackoverflow.com/questions/7571917/adding-image-to-toast
-                Toast.makeText(PrincipalActivity.this, "¡Próximamente!", Toast.LENGTH_SHORT).show();
+                // personalizar Toast -> https://stackoverflow.com/questions/11288475/custom-toast-on-android-a-simple-example
+                LayoutInflater inflater = getLayoutInflater();
+                View v = inflater.inflate(R.layout.cust_toast_layout,
+                        (ViewGroup)findViewById(R.id.relativeLayoutlToast));
+                final ImageView image = (ImageView) v.findViewById(R.id.imgViewToast);
+                image.setImageResource(R.drawable.cyclops_small);
+                TextView text = (TextView) v.findViewById(R.id.txtViewToast);
+                text.setText(R.string.proximamente);
+                Toast toast = new Toast(getApplicationContext());
+                toast.setView(v);
+                toast.show();
             }
-
         });
     }
 

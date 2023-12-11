@@ -6,6 +6,8 @@
     <string name="ficha">FICHA DE PERSONAJE</string>
     <string name="recomendacion_lectura">LECTURA RECOMENDADA</string>
 
+    <!-- toast -->
+    <string name="proximamente">¡Próximamente!</string>
     <!-- botones -->
     <string name="volver">VOLVER</string>
     <string name="acceder">ACCEDER</string>
