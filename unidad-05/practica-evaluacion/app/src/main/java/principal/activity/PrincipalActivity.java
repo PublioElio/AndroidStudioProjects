@@ -11,16 +11,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import com.example.practica_evaluacion.R;
-
 import java.util.ArrayList;
 import java.util.Objects;
-
 import contacto.activity.ContactoActivity;
 import grupos.activity.GruposActivity;
 import tiendas.activity.TiendasActivity;
@@ -67,7 +63,7 @@ public class PrincipalActivity extends AppCompatActivity {
                 View v = inflater.inflate(R.layout.cust_toast_layout,
                         (ViewGroup)findViewById(R.id.relativeLayoutlToast));
                 final ImageView image = (ImageView) v.findViewById(R.id.imgViewToast);
-                image.setImageResource(R.drawable.cyclops_small);
+                image.setImageResource(R.drawable.stan);
                 TextView text = (TextView) v.findViewById(R.id.txtViewToast);
                 text.setText(R.string.proximamente);
                 Toast toast = new Toast(getApplicationContext());

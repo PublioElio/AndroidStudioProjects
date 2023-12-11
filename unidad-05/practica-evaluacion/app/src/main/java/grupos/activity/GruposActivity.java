@@ -10,16 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import com.example.practica_evaluacion.R;
-
 import java.util.ArrayList;
 import java.util.Objects;
-
 import contacto.activity.ContactoActivity;
 import tiendas.activity.TiendasActivity;
 
