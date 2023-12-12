@@ -23,6 +23,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/txtViewContacto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/contacta_con_nosotros_por_correo"
+                android:textAlignment="center"
+                android:textColor="@color/marvel_red"
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/consulta"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="20dp"
+                android:background="@color/white"
+                android:hint="@string/escribe_el_motivo_de_tu_consulta"
+                android:inputType="text"
+                android:padding="15dp" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,10 +53,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
                     android:text="@string/destino_consulta"
-                    android:textSize="20sp"
-                    android:textColor="@color/marvel_red" />
+                    android:textColor="@color/marvel_red"
+                    android:textSize="20sp" />
 
                 <Spinner
                     android:id="@+id/miSpinner"
@@ -48,9 +69,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp">
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
                 <Switch
                     android:id="@+id/modoHulk"
@@ -67,20 +88,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/marvel_red"
-                    android:textSize="25sp"
-                    android:text="@string/enviar" />
+                    android:text="@string/enviar"
+                    android:textSize="25sp" />
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_corner"
                 android:text="@string/valoranos"
                 android:textAlignment="center"
+                android:layout_marginTop="40dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:background="@drawable/rounded_corner"
-                android:layout_gravity="center"
                 android:textStyle="bold" />
 
             <RatingBar
@@ -99,13 +121,14 @@
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:visibility="invisible" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/conocido_app"
-                android:background="@drawable/rounded_corner"
-                android:textAlignment="center"
                 android:layout_gravity="center"
+                android:background="@drawable/rounded_corner"
+                android:text="@string/conocido_app"
+                android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -119,8 +142,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:textColor="@color/black"
-                    android:text="@string/contactos" />
+                    android:text="@string/contactos"
+                    android:textColor="@color/black" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -133,8 +156,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:textColor="@color/black"
-                    android:text="@string/app_store" />
+                    android:text="@string/app_store"
+                    android:textColor="@color/black" />
 
             </RadioGroup>
 

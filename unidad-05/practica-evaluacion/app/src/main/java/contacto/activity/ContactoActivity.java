@@ -108,7 +108,7 @@ public class ContactoActivity extends AppCompatActivity {
 
     private String generarFraseDeHulk() {
         String frase = "";
-        int numeroAleatorio = (int) (Math.random() * 3);
+        int numeroAleatorio = (int) (Math.random() * 4);
         switch (numeroAleatorio){
             case 0:
                 frase = "¡Hulk aplasta!";
