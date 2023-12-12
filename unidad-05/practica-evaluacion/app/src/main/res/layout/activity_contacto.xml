@@ -35,7 +35,7 @@
                 android:textSize="25sp" />
 
             <EditText
-                android:id="@+id/consulta"
+                android:id="@+id/editTxtMotivoConsulta"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="20dp"
@@ -50,6 +50,7 @@
                 android:layout_gravity="center">
 
                 <TextView
+                    android:id="@+id/txtView_destino_consulta"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
@@ -60,7 +61,7 @@
 
                 <Spinner
                     android:id="@+id/miSpinner"
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="40dp" />
 
             </LinearLayout>
@@ -85,6 +86,7 @@
                     android:textSize="25sp" />
 
                 <Button
+                    android:id="@+id/btnEnviar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/marvel_red"

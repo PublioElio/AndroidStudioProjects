@@ -36,5 +36,16 @@
             android:textColor="@color/marvel_red"
             android:textSize="30sp"
             android:layout_marginTop="50dp"/>
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/volver"
+            android:textSize="25sp"
+            android:backgroundTint="@color/marvel_red"/>
     </RelativeLayout>
 </LinearLayout>

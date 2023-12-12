@@ -1,9 +1,5 @@
 package contacto.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,19 +7,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.example.practica_evaluacion.R;
 
 import java.util.Objects;
 
 import grupos.activity.GruposActivity;
-import principal.activity.PrincipalActivity;
 import tiendas.activity.TiendasActivity;
 
 public class ContactoActivity extends AppCompatActivity {
@@ -35,31 +37,67 @@ public class ContactoActivity extends AppCompatActivity {
 
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         final Switch modoHulk = findViewById(R.id.modoHulk);
+        final Button btnEnviar = findViewById(R.id.btnEnviar);
+        final EditText miEditText = findViewById(R.id.editTxtMotivoConsulta);
+        final Spinner miSpinner = findViewById(R.id.miSpinner);
 
-        modoHulk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                final FrameLayout parentLayout = findViewById(R.id.parentLayoutContactos);
-                if(isChecked){
-                    parentLayout.setBackgroundResource(R.drawable.background2);
-                } else {
-                    parentLayout.setBackgroundResource(R.drawable.background3);
-                }
-                LayoutInflater inflater = getLayoutInflater();
-                View v = inflater.inflate(R.layout.cust_toast_layout,
-                        (ViewGroup)findViewById(R.id.relativeLayoutlToast));
-                final ImageView image = (ImageView) v.findViewById(R.id.imgViewToast);
-                image.setImageResource(R.drawable.hulk);
-                TextView text = (TextView) v.findViewById(R.id.txtViewToast);
-                text.setText(generarFraseDeHulk());
-                Toast toast = new Toast(getApplicationContext());
-                toast.setView(v);
-                toast.show();
+        String[] datosSpinner = {"Servicio técnico", "Att. Cliente", "Editorial"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, datosSpinner);
+        miSpinner.setAdapter(adapter);
+        miSpinner.setSelection(0);
 
+        // ---- Lógica del Switch
+        modoHulk.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            final FrameLayout parentLayout = findViewById(R.id.parentLayoutContactos);
+            if (isChecked) {
+                parentLayout.setBackgroundResource(R.drawable.background2);
+                cambiarColorMorado();
+            } else {
+                parentLayout.setBackgroundResource(R.drawable.background3);
+                cambiarColorRojo();
             }
+            LayoutInflater inflater = getLayoutInflater();
+            View v = inflater.inflate(R.layout.cust_toast_layout,
+                    (ViewGroup) findViewById(R.id.relativeLayoutlToast));
+            final ImageView image = (ImageView) v.findViewById(R.id.imgViewToast);
+            image.setImageResource(R.drawable.hulk);
+            TextView text = (TextView) v.findViewById(R.id.txtViewToast);
+            text.setText(generarFraseDeHulk());
+            Toast toast = new Toast(getApplicationContext());
+            toast.setView(v);
+            toast.show();
         });
+
+        btnEnviar.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            String subject;
+            if(miEditText.getText() == null || miEditText.getText().toString().equals("")){
+                subject = "Consulta";
+            } else{
+                subject = miEditText.getText().toString();
+            }
+            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+            String email;
+            switch (miSpinner.getSelectedItemPosition()) {
+                case 0:
+                    email = "serviciotec@panini.es";
+                    break;
+                case 2:
+                    email = "ed@panini.es";
+                    break;
+                default:
+                    email = "attclient@panini.es";
+                    break;
+            }
+            intent.putExtra(Intent.EXTRA_EMAIL, new
+                    String[]{email});
+            startActivity(intent);
+        });
+
+
     }
 
     // -------------- Lógica del menú ---------------
@@ -75,8 +113,8 @@ public class ContactoActivity extends AppCompatActivity {
 
     /**
      * Este método realiza las acciones derivadas de seleccionar un elemento del menú
-     * @param item The menu item that was selected.
      *
+     * @param item The menu item that was selected.
      */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -109,7 +147,7 @@ public class ContactoActivity extends AppCompatActivity {
     private String generarFraseDeHulk() {
         String frase = "";
         int numeroAleatorio = (int) (Math.random() * 4);
-        switch (numeroAleatorio){
+        switch (numeroAleatorio) {
             case 0:
                 frase = "¡Hulk aplasta!";
                 break;
@@ -124,5 +162,33 @@ public class ContactoActivity extends AppCompatActivity {
                 break;
         }
         return frase;
+    }
+
+    private void cambiarColorMorado() {
+        int colorHulkPants = ContextCompat.getColor(this, R.color.hulk_pants);
+        final TextView textView1 = findViewById(R.id.txtViewContacto);
+        final TextView textView2 = findViewById(R.id.txtView_destino_consulta);
+        final Switch textoSwitch = findViewById(R.id.modoHulk);
+        final Toolbar toolbar = findViewById(R.id.toolbar);
+        final Button btnEnviar = findViewById(R.id.btnEnviar);
+        textView1.setTextColor(colorHulkPants);
+        textView2.setTextColor(colorHulkPants);
+        textoSwitch.setTextColor(colorHulkPants);
+        toolbar.setBackgroundColor(colorHulkPants);
+        btnEnviar.setBackgroundColor(colorHulkPants);
+    }
+
+    private void cambiarColorRojo() {
+        int colorMarvelRed = ContextCompat.getColor(this, R.color.marvel_red);
+        final TextView textView1 = findViewById(R.id.txtViewContacto);
+        final TextView textView2 = findViewById(R.id.txtView_destino_consulta);
+        final Switch textoSwitch = findViewById(R.id.modoHulk);
+        final Toolbar toolbar = findViewById(R.id.toolbar);
+        final Button btnEnviar = findViewById(R.id.btnEnviar);
+        textView1.setTextColor(colorMarvelRed);
+        textView2.setTextColor(colorMarvelRed);
+        textoSwitch.setTextColor(colorMarvelRed);
+        toolbar.setBackgroundColor(colorMarvelRed);
+        btnEnviar.setBackgroundColor(colorMarvelRed);
     }
 }
