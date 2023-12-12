@@ -58,7 +58,12 @@ public class GruposActivity extends AppCompatActivity {
         registerForContextMenu(miGrid);
     }
 
-
+    /**
+     * Esta función rellena la lista de datos con objetos del tipo DatosGrupos, que son súper
+     * héroes, con su imagen pequeña y su nombre
+     * @param datos la lista donde se guardarán los datos
+     * @param nombreEquipo el equipo de personajes
+     */
     private static void introducirDatos(ArrayList<DatosGrupos> datos, String nombreEquipo) {
         switch (nombreEquipo) {
             case "vengadores":
@@ -160,6 +165,12 @@ public class GruposActivity extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
+    /**
+     * Esta función recibe un String que es el nombre de un héroe y devuelve otro que es una url a
+     * una lectura recomentdada.
+     * @param nombreHeroe
+     * @return
+     */
     private String recomendacionLectura(String nombreHeroe) {
         String url = "";
         switch (nombreHeroe) {

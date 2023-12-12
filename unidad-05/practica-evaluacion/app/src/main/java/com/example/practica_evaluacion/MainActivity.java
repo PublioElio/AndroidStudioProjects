@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         final Button bntAcceder = findViewById(R.id.btnAcceder);
 
         bntAcceder.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, PrincipalActivity.class);
+            Intent intent = new Intent(this, PrincipalActivity.class);
             startActivity(intent);
         });
     }

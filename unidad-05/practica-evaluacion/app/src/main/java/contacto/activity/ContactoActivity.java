@@ -53,9 +53,7 @@ public class ContactoActivity extends AppCompatActivity {
                 final ImageView image = (ImageView) v.findViewById(R.id.imgViewToast);
                 image.setImageResource(R.drawable.hulk);
                 TextView text = (TextView) v.findViewById(R.id.txtViewToast);
-
-
-                text.setText(R.string.proximamente);
+                text.setText(generarFraseDeHulk());
                 Toast toast = new Toast(getApplicationContext());
                 toast.setView(v);
                 toast.show();
@@ -106,5 +104,25 @@ public class ContactoActivity extends AppCompatActivity {
         intent.putExtra("equipo", nombreEquipo);
         setResult(RESULT_OK, intent);
         startActivity(intent);
+    }
+
+    private String generarFraseDeHulk() {
+        String frase = "";
+        int numeroAleatorio = (int) (Math.random() * 3);
+        switch (numeroAleatorio){
+            case 0:
+                frase = "¡Hulk aplasta!";
+                break;
+            case 1:
+                frase = "¡Hulk es el más fuerte!";
+                break;
+            case 2:
+                frase = "¡RAAAAAHHH!";
+                break;
+            case 3:
+                frase = "¡Hulk odia al\nenclenque Banner!";
+                break;
+        }
+        return frase;
     }
 }

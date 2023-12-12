@@ -124,7 +124,7 @@ public class PrincipalActivity extends AppCompatActivity {
     }
 
     private void seleccionarGrupoDesdeMenu(String nombreEquipo) {
-        Intent intent = new Intent(PrincipalActivity.this, GruposActivity.class);
+        Intent intent = new Intent(this, GruposActivity.class);
         intent.putExtra("equipo", nombreEquipo);
         setResult(RESULT_OK, intent);
         startActivity(intent);
