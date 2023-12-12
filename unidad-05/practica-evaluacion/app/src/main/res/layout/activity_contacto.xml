@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentLayoutContactos"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background3">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/marvel_red"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -13,21 +23,91 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="¿Cómo nos has conocido?"
-                android:textAlignment="center"
-                android:textColor="@color/gray"
-                android:textSize="20sp" />
+                android:layout_gravity="center">
 
-            <!-- Este elemento View sirve como separador -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@color/gray" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:text="@string/destino_consulta"
+                    android:textSize="20sp"
+                    android:textColor="@color/marvel_red" />
+
+                <Spinner
+                    android:id="@+id/miSpinner"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp">
+
+                <Switch
+                    android:id="@+id/modoHulk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:minHeight="48dp"
+                    android:text="@string/modo_hulk"
+                    android:textColor="@color/marvel_red"
+                    android:textSize="25sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/marvel_red"
+                    android:textSize="25sp"
+                    android:text="@string/enviar" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/valoranos"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:background="@drawable/rounded_corner"
+                android:layout_gravity="center"
+                android:textStyle="bold" />
+
+            <RatingBar
+                android:id="@+id/valoracion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:stepSize="1" />
+
+            <TextView
+                android:id="@+id/resultadoEncuesta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:visibility="invisible" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/conocido_app"
+                android:background="@drawable/rounded_corner"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -39,107 +119,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="CONTACTOS" />
+                    android:textColor="@color/black"
+                    android:text="@string/contactos" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="REDES SOCIALES" />
+                    android:text="@string/redes_sociales"
+                    android:textColor="@color/black" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="STORE" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="Otros" />
+                    android:textColor="@color/black"
+                    android:text="@string/app_store" />
 
             </RadioGroup>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="2dp"
-                    android:text="Número de felicitaciones al año: " />
-
-                <Spinner
-                    android:id="@+id/miSpinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-                <Switch
-                    android:id="@+id/boletin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="Quiero recibir ofertas: " />
-
-                <TextView
-                    android:id="@+id/notificacionBoletin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Te has suscrito al boletín de ofertas."
-                    android:layout_gravity="center"
-                    android:visibility="invisible"/>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_columnSpan="5"
-                android:text="Valóranos:"
-                android:textAlignment="center"
-                android:textColor="#8A8A8A"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="150dp"
-                android:layout_height="3dp"
-                android:layout_columnSpan="5"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="#8A8A8A" />
-
-            <RatingBar
-                android:id="@+id/valoracion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnSpan="5"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:stepSize="1" />
-
-            <TextView
-                android:id="@+id/resultadoEncuesta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Prueba"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:visibility="invisible" />
-
 
         </LinearLayout>
 

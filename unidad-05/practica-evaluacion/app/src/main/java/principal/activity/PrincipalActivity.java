@@ -58,7 +58,6 @@ public class PrincipalActivity extends AppCompatActivity {
             } else {
                 // solo se han implementado dos equipos (Vengadores y Xmen), este es el
                 // mensaje que aparecerá cuando se pulse un equipo que aún no tiene información
-                // personalizar Toast -> https://stackoverflow.com/questions/11288475/custom-toast-on-android-a-simple-example
                 LayoutInflater inflater = getLayoutInflater();
                 View v = inflater.inflate(R.layout.cust_toast_layout,
                         (ViewGroup)findViewById(R.id.relativeLayoutlToast));
@@ -75,7 +74,6 @@ public class PrincipalActivity extends AppCompatActivity {
 
     /**
      * Este método introduce los logotipos de los equipos en el listado
-     *
      */
     private static void introducirDatos(ArrayList<DatosPrincipal> datos) {
         datos.add(new DatosPrincipal(R.drawable.vengadores, "vengadores"));
