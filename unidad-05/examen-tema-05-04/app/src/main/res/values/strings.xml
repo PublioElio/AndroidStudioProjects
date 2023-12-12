@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ExamenAdrianoDiaz</string>
+    <string name="ejecutando_int_exp">Ejecutando Intent Explícito</string>
+    <string name="enviando_correo">Enviando correo</string>
+    <string name="creando_list_view">Creando lista con ListView</string>
+    <string name="creando_grid_view">Creando lista con GridView</string>
+    <string name="creando_spinner">Creando lista con Spinner</string>
+    <string name="volver">VOLVER</string>
+    <string name="ok">OK</string>
+    <string name="imagen">imagen</string>
+    <string name="cita_pedida_para">Cita pedida para</string>
+</resources>

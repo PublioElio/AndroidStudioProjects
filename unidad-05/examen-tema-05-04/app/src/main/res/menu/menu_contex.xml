@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/ListaOpA1" android:title="Crear cita"/>
+    <item android:id="@+id/ListaOpA2" android:title="Ver cita"/>
+</menu>
