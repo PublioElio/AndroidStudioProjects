@@ -19,7 +19,7 @@
         android:adjustViewBounds="true"
         android:layout_below="@+id/txtViewNombreTienda"
         android:layout_marginVertical="10dp"
-        android:contentDescription="@string/imagen_de_la_tienda" />
+        android:contentDescription="@string/imagen_de_la_tienda"/>
     <TextView
         android:id="@+id/txtViewDireccionTienda"
         android:layout_width="match_parent"

@@ -8,18 +8,29 @@
     <TextView
         android:id="@+id/titulo"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:background="@color/marvel_red"
         android:gravity="center"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="40sp" />
+        android:textSize="30sp" />
+    <TextView
+        android:id="@+id/subtitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/marvel_red"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:layout_below="@+id/titulo"/>
 
     <ImageView
         android:id="@+id/imagen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titulo"
+        android:layout_below="@+id/subtitulo"
         android:layout_centerVertical="true"
         android:adjustViewBounds="true"
         android:contentDescription="@string/imagen_del_personaje" />

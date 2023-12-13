@@ -1,35 +1,23 @@
 package tiendas.activity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import com.example.practica_evaluacion.R;
-
 import java.util.ArrayList;
 import java.util.Objects;
-
 import contacto.activity.ContactoActivity;
-import grupos.activity.DatosGrupos;
 import grupos.activity.GruposActivity;
-import grupos.activity.PersonajeActivity;
 
 public class TiendasActivity extends AppCompatActivity {
-
-    private ListView listaTiendas = findViewById(R.id.listViewTiendas);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +27,7 @@ public class TiendasActivity extends AppCompatActivity {
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        final ListView listaTiendas = findViewById(R.id.listViewTiendas);
         ArrayList<DatosTiendas> datosTiendas = new ArrayList<>();
         introducirDatos(datosTiendas);
         AdaptadorTiendas adaptador = new AdaptadorTiendas(this, datosTiendas);
@@ -65,27 +54,20 @@ public class TiendasActivity extends AppCompatActivity {
             }
         });
 
-        registerForContextMenu(listaTiendas);
     }
 
     /**
      * Este método introduce los datos de las tiendas que mostraremos en la lista
-     *
-     * @param datosTiendas
      */
     private void introducirDatos(ArrayList<DatosTiendas> datosTiendas) {
         datosTiendas.add(new DatosTiendas("EN PORTADA CÓMICS",
                 R.drawable.en_portada,
                 "C. Nosquera, 10, 29008 Málaga",
-                "geo:36.72398084366321, -4.422052084658372",
-                "admin@enportadacomics.com",
                 false,
                 "952603250"));
         datosTiendas.add(new DatosTiendas("CÓMIC STORES SOHO",
                 R.drawable.comic_stores_soho,
                 "C/ Trinidad Grund, 11, Distrito Centro, 29001 Málaga",
-                "geo:36.72398084366321, -4.422052084658372",
-                "info@comicstores.es",
                 false,
                 "952213056"));
     }
@@ -132,45 +114,6 @@ public class TiendasActivity extends AppCompatActivity {
         intent.putExtra("equipo", nombreEquipo);
         setResult(RESULT_OK, intent);
         startActivity(intent);
-    }
-
-    // ------------- Lógica del menú contextual -----------
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, view, menuInfo);
-
-        MenuInflater inflater = getMenuInflater();
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-
-        menu.setHeaderTitle(((DatosTiendas) listaTiendas.getAdapter().getItem(info.position)).getNombreTienda());
-
-        inflater.inflate(R.menu.menu_contextual_tiendas, menu);
-    }
-
-    /**
-     * Este método realiza los eventos en función del elemento seleccionado del menú desplegable
-     *
-     * @param item The context menu item that was selected.
-     */
-    @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
-        Intent intent;
-        int id = item.getItemId();
-
-        AdapterView.AdapterContextMenuInfo info =
-                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        assert info != null;
-
-        // Realizo una accion partiendo del elemento del menú que he pulsado
-        if (id == R.id.google_maps) {
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(((DatosTiendas) listaTiendas.getAdapter().getItem(info.position)).getGoogleMapsTienda()));
-        } else {
-            intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{((DatosTiendas) listaTiendas.getAdapter().getItem(info.position)).getNombreTienda()});
-        }
-        startActivity(intent);
-        return super.onContextItemSelected(item);
     }
 
 }

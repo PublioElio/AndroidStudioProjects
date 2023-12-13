@@ -1,12 +1,10 @@
 package tiendas.activity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -16,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.example.practica_evaluacion.R;
 
@@ -30,14 +27,13 @@ public class AdaptadorTiendas extends ArrayAdapter {
     private final ArrayList<DatosTiendas> datosTiendas;
 
     public AdaptadorTiendas(Context context, ArrayList<DatosTiendas> datosTiendas) {
-        super(context, R.layout.elementos_principal, datosTiendas);
+        super(context, R.layout.elementos_tiendas, datosTiendas);
         this.datosTiendas = datosTiendas;
     }
 
-    @SuppressLint("ViewHolder")
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
         // Inflo el elemento
         LayoutInflater mostrado = LayoutInflater.from(getContext());
@@ -67,9 +63,7 @@ public class AdaptadorTiendas extends ArrayAdapter {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + tlfno));
             getContext().startActivity(intent);
         });
-
         return elemento;
     }
-
 
 }

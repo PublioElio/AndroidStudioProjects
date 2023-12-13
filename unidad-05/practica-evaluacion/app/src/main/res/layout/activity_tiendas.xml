@@ -17,9 +17,9 @@
     <ListView
         android:id="@+id/listViewTiendas"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:divider="@null"/>
+        android:divider="@null" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginTop="28dp"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginStart="10dp" />
 
         <Button
             android:id="@+id/btnGuardar"

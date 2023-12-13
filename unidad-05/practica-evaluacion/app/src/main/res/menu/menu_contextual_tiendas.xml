@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/google_maps" android:title="Abrir en Google Maps"/>
-    <item android:id="@+id/email_tienda" android:title="Enviar correo"/>
-</menu>
