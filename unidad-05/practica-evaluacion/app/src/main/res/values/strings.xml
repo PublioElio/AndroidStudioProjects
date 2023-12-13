@@ -12,6 +12,7 @@
     <string name="volver">VOLVER</string>
     <string name="acceder">ACCEDER</string>
     <string name="enviar">ENVIAR</string>
+    <string name="guardar">GUARDAR</string>
     <!-- descripciones de personajes -->
     <string name="des_ficha_capi">
         Nombre: Capitán América\n
@@ -74,10 +75,19 @@
     <string name="contactos">CONTACTOS</string>
     <string name="redes_sociales">REDES SOCIALES</string>
     <string name="app_store">APP STORE</string>
-    <string name="destino_consulta">Destino consulta:</string>
-    <string name="valoranos">Valóranos</string>
-    <string name="conocido_app">¿Cómo nos has conocido?</string>
-    <string name="modo_hulk">Modo Hulk:</string>
+
     <string name="contacta_con_nosotros_por_correo">¡Contacta con nosotros por correo!</string>
     <string name="escribe_el_motivo_de_tu_consulta">Escribe el motivo de tu consulta</string>
+    <string name="destino_consulta">Destino consulta:</string>
+    <string name="modo_hulk">Modo Hulk:</string>
+    <string name="valoranos">Valóranos</string>
+    <string name="conocido_app">¿Cómo nos has conocido?</string>
+
+
+    <string name="elije_tus_tiendas_favoritas">Elije tus tiendas favoritas</string>
+    <string name="seleccionar">Seleccionar</string>
+    <string name="has_seleccionado">Has seleccionado:</string>
+    <string name="no_has_seleccionado_ninguna_tienda">No has seleccionado ninguna tienda</string>
+    <string name="imagen_de_la_tienda">Imagen de la tienda</string>
+    <string name="llamar_a_la_tienda">Llamar a la tienda</string>
 </resources>

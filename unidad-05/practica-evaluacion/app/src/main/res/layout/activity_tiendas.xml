@@ -1,15 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="tiendas.activity.TiendasActivity">
+    android:orientation="vertical"
+    tools:ignore="ExtraText">
 
-    <TextView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/marvel_red"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+    <ListView
+        android:id="@+id/listViewTiendas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tiendas de cómics"
-        tools:ignore="MissingConstraints" />
+        android:layout_weight="1"
+        android:divider="@null"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/marvel_red">
+
+        <TextView
+            android:id="@+id/txtViewAgenda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/marvel_red"
+            android:text="@string/elije_tus_tiendas_favoritas"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="28dp"
+            android:layout_marginStart="10dp"/>
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/txtViewAgenda"
+            android:backgroundTint="@color/white"
+            android:text="@string/guardar"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/marvel_red"/>
+
+        <TextView
+            android:id="@+id/txtTiendasSeleccionadas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtViewAgenda"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@color/marvel_red"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+</LinearLayout>

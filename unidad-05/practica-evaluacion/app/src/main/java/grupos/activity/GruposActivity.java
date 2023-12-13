@@ -32,7 +32,7 @@ public class GruposActivity extends AppCompatActivity {
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // -------------- Lógica de la lista ------------------
+        // -------------- Lógica del grid ------------------
         miGrid = findViewById(R.id.gridViewHeroes);
 
         // Recupero el nombre de equipo que ha seleccionado el usuario en Principal Activity
