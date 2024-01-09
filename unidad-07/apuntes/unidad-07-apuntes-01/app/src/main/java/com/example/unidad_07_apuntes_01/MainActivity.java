@@ -1,13 +1,13 @@
-package com.example.unidad_05_apuntes_00;
+package com.example.unidad_07_apuntes_01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,22 +17,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final Button guardar = findViewById(R.id.btnGuardar);
+        final Button borrar = findViewById(R.id.btnBorrar);
         final Button cargar = findViewById(R.id.btnCargar);
+        final EditText etNombre = findViewById(R.id.etNombre);
+        final EditText etCorreo = findViewById(R.id.etCorreo);
 
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Obtengo la referencia de la colección de preferencias (archivo XML)
-                // donde tengo o voy a guardar las preferencias
+                // Obtengo la referencia de la colección
                 SharedPreferences prefs =
                         getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
 
-                // Guardamos valores
                 SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("nombre", "Peter Parker");
-                editor.putString("email", "pparker@dailybugle.com");
 
-                // Guardar los cambios
+                editor.putString("nombre", etNombre.getText().toString());
+                editor.putString("email", etCorreo.getText().toString());
                 editor.commit();
             }
         });
@@ -40,20 +40,24 @@ public class MainActivity extends AppCompatActivity {
         cargar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Obtengo la referencia de la colección de preferencias (archivo XML)
-                // donde tengo los datos
+                // Obtengo la referencia de la preferencia
                 SharedPreferences prefs =
                         getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
 
                 String nombre = prefs.getString("nombre", "");
-                String email = prefs.getString("email", "");
+                String correo = prefs.getString("email", "");
 
-                Log.i("Preferencias", "Nombre " + nombre);
-                Log.i("Preferencias", "Email " + email);
+                etNombre.setText(nombre);
+                etCorreo.setText(correo);
             }
         });
 
-
-
+        borrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                etNombre.setText("");
+                etCorreo.setText("");
+            }
+        });
     }
 }
