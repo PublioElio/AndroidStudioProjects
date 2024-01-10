@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "unidad-05-apuntes-00"
+rootProject.name = "unidad-07-apuntes-00"
 include(":app")

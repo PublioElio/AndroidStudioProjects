@@ -5,10 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.unidad_05_apuntes_00.R;
+import com.example.unidad_07_apuntes_00.R;
 
 public class MainActivity extends AppCompatActivity {
 
