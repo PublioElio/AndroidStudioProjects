@@ -8,12 +8,12 @@
         android:id="@+id/btnPreferencias"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Preferencias" />
+        android:text="@string/preferencias" />
 
     <Button
         android:id="@+id/btnConsultar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Consultar" />
+        android:text="@string/consultar" />
 
 </LinearLayout>

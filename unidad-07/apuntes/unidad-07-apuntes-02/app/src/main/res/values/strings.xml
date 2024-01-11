@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">unidad-07-apuntes-02</string>
+    <string name="consultar">Consultar</string>
+    <string name="preferencias">Preferencias</string>
 </resources>
