@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:key="switch1"
+        android:title="Tonos de teclado de marcado" />
+    <SwitchPreference
+        android:key="switch2"
+        android:title="Sonidos de toques" />
+    <SwitchPreference
+        android:key="switch3"
+        android:title="Reproducir sonido al tomar capturas de pantalla" />
+</PreferenceScreen>

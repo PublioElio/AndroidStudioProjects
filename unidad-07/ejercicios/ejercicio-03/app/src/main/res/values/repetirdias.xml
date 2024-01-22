@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="repetirdias">
+        <item>Lunes-Viernes</item>
+        <item>Sábado-Domingo</item>
+    </string-array>
+
+    <string-array name="codigodias">
+        <item>SEMANA</item>
+        <item>FINDES</item>
+    </string-array>
+
+</resources>
