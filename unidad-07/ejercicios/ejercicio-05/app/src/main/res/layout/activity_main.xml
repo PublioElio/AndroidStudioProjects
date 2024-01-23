@@ -9,7 +9,7 @@
         android:id="@+id/myEditTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/introduce_un_texto"
+        android:hint="INTRODUCE UN TEXTO"
         android:inputType="text" />
 
     <TextView
@@ -28,13 +28,13 @@
             android:id="@+id/btnGuardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/guardar"
+            android:text="GUARDAR"
             android:layout_marginEnd="15dp"/>
 
         <Button
             android:id="@+id/btnRecuperar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/recuperar" />
+            android:text="RECUPERAR" />
     </LinearLayout>
 </LinearLayout>
