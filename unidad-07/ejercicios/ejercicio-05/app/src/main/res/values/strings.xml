@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ejercicio-05</string>
+    <string name="guardar">GUARDAR</string>
+    <string name="recuperar">RECUPERAR</string>
+    <string name="introduce_un_texto">Introduce un texto</string>
+</resources>
