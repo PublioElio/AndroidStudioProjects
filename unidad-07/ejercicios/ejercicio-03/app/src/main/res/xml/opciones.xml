@@ -30,19 +30,19 @@
             android:key="start"
             android:title="Iniciar"
             android:dialogTitle="Introduce hora de inicio"
-            android:enabled="false"/>
+            android:dependency="activationTime"/>
         <EditTextPreference
             android:key="end"
             android:title="Finalizar"
             android:dialogTitle="Introduce hora de finalización"
-            android:enabled="false"/>
+            android:dependency="activationTime"/>
         <ListPreference
             android:key="repit"
             android:title="Repetir"
             android:dialogTitle="Repetir"
             android:entries="@array/repetirdias"
             android:entryValues="@array/codigodias"
-            android:enabled="false"/>
+            android:dependency="activationTime"/>
         <SwitchPreference
             android:key="whenBlocked"
             android:title="Cuando el dispositivo esté bloqueado"/>
