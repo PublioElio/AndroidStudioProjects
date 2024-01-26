@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
         if (sdDisponible) {
             recuperar.setOnClickListener(view -> {
                 try {
-                    File ruta_sd = Environment.getExternalStorageDirectory();
-                    assert ruta_sd != null;
+                    File ruta_sd = getExternalFilesDir(null);
                     File f = new File(ruta_sd.getAbsolutePath(), "prueba_sd.txt");
                     BufferedReader fin =
-                            new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+                            new BufferedReader(
+                                    new InputStreamReader(new FileInputStream(f)));
                     myTextView.setText(fin.readLine());
                     fin.close();
                 } catch (Exception ex) {
