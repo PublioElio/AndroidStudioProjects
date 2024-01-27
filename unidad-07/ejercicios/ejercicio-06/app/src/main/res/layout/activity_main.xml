@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <Spinner
-        android:id="@+id/heroSpinner"
+        android:id="@+id/spinnerHeroes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"/>
@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/guardar"
-        android:layout_below="@+id/heroSpinner"
+        android:layout_below="@+id/spinnerHeroes"
         android:layout_marginStart="10dp"/>
 
     <Button
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="@string/cargar"
         android:layout_toEndOf="@+id/btnGuardar"
-        android:layout_below="@+id/heroSpinner"
+        android:layout_below="@+id/spinnerHeroes"
         android:layout_marginStart="10dp"/>
 
     <Button
@@ -33,11 +33,11 @@
         android:layout_height="wrap_content"
         android:text="@string/borrar"
         android:layout_toEndOf="@+id/btnCargar"
-        android:layout_below="@+id/heroSpinner"
+        android:layout_below="@+id/spinnerHeroes"
         android:layout_marginStart="10dp"/>
 
-    <Spinner
-        android:id="@+id/selectedHeroSpinner"
+    <ImageView
+        android:id="@+id/ivHeroe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/anterior"
-        android:layout_below="@+id/selectedHeroSpinner"
+        android:layout_below="@+id/ivHeroe"
         android:layout_marginStart="10dp"
         android:enabled="false"
         android:visibility="invisible"/>
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:text="@string/siguiente"
         android:layout_toEndOf="@+id/btnAnterior"
-        android:layout_below="@+id/selectedHeroSpinner"
+        android:layout_below="@+id/ivHeroe"
         android:layout_marginStart="10dp"
         android:enabled="false"
         android:visibility="invisible"/>

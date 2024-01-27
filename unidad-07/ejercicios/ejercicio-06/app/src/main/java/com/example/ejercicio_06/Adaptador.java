@@ -6,15 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import java.util.List;
 
-public class Adapter extends ArrayAdapter<Data> {
+public class Adaptador extends ArrayAdapter<Heroe> {
 
-    public Adapter(Context context, List<Data> dataList) {
+    public Adaptador(Context context, List<Heroe> dataList) {
         super(context, 0, dataList);
     }
 
@@ -34,11 +32,11 @@ public class Adapter extends ArrayAdapter<Data> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.elements, parent, false);
         }
 
-        ImageView heroImageView = convertView.findViewById(R.id.heroImg);
-        Data data = getItem(position);
+        ImageView heroImageView = convertView.findViewById(R.id.ivSpinnerHeroe);
+        Heroe data = getItem(position);
 
         if (data != null) {
-            heroImageView.setImageResource(data.getHeroImg());
+            heroImageView.setImageResource(data.getimgHeroe());
         }
 
         return convertView;

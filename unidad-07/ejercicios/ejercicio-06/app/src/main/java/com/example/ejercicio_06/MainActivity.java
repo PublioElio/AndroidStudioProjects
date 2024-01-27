@@ -5,12 +5,16 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -23,21 +27,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Cargo elementos:
-        final Spinner heroSpinner = findViewById(R.id.heroSpinner);
-        final Button cargar = findViewById(R.id.btnCargar);
-        final Button guardar = findViewById(R.id.btnGuardar);
-        final Button borrar = findViewById(R.id.btnBorrar);
+        final Spinner spinnerHeroes = findViewById(R.id.spinnerHeroes);
+        final ImageView imageViewHeroe = findViewById(R.id.ivHeroe);
+        final Button btnCargar = findViewById(R.id.btnCargar);
+        final Button btnGuardar = findViewById(R.id.btnGuardar);
+        final Button btnBorrar = findViewById(R.id.btnBorrar);
+        final Button btnAnterior = findViewById(R.id.btnAnterior);
+        final Button btnSiguiente = findViewById(R.id.btnSiguiente);
 
-        // Creo los datos
-        ArrayList<Data> datos = new ArrayList<>();
+        ArrayList<Integer> referenciasCargadas = new ArrayList<Integer>();
 
-        enterData(datos);
+        // Creo los datos para el spinner, los introduzco en el adaptador y luego asigno el adaptador al spinner
+        ArrayList<Heroe> listaHeroes = new ArrayList<>();
+        introducirHeroes(listaHeroes);
+        Adaptador adaptador = new Adaptador(this, listaHeroes);
+        spinnerHeroes.setAdapter(adaptador);
 
-        // Creo el adaptador
-        Adapter adapter = new Adapter(this, datos);
-        heroSpinner.setAdapter(adapter);
-
-        // Hay que comprobar el estado de la memoria externa (SD)
+        // Comprobar el estado de la memoria externa (SD)
         boolean sdDisponible = false;
         boolean sdAccesoEscritura = false;
         String estado = Environment.getExternalStorageState();
@@ -48,51 +54,70 @@ public class MainActivity extends AppCompatActivity {
             sdDisponible = true;
         }
 
-        // Guardamos en la tarjeta
         if (sdDisponible && sdAccesoEscritura) {
-            saveOnSD(heroSpinner, guardar);
-            deleteOnSD(borrar);
+            // Método para guardar la referencia de la imagen en la SD
+            guardarEnSD(spinnerHeroes, btnGuardar);
+            borrarContenidoSD(imageViewHeroe, btnBorrar, btnAnterior, btnSiguiente, referenciasCargadas);
         } else {
             Log.e("Ficheros", "La tarjeta SD no está disponible para acceso o escritura");
         }
 
+
+        if (sdDisponible) {
+            cargarContenidoSD(imageViewHeroe, btnCargar, btnAnterior, btnSiguiente, referenciasCargadas);
+        } else {
+            Log.e("Ficheros", "Tarjeta de memoria SD no disponible");
+        }
+
+        btnSiguiente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
+
     }
 
-    /**
-     * Este método guarda en la tarjeta SD la ID del héroe seleccionado en el Spinner superior
-     *
-     */
-    private void saveOnSD(Spinner heroSpinner, Button guardar) {
-        guardar.setOnClickListener(view -> {
+    private void cargarContenidoSD(ImageView imageViewHeroe, Button btnCargar, Button btnAnterior, Button btnSiguiente, ArrayList<Integer> referenciasCargadas) {
+        btnCargar.setOnClickListener(view -> {
+            referenciasCargadas.clear();
             try {
-                String heroId = null;
                 File ruta_sd = getExternalFilesDir(null);
-                assert ruta_sd != null;
-                File f = new File(ruta_sd.getAbsolutePath(), "heroes.txt");
-                int currentPosition = heroSpinner.getSelectedItemPosition();
-                Object selectedItem = heroSpinner.getItemAtPosition(currentPosition);
-                if (selectedItem instanceof Data) {
-                    Data selectedData = (Data) selectedItem;
-                    heroId = selectedData.getheroId();
+                File f = new File(ruta_sd.getAbsolutePath(), "lista_heroes.txt");
+                BufferedReader fin =
+                        new BufferedReader(
+                                new InputStreamReader(new FileInputStream(f)));
+                String linea = fin.readLine();
+                while (linea != null) {
+                    Integer referencia = Integer.valueOf(linea);
+                    referenciasCargadas.add(referencia);
+                    Log.i("Ficheros", "Referencia leída desde la memoria externa (SD): " + referencia);
+                    linea = fin.readLine();
                 }
-                OutputStreamWriter fout = new OutputStreamWriter(new FileOutputStream(f));
-                if (heroId != null) {
-                    fout.write(heroId);
-                    Log.i("Ficheros", "Guardado el siguiente héroe en el fichero: " + heroId);
+                fin.close();
+                if(!referenciasCargadas.isEmpty()){
+                    btnAnterior.setVisibility(View.VISIBLE);
+                    btnAnterior.setEnabled(false);
+                    btnSiguiente.setVisibility(View.VISIBLE);
+                    if(referenciasCargadas.size() > 1){
+                        btnSiguiente.setEnabled(true);
+                    }
+                    imageViewHeroe.setVisibility(View.VISIBLE);
+                    imageViewHeroe.setImageResource(referenciasCargadas.get(0));
                 }
-                fout.close();
             } catch (Exception ex) {
-                Log.e("Ficheros", "Error al escribir en la tarjeta SD");
+                Log.e("Ficheros", "Error al leer en la tarjeta SD");
             }
         });
     }
 
-    private void deleteOnSD(Button borrar) {
-        borrar.setOnClickListener(view -> {
+    private void borrarContenidoSD(ImageView imageViewHeroe, Button btnBorrar, Button btnAnterior, Button btnSiguiente, ArrayList<Integer> referenciasCargadas) {
+        btnBorrar.setOnClickListener(view -> {
+            referenciasCargadas.clear();
             try {
                 File ruta_sd = getExternalFilesDir(null);
                 assert ruta_sd != null;
-                File f = new File(ruta_sd.getAbsolutePath(), "heroes.txt");
+                File f = new File(ruta_sd.getAbsolutePath(), "lista_heroes.txt");
                 if (f.exists()) {
                     PrintWriter writer = new PrintWriter(f);
                     writer.print("");
@@ -100,24 +125,54 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     f.createNewFile();
                 }
-                Log.i("Ficheros", "Contenido del archivo heroes.txt borrado");
+                btnAnterior.setVisibility(View.INVISIBLE);
+                btnAnterior.setEnabled(false);
+                btnSiguiente.setVisibility(View.INVISIBLE);
+                btnSiguiente.setEnabled(false);
+                imageViewHeroe.setVisibility(View.INVISIBLE);
+                imageViewHeroe.setImageDrawable(null);
+                Log.i("Ficheros", "Se ha borrado el contenido de la tarjeta SD");
             } catch (Exception ex) {
-                Log.e("Ficheros", "Error al borrar contenido de la tarjeta SD");
+                Log.e("Ficheros", "Error al escribir en la tarjeta SD");
             }
         });
-
     }
 
-    private void enterData(ArrayList<Data> datos) {
-        datos.add(new Data(R.drawable.capi, "capi"));
-        datos.add(new Data(R.drawable.batman, "batman"));
-        datos.add(new Data(R.drawable.deadpool, "deadpool"));
-        datos.add(new Data(R.drawable.furia, "furia"));
-        datos.add(new Data(R.drawable.hulk, "hulk"));
-        datos.add(new Data(R.drawable.ironman, "ironman"));
-        datos.add(new Data(R.drawable.lobezno, "lobezno"));
-        datos.add(new Data(R.drawable.spiderman, "spiderman"));
-        datos.add(new Data(R.drawable.thor, "thor"));
-        datos.add(new Data(R.drawable.wonderwoman, "wonderwoman"));
+    private void guardarEnSD(Spinner spinnerHeroes, Button btnGuardar) {
+        btnGuardar.setOnClickListener(view -> {
+            try {
+                File ruta_sd = getExternalFilesDir(null);
+                assert ruta_sd != null;
+                File f = new File(ruta_sd.getAbsolutePath(), "lista_heroes.txt");
+                OutputStreamWriter fout = new OutputStreamWriter(new FileOutputStream(f, true));
+
+                int imgHeroe = -1;
+                int posicionActual = spinnerHeroes.getSelectedItemPosition();
+                Object itemSeleccionado = spinnerHeroes.getItemAtPosition(posicionActual);
+                if (itemSeleccionado instanceof Heroe) {
+                    Heroe heroeSeleccionado = (Heroe) itemSeleccionado;
+                    imgHeroe = heroeSeleccionado.getimgHeroe();
+                }
+                fout.write(imgHeroe + "\n");
+                fout.close();
+                Log.i("Ficheros", "Se ha guardado en la tarjeta SD la referencia: " + imgHeroe);
+            } catch (Exception ex) {
+                Log.e("Ficheros", "Error al escribir en la tarjeta SD");
+            }
+        });
+    }
+
+    private void introducirHeroes(ArrayList<Heroe> listaHeroes){
+        listaHeroes.add(new Heroe(R.drawable.batman));
+        listaHeroes.add(new Heroe(R.drawable.capi));
+        listaHeroes.add(new Heroe(R.drawable.deadpool));
+        listaHeroes.add(new Heroe(R.drawable.furia));
+        listaHeroes.add(new Heroe(R.drawable.hulk));
+        listaHeroes.add(new Heroe(R.drawable.ironman));
+        listaHeroes.add(new Heroe(R.drawable.lobezno));
+        listaHeroes.add(new Heroe(R.drawable.spiderman));
+        listaHeroes.add(new Heroe(R.drawable.thor));
+        listaHeroes.add(new Heroe(R.drawable.wonderwoman));
+
     }
 }
