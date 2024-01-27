@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,7 +19,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Integer> referenciasCargadas = new ArrayList<>();
+    private final ArrayList<Integer> referenciasCargadas = new ArrayList<>();
     private int indiceActual = 0;
 
     @Override
@@ -70,30 +68,30 @@ public class MainActivity extends AppCompatActivity {
             Log.e("Ficheros", "Tarjeta de memoria SD no disponible");
         }
 
-        btnSiguiente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btnAnterior.setEnabled(true);
-                indiceActual++;
-                if (indiceActual == (referenciasCargadas.size() - 1)) {
-                    btnSiguiente.setEnabled(false);
-                }
-                imageViewHeroe.setImageResource(referenciasCargadas.get(indiceActual));
+        btnSiguiente.setOnClickListener(view -> {
+            btnAnterior.setEnabled(true);
+            if (++indiceActual == (referenciasCargadas.size() - 1)) {
+                btnSiguiente.setEnabled(false);
             }
+            mostrarImagenActual(imageViewHeroe);
         });
 
-        btnAnterior.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btnSiguiente.setEnabled(true);
-                indiceActual--;
-                if (indiceActual == 0) {
-                    btnAnterior.setEnabled(false);
-                }
-                imageViewHeroe.setImageResource(referenciasCargadas.get(indiceActual));
+        btnAnterior.setOnClickListener(view -> {
+            btnSiguiente.setEnabled(true);
+            if (--indiceActual == 0) {
+                btnAnterior.setEnabled(false);
             }
+            mostrarImagenActual(imageViewHeroe);
         });
 
+    }
+
+    /**
+     * Este método muestra una imagen en un Image View a partir del índice donde nos encontramos
+     * @param imageViewHeroe
+     */
+    private void mostrarImagenActual(ImageView imageViewHeroe) {
+        imageViewHeroe.setImageResource(referenciasCargadas.get(indiceActual));
     }
 
     private void cargarContenidoSD(ImageView imageViewHeroe, Button btnCargar, Button btnAnterior, Button btnSiguiente, ArrayList<Integer> referenciasCargadas) {
@@ -101,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
             referenciasCargadas.clear();
             try {
                 File ruta_sd = getExternalFilesDir(null);
+                assert ruta_sd != null;
                 File f = new File(ruta_sd.getAbsolutePath(), "lista_heroes.txt");
                 BufferedReader fin =
                         new BufferedReader(
@@ -132,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void borrarContenidoSD(ImageView imageViewHeroe, Button btnBorrar, Button btnAnterior, Button btnSiguiente, ArrayList<Integer> referenciasCargadas) {
         btnBorrar.setOnClickListener(view -> {
-            referenciasCargadas.clear();
             try {
                 File ruta_sd = getExternalFilesDir(null);
                 assert ruta_sd != null;
@@ -144,17 +142,22 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     f.createNewFile();
                 }
-                btnAnterior.setVisibility(View.INVISIBLE);
-                btnAnterior.setEnabled(false);
-                btnSiguiente.setVisibility(View.INVISIBLE);
-                btnSiguiente.setEnabled(false);
-                imageViewHeroe.setVisibility(View.INVISIBLE);
-                imageViewHeroe.setImageDrawable(null);
+                resetearElementos(imageViewHeroe, btnAnterior, btnSiguiente, referenciasCargadas);
                 Log.i("Ficheros", "Se ha borrado el contenido de la tarjeta SD");
             } catch (Exception ex) {
                 Log.e("Ficheros", "Error al escribir en la tarjeta SD");
             }
         });
+    }
+
+    private static void resetearElementos(ImageView imageViewHeroe, Button btnAnterior, Button btnSiguiente, ArrayList<Integer> referenciasCargadas) {
+        referenciasCargadas.clear();
+        btnAnterior.setVisibility(View.INVISIBLE);
+        btnAnterior.setEnabled(false);
+        btnSiguiente.setVisibility(View.INVISIBLE);
+        btnSiguiente.setEnabled(false);
+        imageViewHeroe.setVisibility(View.INVISIBLE);
+        imageViewHeroe.setImageDrawable(null);
     }
 
     private void guardarEnSD(Spinner spinnerHeroes, Button btnGuardar) {
@@ -168,10 +171,12 @@ public class MainActivity extends AppCompatActivity {
                 int imgHeroe = -1;
                 int posicionActual = spinnerHeroes.getSelectedItemPosition();
                 Object itemSeleccionado = spinnerHeroes.getItemAtPosition(posicionActual);
+                // Hay que comprobar que el elemento seleccionado es instancia de Heroe
                 if (itemSeleccionado instanceof Heroe) {
                     Heroe heroeSeleccionado = (Heroe) itemSeleccionado;
                     imgHeroe = heroeSeleccionado.getimgHeroe();
                 }
+
                 fout.write(imgHeroe + "\n");
                 fout.close();
                 Log.i("Ficheros", "Se ha guardado en la tarjeta SD la referencia: " + imgHeroe);
