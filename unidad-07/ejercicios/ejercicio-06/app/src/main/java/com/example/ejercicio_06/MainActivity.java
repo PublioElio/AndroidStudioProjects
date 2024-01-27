@@ -21,6 +21,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ArrayList<Integer> referenciasCargadas = new ArrayList<>();
+    private int indiceActual = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         final Button btnBorrar = findViewById(R.id.btnBorrar);
         final Button btnAnterior = findViewById(R.id.btnAnterior);
         final Button btnSiguiente = findViewById(R.id.btnSiguiente);
-
-        ArrayList<Integer> referenciasCargadas = new ArrayList<Integer>();
 
         // Creo los datos para el spinner, los introduzco en el adaptador y luego asigno el adaptador al spinner
         ArrayList<Heroe> listaHeroes = new ArrayList<>();
@@ -72,7 +73,24 @@ public class MainActivity extends AppCompatActivity {
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                btnAnterior.setEnabled(true);
+                indiceActual++;
+                if (indiceActual == (referenciasCargadas.size() - 1)) {
+                    btnSiguiente.setEnabled(false);
+                }
+                imageViewHeroe.setImageResource(referenciasCargadas.get(indiceActual));
+            }
+        });
+
+        btnAnterior.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnSiguiente.setEnabled(true);
+                indiceActual--;
+                if (indiceActual == 0) {
+                    btnAnterior.setEnabled(false);
+                }
+                imageViewHeroe.setImageResource(referenciasCargadas.get(indiceActual));
             }
         });
 
@@ -95,15 +113,16 @@ public class MainActivity extends AppCompatActivity {
                     linea = fin.readLine();
                 }
                 fin.close();
-                if(!referenciasCargadas.isEmpty()){
+                if (!referenciasCargadas.isEmpty()) {
                     btnAnterior.setVisibility(View.VISIBLE);
                     btnAnterior.setEnabled(false);
                     btnSiguiente.setVisibility(View.VISIBLE);
-                    if(referenciasCargadas.size() > 1){
+                    if (referenciasCargadas.size() > 1) {
                         btnSiguiente.setEnabled(true);
                     }
                     imageViewHeroe.setVisibility(View.VISIBLE);
                     imageViewHeroe.setImageResource(referenciasCargadas.get(0));
+                    indiceActual = 0;
                 }
             } catch (Exception ex) {
                 Log.e("Ficheros", "Error al leer en la tarjeta SD");
@@ -162,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void introducirHeroes(ArrayList<Heroe> listaHeroes){
+    private void introducirHeroes(ArrayList<Heroe> listaHeroes) {
         listaHeroes.add(new Heroe(R.drawable.batman));
         listaHeroes.add(new Heroe(R.drawable.capi));
         listaHeroes.add(new Heroe(R.drawable.deadpool));
