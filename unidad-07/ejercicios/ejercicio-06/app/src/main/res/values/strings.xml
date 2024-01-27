@@ -3,4 +3,6 @@
     <string name="borrar">BORRAR</string>
     <string name="cargar">CARGAR</string>
     <string name="guardar">GUARDAR</string>
+    <string name="siguiente">SIGUIENTE</string>
+    <string name="anterior">ANTERIOR</string>
 </resources>

@@ -7,7 +7,8 @@
     <Spinner
         android:id="@+id/heroSpinner"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"/>
 
     <Button
         android:id="@+id/btnGuardar"
@@ -34,4 +35,34 @@
         android:layout_toEndOf="@+id/btnCargar"
         android:layout_below="@+id/heroSpinner"
         android:layout_marginStart="10dp"/>
+
+    <Spinner
+        android:id="@+id/selectedHeroSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/btnCargar"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/btnAnterior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/anterior"
+        android:layout_below="@+id/selectedHeroSpinner"
+        android:layout_marginStart="10dp"
+        android:enabled="false"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/btnSiguiente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/siguiente"
+        android:layout_toEndOf="@+id/btnAnterior"
+        android:layout_below="@+id/selectedHeroSpinner"
+        android:layout_marginStart="10dp"
+        android:enabled="false"
+        android:visibility="invisible"/>
+
 </RelativeLayout>
