@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
                 ContentValues registro = new ContentValues();
                 registro.put("codigo", cod);
                 registro.put("nombre", usuario);
-                db.insert("Usuarios", null, registro);
+                if(db.insert("Usuarios", null, registro) < 0){
+                    Toast.makeText(this, "ERROR INSERTANDO REGISTRO", Toast.LENGTH_SHORT).show();
+                };
             });
 
             // Borrar datos
@@ -50,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
             btnActualizar.setOnClickListener(view -> {
                 String cod = codigo.getText().toString();
                 String usuario = nombre.getText().toString();
-                String args[] = {cod};
+                String args[] = {usuario,cod};
 
-                db.execSQL("UPDATE Usuarios SET nombre='" + usuario + "' WHERE codigo=?", args);
+                db.execSQL("UPDATE Usuarios SET nombre=? WHERE codigo=?", args);
 
             });
 
