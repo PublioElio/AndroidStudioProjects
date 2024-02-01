@@ -38,7 +38,6 @@
             android:inputType="text"
             android:hint="@string/apellidos"
             android:autofillHints="Apellidos" />
-
     </LinearLayout>
 
     <LinearLayout
