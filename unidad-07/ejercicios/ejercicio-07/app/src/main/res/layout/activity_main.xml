@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombre_" />
+
+        <EditText
+            android:id="@+id/editTextNombre"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:hint="@string/nombre"
+            android:inputType="text"
+            android:autofillHints="Nombre" />
+
+        <TextView
+            android:id="@+id/textViewApellidos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/apellidos_" />
+
+        <EditText
+            android:id="@+id/editTextApellidos"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="@string/apellidos"
+            android:autofillHints="Apellidos" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linarLayoutSegundaFila"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textViewCodigo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/c_digo" />
+
+        <EditText
+            android:id="@+id/editTextCodigo"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:autofillHints="Código"
+            android:hint="@string/codigo"
+            android:inputType="text"
+            android:minHeight="48dp"/>
+
+        <Button
+            android:id="@+id/btnAceptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="@string/aceptar" />
+
+        <Button
+            android:id="@+id/btnBorrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/borrar" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnIns"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/ins" />
+        <Button
+            android:id="@+id/btnActBorr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:text="@string/act_borr" />
+        <Button
+            android:id="@+id/btnCons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/cons" />
+    </LinearLayout>
+</LinearLayout>
+
+
+

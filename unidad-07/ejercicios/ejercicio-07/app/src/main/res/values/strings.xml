@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ejercicio-07</string>
+    <string name="c_dig">Códig:</string>
+    <string name="apellidos_">Apellidos:</string>
+    <string name="aceptar">ACEPTAR</string>
+    <string name="act_borr">ACT/BORR</string>
+    <string name="borrar">BORRAR</string>
+    <string name="cons">CONS</string>
+    <string name="ins">INS</string>
+    <string name="codigo">Código</string>
+    <string name="nombre_">Nombre:</string>
+    <string name="nombre">Nombre</string>
+    <string name="c_digo">Código:</string>
+    <string name="apellidos">Apellidos</string>
+</resources>
