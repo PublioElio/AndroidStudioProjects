@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Código: " />
+            android:text="@string/c_digo" />
 
         <EditText
             android:id="@+id/etCodigo"
@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre: " />
+            android:text="@string/nombre" />
 
         <EditText
             android:id="@+id/etNombre"
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:text="INSERTAR" />
+            android:text="@string/insertar" />
 
         <Button
             android:id="@+id/btnActualizar"

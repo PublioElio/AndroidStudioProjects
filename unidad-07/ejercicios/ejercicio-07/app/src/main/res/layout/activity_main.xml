@@ -41,7 +41,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linarLayoutSegundaFila"
+        android:id="@+id/linearLayoutActBorr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone">
@@ -58,15 +58,15 @@
             android:layout_height="wrap_content"
             android:autofillHints="Código"
             android:hint="@string/codigo"
-            android:inputType="text"
+            android:inputType="number"
             android:minHeight="48dp"/>
 
         <Button
-            android:id="@+id/btnAceptar"
+            android:id="@+id/btnActualizar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:text="@string/aceptar" />
+            android:text="@string/actualizar" />
 
         <Button
             android:id="@+id/btnBorrar"
@@ -99,6 +99,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/cons" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayoutCons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textViewCons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </LinearLayout>
 

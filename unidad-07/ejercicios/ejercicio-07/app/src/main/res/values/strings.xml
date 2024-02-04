@@ -12,4 +12,5 @@
     <string name="nombre">Nombre</string>
     <string name="c_digo">Código:</string>
     <string name="apellidos">Apellidos</string>
+    <string name="actualizar">ACTUALIZAR</string>
 </resources>
