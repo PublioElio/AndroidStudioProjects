@@ -97,12 +97,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+            // Mostramos las opciones para actualizar o borrar
             btnActBorr.setOnClickListener(view -> {
                 linearLayoutActBorr.setVisibility(View.VISIBLE);
                 resetearFormulario(editTexCodigo, editTexNombre, editTexApellidos);
                 linearLayoutCons.setVisibility(View.GONE);
             });
 
+            // Actualizamos la base de datos
             btnActualizar.setOnClickListener(view -> {
                 try {
                     String codigo = editTexCodigo.getText().toString();
