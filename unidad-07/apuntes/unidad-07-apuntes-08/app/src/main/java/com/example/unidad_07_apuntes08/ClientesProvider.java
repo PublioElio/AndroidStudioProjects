@@ -16,7 +16,7 @@ public class ClientesProvider extends ContentProvider {
     // Definición de la URI
     private static final String AUTHORITY = "com.example.unidad_07_apuntes08";
     private static final String URI = "content://" + AUTHORITY + "/clientes";
-    private static final Uri CONTENT_URI = Uri.parse(URI);
+    public static final Uri CONTENT_URI = Uri.parse(URI);
 
     // Definimos el objeto UriMAtcher
     private static final int CLIENTES = 1; // Acceso genérico a toda la tabla
