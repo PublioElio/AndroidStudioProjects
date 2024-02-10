@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="datos">
+        <item>Solo wifi</item>
+        <item>Ahorrar datos</item>
+        <item>Datos maximos</item>
+    </string-array>
+
+    <string-array name="codigo">
+        <item>Solo wifi</item>
+        <item>Ahorrar datos</item>
+        <item>Datos maximos</item>
+    </string-array>
+
+</resources>

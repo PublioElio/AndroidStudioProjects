@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">T7examen</string>
+    <string name="mis_peliculas">MIS PELICULAS</string>
+    <string name="sumar">+</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="quitar">Quitar</string>
+    <string name="mi_lista">Mi lista</string>
+    <string name="tendencias">Tendencias</string>
+</resources>
