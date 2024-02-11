@@ -6,4 +6,5 @@
     <string name="add">+</string>
     <string name="cancelar">CANCELAR</string>
     <string name="quitar">QUITAR</string>
+    <string name="configuracion">Configuración</string>
 </resources>

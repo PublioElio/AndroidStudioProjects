@@ -12,6 +12,11 @@ public class Datos {
         this.titulo = titulo;
     }
 
+    public Datos(int imagen, String titulo){
+        this.imagen = imagen;
+        this.titulo = titulo;
+    }
+
     public Datos() {}
 
     public int getIndice() {
