@@ -1,5 +1,6 @@
 package com.example.t7examen.adaptador;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,16 +15,10 @@ import java.util.ArrayList;
 
 public class Adaptador extends BaseAdapter {
 
-    private ArrayList<Datos> datos;
-    private Context contexto;
+    private final ArrayList<Datos> datos;
+    private final Context contexto;
 
     public Adaptador(Context contexto, ArrayList<Datos> datos){
-        super();
-        this.contexto = contexto;
-        this.datos = datos;
-    }
-
-    public Adaptador(View.OnClickListener onClickListener, ArrayList<Datos> datos) {
         super();
         this.contexto = contexto;
         this.datos = datos;
@@ -33,12 +28,12 @@ public class Adaptador extends BaseAdapter {
     public View getView(int posicion, View view, ViewGroup parent){
 
         LayoutInflater mostrado = LayoutInflater.from(contexto);
-        View elemento = mostrado.inflate(R.layout.elemento, parent, false);
+        @SuppressLint("ViewHolder") View elemento = mostrado.inflate(R.layout.elemento, parent, false);
 
         ImageView icono = elemento.findViewById(R.id.imagen);
         icono.setImageResource(datos.get(posicion).getImagen());
 
-        TextView nombre = (TextView) elemento.findViewById(R.id.nombre);
+        TextView nombre = elemento.findViewById(R.id.nombre);
         nombre.setText(datos.get(posicion).getNombre());
 
         return elemento;

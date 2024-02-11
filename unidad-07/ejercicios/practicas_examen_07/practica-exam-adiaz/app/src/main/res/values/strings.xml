@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">practica-exam-adiaz</string>
+    <string name="mis_peliculas">MIS PELÍCULAS</string>
+    <string name="tendencias">TENDENCIAS</string>
+    <string name="mi_lista">MI LISTA</string>
+    <string name="add">+</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="quitar">QUITAR</string>
 </resources>
