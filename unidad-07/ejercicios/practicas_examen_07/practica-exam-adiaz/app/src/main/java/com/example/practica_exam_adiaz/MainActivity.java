@@ -116,12 +116,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void ocultarControlesQuitar(LinearLayout linearLayoutQuitar, LinearLayout linearLayoutAdd) {
-        linearLayoutQuitar.setVisibility(View.GONE);
-        linearLayoutAdd.setVisibility(View.INVISIBLE);
-        peliculaSeleccionada = -1;
+    private static boolean buscarPeliculaPorTitulo(String titulo, SQLiteDatabase db) {
+        Cursor miCursor = db.rawQuery("SELECT * FROM peliculas WHERE titulo='" + titulo +
+                "' AND lista=1", null);
+        boolean encontrada = miCursor.moveToFirst();
+        miCursor.close();
+        return encontrada;
     }
-
 
     private void insertarPeliculaEnMiLista(ListView miLista, SQLiteDatabase db, Cursor miCursor, String titulo) {
         ContentValues registro = new ContentValues();
@@ -136,12 +137,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private static boolean buscarPeliculaPorTitulo(String titulo, SQLiteDatabase db) {
-        Cursor miCursor = db.rawQuery("SELECT * FROM peliculas WHERE titulo='" + titulo +
-                "' AND lista=1", null);
-        boolean encontrada = miCursor.moveToFirst();
-        miCursor.close();
-        return encontrada;
+    private void ocultarControlesQuitar(LinearLayout linearLayoutQuitar, LinearLayout linearLayoutAdd) {
+        linearLayoutQuitar.setVisibility(View.GONE);
+        linearLayoutAdd.setVisibility(View.INVISIBLE);
+        peliculaSeleccionada = -1;
     }
 
     private void ocultarControlesAdd(LinearLayout linearLayoutAdd) {
