@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">examen_final_adiaz</string>
+    <string name="mis_peliculas">MIS PELÍCULAS</string>
+    <string name="tendencias">Tendencias</string>
+    <string name="mi_lista">Mi lista</string>
+    <string name="add">+</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="borrar">BORRAR</string>
+</resources>
