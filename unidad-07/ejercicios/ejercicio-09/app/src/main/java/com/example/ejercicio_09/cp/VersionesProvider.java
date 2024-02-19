@@ -57,15 +57,16 @@ public class VersionesProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
+    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection,
+                        @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         // Si es una consulta a un ID concreto, tenemos que construir el WHERE
         String where = selection;
         if (URI_MATCHER.match(uri) == VERSIONES_ID) {
             where = "_id=" + uri.getLastPathSegment();
         }
         SQLiteDatabase db = clidb.getWritableDatabase();
-        Cursor cursor = db.query(TABLA_VERSIONES, projection, where, selectionArgs, null, null, sortOrder);
-        return cursor;
+        return db.query(TABLA_VERSIONES, projection, where, selectionArgs, null,
+                null, sortOrder);
     }
 
     @Nullable
@@ -89,12 +90,12 @@ public class VersionesProvider extends ContentProvider {
         long regId;
         SQLiteDatabase db = clidb.getWritableDatabase();
         regId = db.insert(TABLA_VERSIONES, null, values);
-        Uri newUri = ContentUris.withAppendedId(CONTENT_URI, regId);
-        return newUri;
+        return ContentUris.withAppendedId(CONTENT_URI, regId);
     }
 
     @Override
-    public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
+    public int delete(@NonNull Uri uri, @Nullable String selection,
+                      @Nullable String[] selectionArgs) {
         int cont;
         // Si es una consulta a un ID concreto contruimos el WHERE
         String where = selection;
@@ -107,7 +108,8 @@ public class VersionesProvider extends ContentProvider {
     }
 
     @Override
-    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
+    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection,
+                      @Nullable String[] selectionArgs) {
         int cont;
         // Si es una consulta a un ID concreto contruimos el WHERE
         String where = selection;

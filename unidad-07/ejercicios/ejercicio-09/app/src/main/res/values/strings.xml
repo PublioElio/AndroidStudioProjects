@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ejercicio-09</string>
+    <string name="version">Versión:</string>
+    <string name="lanzamiento">Año de lanzamiento:</string>
+    <string name="mostrar">MOSTRAR</string>
+    <string name="eliminar">ELIMINAR</string>
+    <string name="a_adir">AÑADIR</string>
 </resources>
