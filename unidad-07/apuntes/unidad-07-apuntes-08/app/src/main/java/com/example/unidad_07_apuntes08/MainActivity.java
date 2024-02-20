@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnConsultar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 // Columnas a recuperar
                 String[] columnas ={
                         ClientesProvider.Clientes._ID,
