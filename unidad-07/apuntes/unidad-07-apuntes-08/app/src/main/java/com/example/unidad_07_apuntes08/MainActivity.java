@@ -3,6 +3,7 @@ package com.example.unidad_07_apuntes08;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    // Obtengo las referencias
+        // Obtengo las referencias
         txtResultados = findViewById(R.id.lblResultados);
         btnConsultar = findViewById(R.id.btnConsultar);
         btnInsertar = findViewById(R.id.btnInsertar);
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Columnas a recuperar
-                String[] columnas ={
+                String[] columnas = {
                         ClientesProvider.Clientes._ID,
                         ClientesProvider.Clientes.COL_NOMBRE,
                         ClientesProvider.Clientes.COL_TELEFONO,
@@ -53,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
                         null // Orden de los resultados
                 );
 
-                if(cursor != null){
-                    if(cursor.moveToFirst()){
+                if (cursor != null) {
+                    if (cursor.moveToFirst()) {
                         String nombre;
                         String tlfn;
                         String email;
@@ -65,19 +66,43 @@ public class MainActivity extends AppCompatActivity {
 
                         txtResultados.setText("");
 
-                        do{
+                        do {
                             nombre = cursor.getString(colNombre);
                             tlfn = cursor.getString(colTelefono);
                             email = cursor.getString(colEmail);
 
                             txtResultados.append(nombre + " " + tlfn + " " + email + "\n");
 
-                        }while(cursor.moveToNext());
+                        } while (cursor.moveToNext());
                     }
                 }
             }
         });
 
+        // --------------------------------------------------------------------
+        // Inserto datos con el Content Resolver en el Content Provides
+        btnInsertar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ContentValues registro = new ContentValues();
+                registro.put(ClientesProvider.Clientes.COL_NOMBRE, "Cliente nuevo");
+                registro.put(ClientesProvider.Clientes.COL_TELEFONO, "999111222");
+                registro.put(ClientesProvider.Clientes.COL_EMAIL, "nuevo@gmail.com");
+                ContentResolver cr = getContentResolver();
+                cr.insert(ClientesProvider.CONTENT_URI, registro);
+            }
+        });
+
+        // Borrar datos del content provider con el content resolver
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ContentResolver cr = getContentResolver();
+                cr.delete(ClientesProvider.CONTENT_URI,
+                        ClientesProvider.Clientes.COL_NOMBRE + "= 'Cliente nuevo'",
+                        null);
+            }
+        });
     }
 
 
