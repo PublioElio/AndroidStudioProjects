@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -38,69 +37,56 @@ public class MainActivity extends AppCompatActivity {
 
         if (insertarDatosEnDB()) {
 
-            miGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                    // Obtener el dato seleccionado en el GridView
-                    datoSeleccionado = (Datos) adapterView.getItemAtPosition(position);
-                }
+            miGridView.setOnItemClickListener((adapterView, view, position, id) -> {
+                // Obtener el dato seleccionado en el GridView
+                datoSeleccionado = (Datos) adapterView.getItemAtPosition(position);
             });
 
-            btnMostrar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mostrarDatos(miGridView);
-                    miGridView.setVisibility(View.VISIBLE);
-                }
+            btnMostrar.setOnClickListener(view -> {
+                mostrarDatos(miGridView);
+                miGridView.setVisibility(View.VISIBLE);
             });
 
-            btnAgregar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    miGridView.setVisibility(View.INVISIBLE);
-                    String fechaLanzamiento = editTextFechaLanzamiento.getText().toString();
-                    String version = editTextVersion.getText().toString();
+            btnAgregar.setOnClickListener(view -> {
+                miGridView.setVisibility(View.INVISIBLE);
+                String fechaLanzamiento = editTextFechaLanzamiento.getText().toString();
+                String version = editTextVersion.getText().toString();
 
-                    if (!fechaLanzamiento.isEmpty() && !version.isEmpty()) {
-                        ContentResolver contentResolver = getContentResolver();
-                        ContentValues values = new ContentValues();
-                        values.put(VersionesProvider.Versiones.COL_NOMBRE, version);
-                        values.put(VersionesProvider.Versiones.COL_YEAR, fechaLanzamiento);
-                        Uri nuevoRegistroUri = contentResolver.insert(VersionesProvider.CONTENT_URI, values);
-                        if (nuevoRegistroUri != null) {
-                            editTextFechaLanzamiento.setText("");
-                            editTextVersion.setText("");
-                            Log.i("ACTUALIZACIÓN", "Nuevo campo insertado correctamente en la base de datos");
-                            Toast.makeText(MainActivity.this, "Nueva versión insertada correctamente", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Log.e("ERROR", "Error insertando datos");
-                        }
+                if (!fechaLanzamiento.isEmpty() && !version.isEmpty()) {
+                    ContentResolver contentResolver = getContentResolver();
+                    ContentValues values = new ContentValues();
+                    values.put(VersionesProvider.Versiones.COL_NOMBRE, version);
+                    values.put(VersionesProvider.Versiones.COL_YEAR, fechaLanzamiento);
+                    Uri nuevoRegistroUri = contentResolver.insert(VersionesProvider.CONTENT_URI, values);
+                    if (nuevoRegistroUri != null) {
+                        editTextFechaLanzamiento.setText("");
+                        editTextVersion.setText("");
+                        Log.i("ACTUALIZACIÓN", "Nuevo campo insertado correctamente en la base de datos");
+                        Toast.makeText(MainActivity.this, "Nueva versión insertada correctamente", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.this, "Por favor, rellene ambos campos", Toast.LENGTH_SHORT).show();
+                        Log.e("ERROR", "Error insertando datos");
                     }
+                } else {
+                    Toast.makeText(MainActivity.this, "Por favor, rellene ambos campos", Toast.LENGTH_SHORT).show();
                 }
-
             });
 
-            btnEliminar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (datoSeleccionado != null) {
-                        int idSeleccionado = datoSeleccionado.getId();
-                        Uri uriEliminar = Uri.withAppendedPath(VersionesProvider.CONTENT_URI, String.valueOf(idSeleccionado));
-                        int filasEliminadas = getContentResolver().delete(uriEliminar, null, null);
-                        if (filasEliminadas > 0) {
-                            Log.i("ACTUALIZACIÓN", "Campo eliminado de la base de datos");
-                            Toast.makeText(MainActivity.this, "Elemento eliminado correctamente", Toast.LENGTH_SHORT).show();
-                            miGridView.setVisibility(View.INVISIBLE);
-                            datoSeleccionado = null;
-                        } else {
-                            Log.e("ERROR", "Error elemento no eliminado de la base de datos");
-                            Toast.makeText(MainActivity.this, "Error al eliminar el elemento", Toast.LENGTH_SHORT).show();
-                        }
+            btnEliminar.setOnClickListener(view -> {
+                if (datoSeleccionado != null) {
+                    int idSeleccionado = datoSeleccionado.getId();
+                    Uri uriEliminar = Uri.withAppendedPath(VersionesProvider.CONTENT_URI, String.valueOf(idSeleccionado));
+                    int filasEliminadas = getContentResolver().delete(uriEliminar, null, null);
+                    if (filasEliminadas > 0) {
+                        Log.i("ACTUALIZACIÓN", "Campo eliminado de la base de datos");
+                        Toast.makeText(MainActivity.this, "Elemento eliminado correctamente", Toast.LENGTH_SHORT).show();
+                        miGridView.setVisibility(View.INVISIBLE);
+                        datoSeleccionado = null;
                     } else {
-                        Toast.makeText(MainActivity.this, "Por favor, seleccione un elemento para eliminar", Toast.LENGTH_SHORT).show();
+                        Log.e("ERROR", "Error elemento no eliminado de la base de datos");
+                        Toast.makeText(MainActivity.this, "Error al eliminar el elemento", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(MainActivity.this, "Por favor, seleccione un elemento para eliminar", Toast.LENGTH_SHORT).show();
                 }
             });
 
