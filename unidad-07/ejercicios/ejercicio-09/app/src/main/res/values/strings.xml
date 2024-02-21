@@ -5,4 +5,6 @@
     <string name="mostrar">MOSTRAR</string>
     <string name="eliminar">ELIMINAR</string>
     <string name="a_adir">AÑADIR</string>
+    <string name="nombre_de_la_version">Nombre de la versión</string>
+    <string name="proporcione_un_anyo">Proporcione un año</string>
 </resources>

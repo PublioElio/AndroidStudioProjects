@@ -5,10 +5,13 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Datos datoSeleccionado;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,24 +35,87 @@ public class MainActivity extends AppCompatActivity {
         final EditText editTextFechaLanzamiento = findViewById(R.id.editTextFechaLanzamiento);
         final EditText editTextVersion = findViewById(R.id.editTextVersion);
         final GridView miGridView = findViewById(R.id.miGrid);
-        ArrayList<Datos> datos = new ArrayList<Datos>();
 
         if (insertarDatosEnDB()) {
-            datos = llenarGridViewDeDatos();
+
+            miGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                    // Obtener el dato seleccionado en el GridView
+                    datoSeleccionado = (Datos) adapterView.getItemAtPosition(position);
+                }
+            });
+
+            btnMostrar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mostrarDatos(miGridView);
+                    miGridView.setVisibility(View.VISIBLE);
+                }
+            });
+
+            btnAgregar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    miGridView.setVisibility(View.INVISIBLE);
+                    String fechaLanzamiento = editTextFechaLanzamiento.getText().toString();
+                    String version = editTextVersion.getText().toString();
+
+                    if (!fechaLanzamiento.isEmpty() && !version.isEmpty()) {
+                        ContentResolver contentResolver = getContentResolver();
+                        ContentValues values = new ContentValues();
+                        values.put(VersionesProvider.Versiones.COL_NOMBRE, version);
+                        values.put(VersionesProvider.Versiones.COL_YEAR, fechaLanzamiento);
+                        Uri nuevoRegistroUri = contentResolver.insert(VersionesProvider.CONTENT_URI, values);
+                        if (nuevoRegistroUri != null) {
+                            editTextFechaLanzamiento.setText("");
+                            editTextVersion.setText("");
+                            Log.i("ACTUALIZACIÓN", "Nuevo campo insertado correctamente en la base de datos");
+                            Toast.makeText(MainActivity.this, "Nueva versión insertada correctamente", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Log.e("ERROR", "Error insertando datos");
+                        }
+                    } else {
+                        Toast.makeText(MainActivity.this, "Por favor, rellene ambos campos", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            });
+
+            btnEliminar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (datoSeleccionado != null) {
+                        int idSeleccionado = datoSeleccionado.getId();
+                        Uri uriEliminar = Uri.withAppendedPath(VersionesProvider.CONTENT_URI, String.valueOf(idSeleccionado));
+                        int filasEliminadas = getContentResolver().delete(uriEliminar, null, null);
+                        if (filasEliminadas > 0) {
+                            Log.i("ACTUALIZACIÓN", "Campo eliminado de la base de datos");
+                            Toast.makeText(MainActivity.this, "Elemento eliminado correctamente", Toast.LENGTH_SHORT).show();
+                            miGridView.setVisibility(View.INVISIBLE);
+                            datoSeleccionado = null;
+                        } else {
+                            Log.e("ERROR", "Error elemento no eliminado de la base de datos");
+                            Toast.makeText(MainActivity.this, "Error al eliminar el elemento", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(MainActivity.this, "Por favor, seleccione un elemento para eliminar", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+        } else {
+            Log.e("ERROR", "Ocurrió un error creando la base de datos");
         }
-
-        Adapter miAdaptador = new Adapter(this, datos);
-        miGridView.setAdapter(miAdaptador);
-
-        btnMostrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
-    private ArrayList<Datos> llenarGridViewDeDatos() {
+    private void mostrarDatos(GridView miGridView) {
+        ArrayList<Datos> datos = listarDB();
+        Adapter miAdaptador = new Adapter(this, datos);
+        miGridView.setAdapter(miAdaptador);
+    }
+
+    private ArrayList<Datos> listarDB() {
         ArrayList<Datos> lista = new ArrayList<>();
         String[] columnas = new String[]{
                 VersionesProvider.Versiones._ID,
@@ -74,9 +141,8 @@ public class MainActivity extends AppCompatActivity {
                 year = cur.getInt(colyear);
                 lista.add(new Datos(id, nombre, year));
             } while (cur.moveToNext());
-
-
         }
+        cur.close();
         return lista;
     }
 
@@ -99,7 +165,6 @@ public class MainActivity extends AppCompatActivity {
         // Insertar los nuevos datos en la base de datos
         for (int i = 0; i < versionesAndroid.length; i++) {
             ContentValues values = new ContentValues();
-            values.put(VersionesProvider.Versiones.COL_ID, i);
             values.put(VersionesProvider.Versiones.COL_NOMBRE, versionesAndroid[i]);
             values.put(VersionesProvider.Versiones.COL_YEAR, anosLanzamiento[i]);
             contentResolver.insert(VersionesProvider.CONTENT_URI, values);

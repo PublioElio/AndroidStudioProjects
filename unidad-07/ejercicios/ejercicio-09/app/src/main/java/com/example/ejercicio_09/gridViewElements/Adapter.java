@@ -45,7 +45,7 @@ public class Adapter extends BaseAdapter {
         version.setText(datos.get(position).getVersion());
 
         TextView anyo = elemento.findViewById(R.id.textViewAnyo);
-        anyo.setText(datos.get(position).getYear());
+        anyo.setText(String.valueOf(datos.get(position).getYear()));
 
         return elemento;
     }

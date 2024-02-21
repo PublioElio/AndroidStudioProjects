@@ -7,11 +7,12 @@
         android:id="@+id/textViewVersion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"/>
     <TextView
         android:id="@+id/textViewAnyo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"/>
+        android:textSize="12sp"/>
 </LinearLayout>

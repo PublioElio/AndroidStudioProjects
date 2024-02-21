@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -14,13 +15,16 @@
             android:text="@string/version"
             android:textSize="18sp"
             android:paddingHorizontal="15dp"/>
+
         <EditText
             android:id="@+id/editTextVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:width="150dp"
+            android:width="200dp"
+            android:autofillHints=""
+            android:hint="@string/nombre_de_la_version"
             android:inputType="text"
-            android:autofillHints="" />
+            android:textColorHint="@color/hint_blue" />
     </LinearLayout>
 
 
@@ -34,13 +38,17 @@
         android:text="@string/lanzamiento"
         android:textSize="18sp"
         android:paddingHorizontal="15dp"/>
-    <EditText
-        android:id="@+id/editTextFechaLanzamiento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="150dp"
-        android:autofillHints=""
-        android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editTextFechaLanzamiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="200dp"
+            android:hint="@string/proporcione_un_anyo"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textColorHint="@color/hint_blue"
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,31 +59,42 @@
 
         <Button
             android:id="@+id/btnMostrar"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:backgroundTint="@color/pink"
             android:text="@string/mostrar"
-            android:layout_marginHorizontal="5dp"/>
+            android:textColor="@color/purple" />
 
         <Button
             android:id="@+id/btnEliminar"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:backgroundTint="@color/pink"
             android:text="@string/eliminar"
-            android:layout_marginHorizontal="5dp"/>
+            android:textColor="@color/purple" />
 
         <Button
             android:id="@+id/btnAgregar"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:backgroundTint="@color/pink"
             android:text="@string/a_adir"
-            android:layout_marginHorizontal="5dp"/>
+            android:textColor="@color/purple" />
     </LinearLayout>
 
     <GridView
         android:id="@+id/miGrid"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="3"
-        android:stretchMode="columnWidth"/>
+        android:stretchMode="columnWidth"
+        android:visibility="invisible"
+        android:choiceMode="singleChoice"/>
 
 </LinearLayout>

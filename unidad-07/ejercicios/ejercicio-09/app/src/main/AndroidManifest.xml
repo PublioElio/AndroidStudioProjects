@@ -22,8 +22,9 @@
             </intent-filter>
         </activity>
         <provider
-            android:authorities="org.iesbelen.android.contentproviders"
-            android:name=".cp.VersionesProvider"/>
+            android:authorities="com.example.ejercicio_09.cp"
+            android:name=".cp.VersionesProvider"
+            android:exported="true"/>
     </application>
 
 </manifest>

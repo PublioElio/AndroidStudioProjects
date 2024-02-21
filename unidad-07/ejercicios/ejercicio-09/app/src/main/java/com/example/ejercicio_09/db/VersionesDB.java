@@ -6,7 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class VersionesDB extends SQLiteOpenHelper {
     String sqlCreate =
-            "CREATE TABLE versiones(_id INTEGER PRIMARY KEY, nombre TEXT, year INTEGER)";
+            "CREATE TABLE versiones(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "nombre TEXT, " +
+                    "year INTEGER)";
     public VersionesDB(Context context, String nombre,
                        SQLiteDatabase.CursorFactory factory, int version){
         super(context, nombre, factory, version);
