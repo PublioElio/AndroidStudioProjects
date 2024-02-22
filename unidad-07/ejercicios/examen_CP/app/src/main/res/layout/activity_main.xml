@@ -14,6 +14,7 @@
         android:background="@drawable/custom_edit_text"
         android:hint="@string/buscar_contactos"
         android:inputType="text"
+        android:minHeight="48dp"
         android:padding="8dp"
         android:textColorHint="@color/greyHint" />
 

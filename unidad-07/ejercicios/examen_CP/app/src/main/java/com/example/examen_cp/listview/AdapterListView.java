@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class AdapterListView extends BaseAdapter {
 
     private final ArrayList<DatosListView> datos;
-    private Context contexto;
+    private final Context contexto;
     public AdapterListView(Context contexto, ArrayList<DatosListView> datos){
         super();
         this.contexto = contexto;

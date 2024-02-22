@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 null,
                 null,
                 null);
+        assert cur != null; // He incluído esta línea de código por un warning que me daba el IDE sobre una posible null Pointer Exception
         if (cur.moveToFirst()) {
             int id;
             String nombre;

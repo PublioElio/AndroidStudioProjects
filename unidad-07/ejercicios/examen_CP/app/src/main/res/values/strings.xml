@@ -10,4 +10,7 @@
     <string name="anyadir">AÑADIR</string>
     <string name="telefono_contacto">Teléfono contacto</string>
     <string name="telefono">Teléfono:</string>
+    <string name="avatar_image">Avatar image</string>
+    <string name="borrar">Borrar</string>
+    <string name="actualizar">Actualizar</string>
 </resources>

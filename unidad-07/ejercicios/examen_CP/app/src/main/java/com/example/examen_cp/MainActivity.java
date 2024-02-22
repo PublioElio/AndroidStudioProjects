@@ -5,6 +5,10 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -27,68 +31,186 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatosSpinner avatarSeleccionado;
+    private final String MUST_FILL_BOTH = "Debe cumplimentar ambos campos";
+    private int selectedAvatar; // Esta variable controla el avatar elegido del Spinner
+    private int selectedContact = 0; // esta variable controla el contacto elegido del ListView
+    private ListView listViewContactos;
+    private Spinner spinnerAvatares;
+    private TableLayout tableLayoutFormulario;
+    private Button btnAdd;
+    private Button btnModificar;
+    private EditText editTextNombre;
+    private EditText editTextTelefono;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Spinner spinnerAvatares = findViewById(R.id.spinnerAvatares);
-        final ListView listViewContactos = findViewById(R.id.listViewContactos);
+        editTextNombre = findViewById(R.id.editTextNombre);
+        editTextTelefono = findViewById(R.id.editTextTelefono);
+        spinnerAvatares = findViewById(R.id.spinnerAvatares);
+        listViewContactos = findViewById(R.id.listViewContactos);
+        tableLayoutFormulario = findViewById(R.id.tableLayoutFormulario);
+        btnAdd = findViewById(R.id.btnAdd);
+        btnModificar = findViewById(R.id.btnModificar);
+        final Button btnCancelar = findViewById(R.id.btnCancelar);
         final ImageButton imageButton = findViewById(R.id.imgBtnAddContactos);
-        final TableLayout tableLayoutFormulario = findViewById(R.id.tableLayoutFormulario);
-        final Button btnAdd = findViewById(R.id.btnAdd);
-        final Button btnModificar = findViewById(R.id.btnModificar);
-        final Button btnCancelar = findViewById(R.id.btnModificar);
-        final EditText editTextNombre = findViewById(R.id.editTextNombre);
-        final EditText editTextTelefono = findViewById(R.id.editTextTelefono);
 
-        cargarAvatares(spinnerAvatares);
-        mostrarListaContactos(listViewContactos);
+
+        loadAvatars();
+        showContactList();
+        registerForContextMenu(listViewContactos);
+
 
         spinnerAvatares.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                avatarSeleccionado = (DatosSpinner) parent.getItemAtPosition(position);
+                selectedAvatar = ((DatosSpinner) parent.getItemAtPosition(position)).getAvatar();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 Toast.makeText(MainActivity.this,
-                        "No ha seleccionado ningún avatar",
-                        Toast.LENGTH_SHORT).show();
+                        "No ha seleccionado ningún avatar", Toast.LENGTH_SHORT).show();
             }
         });
 
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tableLayoutFormulario.setVisibility(View.VISIBLE);
-                btnAdd.setVisibility(View.VISIBLE);
-            }
+        imageButton.setOnClickListener(view -> {
+            clearEditText();
+            spinnerAvatares.setSelection(0);
+            tableLayoutFormulario.setVisibility(View.VISIBLE);
+            btnAdd.setVisibility(View.VISIBLE);
+            btnModificar.setVisibility(View.GONE);
         });
 
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!editTextNombre.getText().equals("") && !editTextTelefono.getText().equals("")) {
-                    ContentValues values = new ContentValues();
-                    values.put(ContactosProvider.Contactos.COL_NOMBRE, editTextNombre.getText().toString());
-                    values.put(ContactosProvider.Contactos.COL_TELEFONO, editTextTelefono.getText().toString());
-                    values.put(ContactosProvider.Contactos.COL_AVATAR, avatarSeleccionado.getAvatar());
+        btnAdd.setOnClickListener(view -> addNewContact(editTextNombre, editTextTelefono));
 
-                    ContentResolver cr2 = getContentResolver();
-                    cr2.insert(ContactosProvider.CONTENT_URI, values);
-                    editTextNombre.setText("");
-                    editTextTelefono.setText("");
-                }
-                mostrarListaContactos(listViewContactos);
-            }
-        });
+        btnCancelar.setOnClickListener(view -> hideAll());
 
+        btnModificar.setOnClickListener(view -> updateContact());
+
+        listViewContactos.setOnItemClickListener((adaptador, view, position, id) -> selectedContact = ((DatosListView) adaptador.getItemAtPosition(position)).getId());
     }
 
-    private void cargarAvatares(Spinner spinner) {
+    private void clearEditText() {
+        editTextTelefono.setText("");
+        editTextNombre.setText("");
+    }
+
+    private void hideAll() {
+        tableLayoutFormulario.setVisibility(View.GONE);
+        btnAdd.setVisibility(View.GONE);
+        btnModificar.setVisibility(View.GONE);
+    }
+
+    private void updateContact() {
+        String nombre = editTextNombre.getText().toString();
+        String telefono = editTextTelefono.getText().toString();
+
+        if (nombre.isEmpty() || telefono.isEmpty()) {
+            Toast.makeText(MainActivity.this, MUST_FILL_BOTH,
+                    Toast.LENGTH_LONG).show();
+
+        } else {
+            ContentValues values = new ContentValues();
+            values.put(ContactosProvider.Contactos.COL_NOMBRE, nombre);
+            values.put(ContactosProvider.Contactos.COL_TELEFONO, telefono);
+            values.put(ContactosProvider.Contactos.COL_AVATAR, selectedAvatar);
+
+            ContentResolver cr = getContentResolver();
+            cr.update(ContactosProvider.CONTENT_URI, values,
+                    ContactosProvider.Contactos._ID + "=" + selectedContact, null);
+            clearEditText();
+            hideAll();
+            showContactList();
+        }
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, view, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        boolean resultado = false;
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        if(info != null){
+            int position = info.position;
+            DatosListView contacto = (DatosListView) listViewContactos.getItemAtPosition(position);
+            selectedContact = contacto.getId();
+            // Me he visto obligado a usar una estructura if-else porque el switch me daba un error que
+            // no he logrado solventar: "Constant expression required"
+            int id = item.getItemId();
+            if (id == R.id.deleteContact) {
+                resultado = deleteContact();
+            } else if (id == R.id.updateContact) {
+                resultado = showContactData(contacto);
+            } else {
+                resultado = super.onContextItemSelected(item);
+            }
+        }
+        return resultado;
+    }
+
+    private boolean showContactData(DatosListView contacto) {
+        editTextNombre.setText(contacto.getNombre());
+        editTextTelefono.setText(contacto.getTelefono());
+        int avatarContacto = contacto.getAvatar();
+        int indiceAvatar = getAvatarIndex(avatarContacto);
+        spinnerAvatares.setSelection(indiceAvatar);
+        tableLayoutFormulario.setVisibility(View.VISIBLE);
+        btnAdd.setVisibility(View.GONE);
+        btnModificar.setVisibility(View.VISIBLE);
+        return true;
+    }
+
+    private boolean deleteContact() {
+        ContentResolver cr = getContentResolver();
+        cr.delete(ContactosProvider.CONTENT_URI, ContactosProvider.Contactos._ID
+                + "=" + selectedContact, null);
+        hideAll();
+        showContactList();
+        return true;
+    }
+
+    private int getAvatarIndex(int avatarContacto) {
+        AdapterSpinner adapter = (AdapterSpinner) spinnerAvatares.getAdapter();
+        for (int i = 0; i < adapter.getCount(); i++) {
+            DatosSpinner datosSpinner = (DatosSpinner) adapter.getItem(i);
+            if (datosSpinner.getAvatar() == avatarContacto) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    private void addNewContact(EditText editTextNombre, EditText editTextTelefono) {
+        String nombre = editTextNombre.getText().toString();
+        String telefono = editTextTelefono.getText().toString();
+
+        if (nombre.isEmpty() || telefono.isEmpty()) {
+            Toast.makeText(MainActivity.this, MUST_FILL_BOTH,
+                    Toast.LENGTH_LONG).show();
+        } else {
+            ContentValues values = new ContentValues();
+            values.put(ContactosProvider.Contactos.COL_NOMBRE, nombre);
+            values.put(ContactosProvider.Contactos.COL_TELEFONO, telefono);
+            values.put(ContactosProvider.Contactos.COL_AVATAR, selectedAvatar);
+
+            ContentResolver cr = getContentResolver();
+            cr.insert(ContactosProvider.CONTENT_URI, values);
+
+            clearEditText();
+            showContactList();
+        }
+    }
+
+    private void loadAvatars() {
         ArrayList<DatosSpinner> datos = new ArrayList<>();
         AdapterSpinner adaptador = new AdapterSpinner(this, datos);
         datos.add(new DatosSpinner(R.drawable.batman));
@@ -101,10 +223,10 @@ public class MainActivity extends AppCompatActivity {
         datos.add(new DatosSpinner(R.drawable.spiderman));
         datos.add(new DatosSpinner(R.drawable.thor));
         datos.add(new DatosSpinner(R.drawable.wonderwoman));
-        spinner.setAdapter(adaptador);
+        spinnerAvatares.setAdapter(adaptador);
     }
 
-    private void mostrarListaContactos(ListView listViewContactos) {
+    private void showContactList() {
         String[] columnas = new String[]{
                 ContactosProvider.Contactos._ID,
                 ContactosProvider.Contactos.COL_NOMBRE,
@@ -113,17 +235,11 @@ public class MainActivity extends AppCompatActivity {
         };
         Uri versionesUri = ContactosProvider.CONTENT_URI;
         ContentResolver cr = getContentResolver();
-        Cursor cur = cr.query(versionesUri,
-                columnas,
-                null,
-                null,
-                null);
-        DatosListView contacto;
 
-        ArrayList<DatosListView> datos = new ArrayList<>();
-        AdapterListView adapter = new AdapterListView(this, datos);
-        if (cur != null) {
-            if (cur.moveToFirst()) {
+        try (Cursor cur = cr.query(versionesUri, columnas, null, null, null)) {
+            if (cur != null && cur.moveToFirst()) {
+                ArrayList<DatosListView> datos = new ArrayList<>();
+
                 int columnaId = cur.getColumnIndex(ContactosProvider.Contactos._ID);
                 int columnaNombre = cur.getColumnIndex(ContactosProvider.Contactos.COL_NOMBRE);
                 int columnaTelefono = cur.getColumnIndex(ContactosProvider.Contactos.COL_TELEFONO);
@@ -134,12 +250,16 @@ public class MainActivity extends AppCompatActivity {
                     String nombre = cur.getString(columnaNombre);
                     String telefono = cur.getString(columnaTelefono);
                     int avatar = cur.getInt(columnaAvatar);
-                    contacto = new DatosListView(id, nombre, telefono, avatar);
+                    DatosListView contacto = new DatosListView(id, nombre, telefono, avatar);
                     datos.add(contacto);
                 } while (cur.moveToNext());
+
+                AdapterListView adapter = new AdapterListView(this, datos);
+                listViewContactos.setAdapter(adapter);
             }
+        } catch (Exception e) {
+            Log.e("ERROR", "Error al leer el cursor: " + e.getMessage());
         }
-        listViewContactos.setAdapter(adapter);
     }
 
 }
