@@ -18,7 +18,6 @@ public class ContactosProvider extends ContentProvider {
     private static final String AUTHORITY = "com.example.examen_cp.cp";
     private static final String URI = "content://" + AUTHORITY + "/contactos";
     public static final Uri CONTENT_URI = Uri.parse(URI);
-
     private static final int CONTACTOS = 1;
     private static final int CONTACTOS_ID = 2;
     public static final UriMatcher URI_MATCHER;
@@ -28,18 +27,15 @@ public class ContactosProvider extends ContentProvider {
         URI_MATCHER.addURI(AUTHORITY, "contactos", CONTACTOS);
         URI_MATCHER.addURI(AUTHORITY, "contactos/#", CONTACTOS_ID);
     }
-
     public static final class Contactos implements BaseColumns {
         private Contactos() {
         }
-
         public static final String COL_ID = "_id";
         public static final String COL_NOMBRE = "nombre";
         public static final String COL_TELEFONO = "telefono";
         public static final String COL_AVATAR = "avatar";
     }
 
-    // Base de datos
     public ContactosDB clidb;
     public static final String BD_NOMBRE = "ContactosDB";
     public static final int BD_CONTACTOS = 1;

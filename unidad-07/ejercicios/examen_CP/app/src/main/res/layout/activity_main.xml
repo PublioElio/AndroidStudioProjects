@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,40 +10,120 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:autofillHints="name"
         android:background="@drawable/custom_edit_text"
-        android:hint="Buscar contactos"
-        android:padding="8dp" />
+        android:hint="@string/buscar_contactos"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColorHint="@color/greyHint" />
 
     <ImageButton
         android:id="@+id/imgBtnAddContactos"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_gravity="right"
-        android:src="@drawable/addcontactos" />
+        android:layout_gravity="end"
+        android:contentDescription="@string/anyadir_contacto"
+        android:src="@drawable/addcontactos"
+        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
     <TableLayout
+        android:id="@+id/tableLayoutFormulario"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="@string/nombre" />
+
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="username"
+                android:hint="@string/nombre_contacto"
+                android:inputType="text"
+                android:layout_marginHorizontal="5dp"
+                android:textColorHint="@color/blueHint" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/avatar" />
+
+            <Spinner
+                android:id="@+id/spinnerAvatares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="emailAddress"
+                android:hint="@string/email_contacto"
+                android:inputType="textEmailAddress"
+                android:layout_marginHorizontal="5dp"
+                android:textColorHint="@color/blueHint" />
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre: " />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editTextNombre"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/anyadir"
+                android:layout_marginHorizontal="5dp"
+                style="?android:attr/buttonBarButtonStyle"
+                android:backgroundTint="@color/purple"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Avatar: " />
+            <Button
+                android:id="@+id/btnModificar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modificar"
+                android:layout_marginHorizontal="5dp"
+                style="?android:attr/buttonBarButtonStyle"
+                android:backgroundTint="@color/purple"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
 
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancelar"
+                android:layout_marginHorizontal="5dp"
+                style="?android:attr/buttonBarButtonStyle"
+                android:backgroundTint="@color/purple"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
 
     </TableLayout>
+
+    <ListView
+        android:id="@+id/listViewContactos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
