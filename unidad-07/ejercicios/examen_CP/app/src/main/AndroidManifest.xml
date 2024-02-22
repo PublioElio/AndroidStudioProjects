@@ -21,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="com.example.examen_cp.cp"
+            android:name=".cp.ContactosProvider"/>
     </application>
 
 </manifest>

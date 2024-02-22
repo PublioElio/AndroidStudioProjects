@@ -1,12 +1,14 @@
 package com.example.examen_cp;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         final Button btnAdd = findViewById(R.id.btnAdd);
         final Button btnModificar = findViewById(R.id.btnModificar);
         final Button btnCancelar = findViewById(R.id.btnModificar);
+        final EditText editTextNombre = findViewById(R.id.editTextNombre);
+        final EditText editTextTelefono = findViewById(R.id.editTextTelefono);
 
         cargarAvatares(spinnerAvatares);
         mostrarListaContactos(listViewContactos);
@@ -48,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 avatarSeleccionado = (DatosSpinner) parent.getItemAtPosition(position);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 Toast.makeText(MainActivity.this,
@@ -62,6 +65,24 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 tableLayoutFormulario.setVisibility(View.VISIBLE);
                 btnAdd.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!editTextNombre.getText().equals("") && !editTextTelefono.getText().equals("")) {
+                    ContentValues values = new ContentValues();
+                    values.put(ContactosProvider.Contactos.COL_NOMBRE, editTextNombre.getText().toString());
+                    values.put(ContactosProvider.Contactos.COL_TELEFONO, editTextTelefono.getText().toString());
+                    values.put(ContactosProvider.Contactos.COL_AVATAR, avatarSeleccionado.getAvatar());
+
+                    ContentResolver cr2 = getContentResolver();
+                    cr2.insert(ContactosProvider.CONTENT_URI, values);
+                    editTextNombre.setText("");
+                    editTextTelefono.setText("");
+                }
+                mostrarListaContactos(listViewContactos);
             }
         });
 
