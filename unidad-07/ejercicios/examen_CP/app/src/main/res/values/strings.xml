@@ -2,12 +2,12 @@
     <string name="app_name">examen_CP</string>
     <string name="nombre">Nombre:</string>
     <string name="avatar">Avatar:</string>
-    <string name="email">Email:</string>
     <string name="buscar_contactos">Buscar contactos</string>
     <string name="anyadir_contacto">Añadir contacto</string>
     <string name="nombre_contacto">Nombre contacto</string>
-    <string name="email_contacto">Email contacto</string>
     <string name="modificar">MODIFICAR</string>
     <string name="cancelar">CANCELAR</string>
     <string name="anyadir">AÑADIR</string>
+    <string name="telefono_contacto">Teléfono contacto</string>
+    <string name="telefono">Teléfono:</string>
 </resources>

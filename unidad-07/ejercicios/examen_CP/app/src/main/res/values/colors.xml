@@ -6,4 +6,5 @@
     <color name="greyHint">#616161</color>
     <color name="blueHint">#546E7A</color>
     <color name="purple">#673AB7</color>
+    <color name="blue">#0000ff</color>
 </resources>

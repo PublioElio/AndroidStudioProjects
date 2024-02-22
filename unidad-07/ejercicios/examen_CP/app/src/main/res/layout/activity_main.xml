@@ -67,15 +67,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:text="@string/email" />
+                android:text="@string/telefono" />
 
             <EditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/editTextTelefono"
                 android:layout_width="175dp"
                 android:layout_height="wrap_content"
                 android:autofillHints="emailAddress"
-                android:hint="@string/email_contacto"
-                android:inputType="textEmailAddress"
+                android:hint="@string/telefono_contacto"
+                android:inputType="phone"
                 android:layout_marginHorizontal="5dp"
                 android:textColorHint="@color/blueHint" />
         </TableRow>

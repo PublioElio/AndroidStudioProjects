@@ -26,7 +26,7 @@ public class AdapterSpinner extends BaseAdapter {
         LayoutInflater mostrado = LayoutInflater.from(contexto);
         @SuppressLint("ViewHolder") View elemento = mostrado.inflate(R.layout.elementos_spinner, parent, false);
 
-        ImageView avatar = elemento.findViewById(R.id.avatar);
+        ImageView avatar = elemento.findViewById(R.id.spinnerAvatar);
         avatar.setImageResource(datos.get(posicion).getAvatar());
 
         return elemento;
