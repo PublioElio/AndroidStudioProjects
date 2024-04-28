@@ -17,20 +17,20 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical"
-        android:padding="15dp"
-        android:background="@drawable/rounded_background_yellow">
+        android:padding="25dp"
+        android:background="@drawable/rounded_background_white">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:text="@string/call_name"
+            android:text="@string/call_name_label"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginBottom="5dp"/>
 
         <EditText
-            android:id="@+id/edTxtContactName"
+            android:id="@+id/edTxtCallName"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
@@ -45,18 +45,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:text="@string/phone_label"
+            android:text="@string/contact_label"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginBottom="5dp"/>
 
         <EditText
-            android:id="@+id/edTxtContactPhone"
+            android:id="@+id/edTxtCallContactName"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:autofillHints="phone"
-            android:hint="@string/phone"
+            android:hint="@string/name"
             android:importantForAutofill="no"
             android:inputType="phone"
             android:textColorHint="@color/hint_grey"
@@ -68,22 +68,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:text="@string/img_label"
+            android:text="@string/date_label"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginBottom="5dp"/>
 
-        <EditText
-            android:id="@+id/edTxtContactImg"
-            android:layout_width="250dp"
+        <ImageButton
+            android:id="@+id/imgBtnDateNewCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <DatePicker
+            android:id="@+id/datePickerNewCall"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:hint="@string/sube_una_imagen"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:textColorHint="@color/hint_grey"
-            android:background="@drawable/edit_text_rounded_borders01"
-            android:padding="15dp" />
+            android:paddingHorizontal="10dp"
+            android:text="@string/time_label"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"/>
+
+        <ImageButton
+            android:id="@+id/imgBtnTimeNewCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TimePicker
+            android:id="@+id/timePickerNewCall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/btnAddContact"

@@ -5,7 +5,9 @@
     <string name="contact_label">Contacto:</string>
     <string name="phone_label">Teléfono:</string>
     <string name="img_label">* Imagen:</string>
-    <string name="call_name">Nombre de la llamada:</string>
+    <string name="call_name_label">Nombre de la llamada:</string>
+    <string name="date_label">Fecha:</string>
+    <string name="time_label">Hora:</string>
 
     <!-- Form info text -->
     <string name="asterisk">Los campos marcados con un asterisco\nson opcionales</string>
@@ -13,16 +15,12 @@
     <!-- Button text -->
     <string name="add_contact">Agregar contacto</string>
     <string name="add_call">Agregar llamada</string>
-
+    <string name="next">Siguiente</string>
+    <string name="previous">Previo</string>
 
     <string name="name">Nombre</string>
     <string name="phone">Teléfono</string>
     <string name="upload_img">Sube una imagen</string>
-
-
-    <!-- Strings used for fragments for navigation -->
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

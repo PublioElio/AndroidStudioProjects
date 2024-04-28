@@ -23,5 +23,8 @@
         <activity
             android:name=".NewContactActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".NewCallActivity"
+            android:exported="true"></activity>
     </application>
 </manifest>
