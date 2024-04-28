@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">saved_by_the_call</string>
+
+    <!-- Form labels -->
+    <string name="contacto_label">Contacto:</string>
+    <string name="phone_label">Teléfono:</string>
+    <string name="img_label">* Imagen:</string>
+
+    <!-- Form info text -->
+    <string name="asterisco_son_opcionales">Los campos marcados con un asterisco\nson opcionales</string>
+
+    <!-- Button text -->
+    <string name="agregar_contacto">Agregar contacto</string>
+
+
+    <string name="nombre">Nombre</string>
+    <string name="phone">Teléfono</string>
+    <string name="sube_una_imagen">Sube una imagen</string>
+
+
+</resources>
