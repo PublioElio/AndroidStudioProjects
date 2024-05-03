@@ -32,5 +32,6 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Preferencias",
                     "Opción 3" + preferences.getString("opcion3", ""));
         });
+
     }
 }
