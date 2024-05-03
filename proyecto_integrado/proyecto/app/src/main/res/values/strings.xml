@@ -9,6 +9,7 @@
     <string name="date_label">Fecha:</string>
     <string name="time_label">Hora:</string>
     <string name="choose_date_hint">Seleccionar fecha</string>
+    <string name="choose_time_hint">Seleccionar hora</string>
 
     <!-- Form info text -->
     <string name="asterisk">Los campos marcados con un asterisco\nson opcionales</string>

@@ -32,7 +32,7 @@ public class DatePickerFragment extends DialogFragment {
         int day = c.get(Calendar.DAY_OF_MONTH);
         if (listener != null && getActivity() != null) {
             DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
-                    R.style.CustomDatePickerDialog, listener, year, month, day);
+                    listener, year, month, day);
             datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
             return datePickerDialog;
         } else {
