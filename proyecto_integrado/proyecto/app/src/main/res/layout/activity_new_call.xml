@@ -75,12 +75,17 @@
 
         <EditText
             android:id="@+id/datePickerNewCall"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/edit_text_rounded_borders01"
             android:clickable="true"
             android:focusable="false"
-            android:hint="Seleccionar fecha"
+            android:hint="@string/choose_date_hint"
             android:inputType="date"
+            android:padding="15dp"
+            android:textAlignment="center"
+            android:textColorHint="@color/hint_grey"
             android:maxLines="1" />
 
         <TextView
@@ -91,8 +96,7 @@
             android:text="@string/time_label"
             android:textSize="16sp"
             android:textStyle="bold" />
-
-
+        
         <TimePicker
             android:id="@+id/timePickerNewCall"
             android:layout_width="match_parent"

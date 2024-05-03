@@ -8,6 +8,7 @@
     <string name="call_name_label">Nombre de la llamada:</string>
     <string name="date_label">Fecha:</string>
     <string name="time_label">Hora:</string>
+    <string name="choose_date_hint">Seleccionar fecha</string>
 
     <!-- Form info text -->
     <string name="asterisk">Los campos marcados con un asterisco\nson opcionales</string>
@@ -58,6 +59,5 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-
 
 </resources>

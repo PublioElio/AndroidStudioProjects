@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.saved_by_the_call.R;
+
 import java.util.Calendar;
 
 public class DatePickerFragment extends DialogFragment {
@@ -29,8 +31,8 @@ public class DatePickerFragment extends DialogFragment {
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
         if (listener != null && getActivity() != null) {
-            DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), listener, year,
-                    month, day);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                    R.style.CustomDatePickerDialog, listener, year, month, day);
             datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
             return datePickerDialog;
         } else {
