@@ -38,8 +38,7 @@ public class NewCallActivity extends AppCompatActivity {
     }
 
     private String formatNumber(int num){
-        String formattedNumber = (num <= 9) ? "0" + num : String.valueOf(num);
-        return formattedNumber;
+        return (num <= 9) ? "0" + num : String.valueOf(num);
     }
 
     private String formatDate(int day, int month, int year) {
