@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--Changes border color when pressed-->
+    <item android:state_enabled="true" android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/pink" />
+            <stroke android:width="2dp" android:color="@color/red" />
+            <corners android:radius="15dp" />
+        </shape>
+    </item>
+
+    <!-- Default state -->
+    <item android:state_enabled="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <stroke android:width="2dp" android:color="@color/border_gray" />
+            <corners android:radius="15dp" />
+        </shape>
+    </item>
+
+</selector>
