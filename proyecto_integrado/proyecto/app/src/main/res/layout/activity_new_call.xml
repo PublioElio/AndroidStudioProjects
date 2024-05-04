@@ -33,13 +33,21 @@
             android:id="@+id/edTxtCallName"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:autofillHints="name"
             android:background="@drawable/edit_text_rounded01"
             android:hint="@string/name"
             android:inputType="text"
             android:padding="15dp"
             android:textColorHint="@color/hint_grey" />
+
+        <TextView
+            android:id="@+id/edTxCallNameWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/call_name_3_chars_long"
+            android:textColor="@color/red"
+            android:textSize="12sp"
+            android:visibility="invisible" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,7 +62,6 @@
             android:id="@+id/edTxtCallContactName"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:autofillHints="phone"
             android:background="@drawable/edit_text_rounded01"
             android:hint="@string/name"
@@ -63,6 +70,15 @@
             android:padding="15dp"
             android:textColorHint="@color/hint_grey"
             tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/edTxCallContactNameWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/invalid_call_contact_name"
+            android:textColor="@color/red"
+            android:textSize="12sp"
+            android:visibility="invisible" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -77,18 +93,26 @@
             android:id="@+id/datePickerNewCall"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:background="@drawable/edit_text_rounded_pressed01"
             android:clickable="true"
             android:focusable="false"
             android:hint="@string/choose_date_hint"
             android:importantForAutofill="no"
             android:inputType="date"
+            android:maxLines="1"
             android:padding="15dp"
             android:textAlignment="center"
             android:textColorHint="@color/hint_grey"
-            android:maxLines="1"
             tools:ignore="KeyboardInaccessibleWidget" />
+
+        <TextView
+            android:id="@+id/edTxCallDateWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/call_date_warning"
+            android:textColor="@color/red"
+            android:textSize="12sp"
+            android:visibility="invisible" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -103,17 +127,25 @@
             android:id="@+id/timePickerNewCall"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:background="@drawable/edit_text_rounded_pressed01"
             android:clickable="true"
             android:focusable="false"
             android:hint="@string/choose_time_hint"
             android:importantForAutofill="no"
             android:inputType="date"
+            android:maxLines="1"
             android:padding="15dp"
             android:textAlignment="center"
-            android:textColorHint="@color/hint_grey"
-            android:maxLines="1" />
+            android:textColorHint="@color/hint_grey" />
+
+        <TextView
+            android:id="@+id/edTxCallTimeWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/call_time_warning"
+            android:textColor="@color/red"
+            android:textSize="12sp"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnAddContact"
@@ -125,14 +157,13 @@
             android:textColor="@color/white" />
 
         <TextView
-            android:id="@+id/txtViewContactFormInfo"
+            android:id="@+id/txtViewCallFormInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingHorizontal="10dp"
             android:text="@string/all_fields_mandatory"
             android:textSize="12sp" />
-
     </LinearLayout>
 </RelativeLayout>
 

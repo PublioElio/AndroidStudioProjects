@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.saved_by_the_call.R;
 import com.example.saved_by_the_call.ui.form_elements.DatePickerFragment;
@@ -20,23 +23,91 @@ public class NewCallActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_new_call);
 
+        // Activity elements
+        final EditText callName = findViewById(R.id.edTxtCallName);
+        final EditText contactName = findViewById(R.id.edTxtCallContactName);
         final EditText datePickerNewCall = findViewById(R.id.datePickerNewCall);
         final EditText timePickerNewCall = findViewById(R.id.timePickerNewCall);
         final Button addCallButton = findViewById(R.id.btnAddContact);
-        final EditText
 
+        // launches DatePicker on a Dialog
         datePickerNewCall.setOnClickListener(view -> showDatePickerDialog(datePickerNewCall));
+
+        // launches TimePicker on a Dialog
         timePickerNewCall.setOnClickListener(view -> showTimePickerDialog(timePickerNewCall));
-        addCallButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkFields();
-                checkFieldName();
-                checkFieldContact();
-                checkFieldDate();
-                checkFieldTime();
-            }
+
+        addCallButton.setOnClickListener(view -> {
+            final TextView txtViewCallFormInfo = findViewById(R.id.txtViewCallFormInfo);
+            if (checkFields(callName, contactName, datePickerNewCall, timePickerNewCall)) {
+                Toast.makeText(getApplicationContext(), "Llamada creada correctamente",
+                        Toast.LENGTH_SHORT).show();
+                txtViewCallFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
+                        R.color.black));
+            } else
+                txtViewCallFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
+                        R.color.red));
         });
+    }
+
+    /**
+     * This method checks that all fields are correctly filled out, displaying/hiding error messages
+     * in the corresponding fields.
+     * @param callName
+     * @param contactName
+     * @param datePickerNewCall
+     * @param timePickerNewCall
+     * @return
+     */
+    private boolean checkFields(EditText callName, EditText contactName, EditText datePickerNewCall,
+                                EditText timePickerNewCall) {
+
+        TextView fieldCallNameWarning = findViewById(R.id.edTxCallNameWarning);
+        TextView fieldCallContactNameWarning = findViewById(R.id.edTxCallContactNameWarning);
+        TextView fieldCallDateWarning = findViewById(R.id.edTxCallDateWarning);
+        TextView fieldCallTimeWarning = findViewById(R.id.edTxCallTimeWarning);
+        boolean allFieldsCorrect = true;
+
+        if (!checkFieldName(callName)) {
+            fieldCallNameWarning.setVisibility(View.VISIBLE);
+            allFieldsCorrect = false;
+        } else {
+            fieldCallNameWarning.setVisibility(View.INVISIBLE);
+        }
+
+        if (!checkFieldContact(contactName)) {
+            fieldCallContactNameWarning.setVisibility(View.VISIBLE);
+            allFieldsCorrect = false;
+        } else {
+            fieldCallContactNameWarning.setVisibility(View.INVISIBLE);
+        }
+
+        if (!checkFieldDate(datePickerNewCall)) {
+            fieldCallDateWarning.setVisibility(View.VISIBLE);
+            allFieldsCorrect = false;
+        } else {
+            fieldCallDateWarning.setVisibility(View.INVISIBLE);
+        }
+
+        if (!checkFieldTime(timePickerNewCall)) {
+            fieldCallTimeWarning.setVisibility(View.VISIBLE);
+            allFieldsCorrect = false;
+        } else{
+            fieldCallTimeWarning.setVisibility(View.INVISIBLE);
+        }
+
+        return allFieldsCorrect;
+    }
+
+    private boolean checkFieldDate(EditText datePickerNewCall) {
+        return 
+    }
+
+    private boolean checkFieldContact(EditText contactName) {
+        return String.valueOf(contactName.getText()).length() >= 3;
+    }
+
+    private boolean checkFieldName(EditText callName) {
+        return String.valueOf(callName.getText()).length() >= 3;
     }
 
     private void showTimePickerDialog(EditText timePickerNewCall) {
@@ -51,7 +122,7 @@ public class NewCallActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    private String formatNumber(int num){
+    private String formatNumber(int num) {
         return (num <= 9) ? "0" + num : String.valueOf(num);
     }
 
