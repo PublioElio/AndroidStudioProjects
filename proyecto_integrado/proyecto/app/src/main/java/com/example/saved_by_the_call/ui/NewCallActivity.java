@@ -39,7 +39,7 @@ public class NewCallActivity extends AppCompatActivity {
         addCallButton.setOnClickListener(view -> {
             final TextView txtViewCallFormInfo = findViewById(R.id.txtViewCallFormInfo);
             if (checkFields(callName, contactName, datePickerNewCall, timePickerNewCall)) {
-                Toast.makeText(getApplicationContext(), "Llamada creada correctamente",
+                Toast.makeText(getApplicationContext(), R.string.call_created_confirmation_msg,
                         Toast.LENGTH_SHORT).show();
                 txtViewCallFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
                         R.color.black));
@@ -52,11 +52,11 @@ public class NewCallActivity extends AppCompatActivity {
     /**
      * This method checks that all fields are correctly filled out, displaying/hiding error messages
      * in the corresponding fields.
-     * @param callName
-     * @param contactName
-     * @param datePickerNewCall
-     * @param timePickerNewCall
-     * @return
+     * @param callName call name EditText field
+     * @param contactName contact name EditText field
+     * @param datePickerNewCall date EditText field
+     * @param timePickerNewCall time EditText field
+     * @return true if all fields are correct
      */
     private boolean checkFields(EditText callName, EditText contactName, EditText datePickerNewCall,
                                 EditText timePickerNewCall) {
@@ -102,6 +102,7 @@ public class NewCallActivity extends AppCompatActivity {
         return String.valueOf(callName.getText()).length() >= 3;
     }
 
+    // TODO: MODIFICAR ESTE MÉTODO PARA QUE COMPRUEBE LA BBDD BUSCANDO EL CONTACTO
     private boolean checkFieldContact(EditText contactName) {
         return String.valueOf(contactName.getText()).length() >= 3;
     }

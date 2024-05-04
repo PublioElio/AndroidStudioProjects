@@ -25,7 +25,7 @@ public class NewContactActivity extends AppCompatActivity {
                     Log.d("PhotoPicker", "Selected URI: " + uri);
                 } else {
                     Toast.makeText(NewContactActivity.this,
-                            "No ha seleccionado ninguna imagen",
+                            R.string.no_img_selected,
                             Toast.LENGTH_SHORT).show();
                 }
             });
