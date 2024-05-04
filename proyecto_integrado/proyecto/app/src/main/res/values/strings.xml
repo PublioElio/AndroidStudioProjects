@@ -14,6 +14,17 @@
     <!-- Form info text -->
     <string name="asterisk">Los campos marcados con un asterisco\nson opcionales</string>
 
+    <!-- Form warnings -->
+    <string name="all_fields_mandatory">Todos los campos son obligatorios</string>
+    <string name="call_name_min_char_warning">El nombre de la llamada debe tener al menos tres
+        caracteres</string>
+    <string name="contact_name_min_char_warning">El nombre del contacto debe tener al menos tres
+        caracteres</string>
+    <string name="invalid_call_contact_name_warning">No existe un contacto con ese nombre, debe
+        crear antes un contacto válido</string>
+    <string name="call_date_warning">Debe escoger una fecha</string>
+    <string name="call_time_warning">Debe escoger una hora</string>
+
     <!-- Button text -->
     <string name="add_contact">Agregar contacto</string>
     <string name="add_call">Agregar llamada</string>
@@ -60,10 +71,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="all_fields_mandatory">Todos los campos son obligatorios</string>
-    <string name="call_name_3_chars_long">El nombre de la llamada debe tener al menos tres caracteres</string>
-    <string name="invalid_call_contact_name">No existe un contacto con ese nombre, debe crear antes un contacto válido</string>
-    <string name="call_date_warning">Debe escoger una fecha</string>
-    <string name="call_time_warning">Debe escoger una hora</string>
+    <string name="contact_phone_min_num_warning">El teléfono del contacto ha de tener un mínimo de tres cifras</string>
+
 
 </resources>

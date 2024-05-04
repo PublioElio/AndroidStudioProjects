@@ -44,7 +44,7 @@
             android:id="@+id/edTxCallNameWarning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/call_name_3_chars_long"
+            android:text="@string/call_name_min_char_warning"
             android:textColor="@color/red"
             android:textSize="12sp"
             android:visibility="invisible" />
@@ -66,7 +66,7 @@
             android:background="@drawable/edit_text_rounded01"
             android:hint="@string/name"
             android:importantForAutofill="no"
-            android:inputType="phone"
+            android:inputType="text"
             android:padding="15dp"
             android:textColorHint="@color/hint_grey"
             tools:ignore="TouchTargetSizeCheck" />
@@ -75,7 +75,7 @@
             android:id="@+id/edTxCallContactNameWarning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/invalid_call_contact_name"
+            android:text="@string/invalid_call_contact_name_warning"
             android:textColor="@color/red"
             android:textSize="12sp"
             android:visibility="invisible" />

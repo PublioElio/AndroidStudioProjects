@@ -98,16 +98,20 @@ public class NewCallActivity extends AppCompatActivity {
         return allFieldsCorrect;
     }
 
-    private boolean checkFieldDate(EditText datePickerNewCall) {
-        return 
+    private boolean checkFieldName(EditText callName) {
+        return String.valueOf(callName.getText()).length() >= 3;
     }
 
     private boolean checkFieldContact(EditText contactName) {
         return String.valueOf(contactName.getText()).length() >= 3;
     }
 
-    private boolean checkFieldName(EditText callName) {
-        return String.valueOf(callName.getText()).length() >= 3;
+    private boolean checkFieldDate(EditText datePickerNewCall) {
+        return String.valueOf(datePickerNewCall.getText()).matches("\\d{2}/\\d{2}/\\d{4}");
+    }
+
+    private boolean checkFieldTime(EditText timePickerNewCall) {
+        return String.valueOf(timePickerNewCall.getText()).matches("\\d{2}:\\d{2}");
     }
 
     private void showTimePickerDialog(EditText timePickerNewCall) {

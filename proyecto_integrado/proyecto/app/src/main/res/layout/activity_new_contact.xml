@@ -33,13 +33,21 @@
             android:id="@+id/edTxtContactName"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:autofillHints="name"
             android:hint="@string/name"
             android:inputType="text"
             android:textColorHint="@color/hint_grey"
             android:background="@drawable/edit_text_rounded01"
             android:padding="15dp"/>
+
+        <TextView
+            android:id="@+id/edTxNewContactNameWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_name_min_char_warning"
+            android:textColor="@color/red"
+            android:textSize="12sp"
+            android:visibility="invisible" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,7 +62,6 @@
             android:id="@+id/edTxtContactPhone"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:autofillHints="phone"
             android:hint="@string/phone"
             android:importantForAutofill="no"
@@ -63,6 +70,15 @@
             tools:ignore="TouchTargetSizeCheck"
             android:background="@drawable/edit_text_rounded01"
             android:padding="15dp"/>
+
+        <TextView
+            android:id="@+id/edTxNewContactPhoneWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_phone_min_num_warning"
+            android:textColor="@color/red"
+            android:textSize="12sp"
+            android:visibility="invisible" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -78,11 +94,14 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
+            android:clickable="true"
+            android:focusable="false"
             android:hint="@string/upload_img"
+            android:maxLines="1"
             android:importantForAutofill="no"
-            android:inputType="number"
             android:textColorHint="@color/hint_grey"
-            android:background="@drawable/edit_text_rounded01"
+            android:background="@drawable/edit_text_rounded_pressed01"
+            android:textAlignment="center"
             android:padding="15dp" />
 
         <Button
