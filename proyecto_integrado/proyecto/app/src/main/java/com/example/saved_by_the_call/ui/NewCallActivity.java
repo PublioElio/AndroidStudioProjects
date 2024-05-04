@@ -1,6 +1,8 @@
 package com.example.saved_by_the_call.ui;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
@@ -20,9 +22,21 @@ public class NewCallActivity extends AppCompatActivity {
 
         final EditText datePickerNewCall = findViewById(R.id.datePickerNewCall);
         final EditText timePickerNewCall = findViewById(R.id.timePickerNewCall);
+        final Button addCallButton = findViewById(R.id.btnAddContact);
+        final EditText
 
         datePickerNewCall.setOnClickListener(view -> showDatePickerDialog(datePickerNewCall));
         timePickerNewCall.setOnClickListener(view -> showTimePickerDialog(timePickerNewCall));
+        addCallButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkFields();
+                checkFieldName();
+                checkFieldContact();
+                checkFieldDate();
+                checkFieldTime();
+            }
+        });
     }
 
     private void showTimePickerDialog(EditText timePickerNewCall) {

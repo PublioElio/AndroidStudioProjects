@@ -3,7 +3,7 @@
     <color name="black">#5C5C5C</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FFFF0000</color>
-    <color name="hint_grey">#FF5C5C5C</color>
+    <color name="hint_grey">#595959</color>
 
     <!-- Design color palette -->
     <color name="pink">#e10086</color>
