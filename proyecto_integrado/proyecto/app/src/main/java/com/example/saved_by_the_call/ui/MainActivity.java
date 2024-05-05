@@ -20,9 +20,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
         final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
         setSupportActionBar(toolbar);
     }
+    /**
+     * This method creates the top menu.
+     *
+     * @param menu menu
+     * @return true if the menu is created
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -30,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * This method handles the top menu options.
+     *
+     * @param item selected item
+     * @return true if the option is handled
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return TopMenu.onOptionsItemSelected(this, item) ||

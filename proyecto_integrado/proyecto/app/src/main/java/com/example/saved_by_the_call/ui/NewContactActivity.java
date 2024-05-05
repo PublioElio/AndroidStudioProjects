@@ -4,6 +4,9 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,11 +17,14 @@ import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.saved_by_the_call.R;
+import com.example.saved_by_the_call.ui.top_menu.TopMenu;
 
 public class NewContactActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_READ_EXTERNAL_STORAGE = 1;
@@ -35,6 +41,9 @@ public class NewContactActivity extends AppCompatActivity {
         final EditText contactPhone = findViewById(R.id.edTxtContactPhone);
         final TextView addContactImg = findViewById(R.id.edTxtContactImg);
         final Button btnAddContact = findViewById(R.id.btnAddNewContact);
+
+        final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
+        setSupportActionBar(toolbar);
 
         // Image picker
         pickMedia = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(),
@@ -169,4 +178,28 @@ public class NewContactActivity extends AppCompatActivity {
         return s.chars().allMatch(Character::isDigit);
     }
 
+    /**
+     * This method creates the top menu.
+     *
+     * @param menu menu
+     * @return true if the menu is created
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        TopMenu.inflateMenu(inflater, menu, R.menu.top_menu);
+        return true;
+    }
+
+    /**
+     * This method handles the top menu options.
+     *
+     * @param item selected item
+     * @return true if the option is handled
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return TopMenu.onOptionsItemSelected(this, item) ||
+                super.onOptionsItemSelected(item);
+    }
 }

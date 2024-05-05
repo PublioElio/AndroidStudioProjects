@@ -1,6 +1,9 @@
 package com.example.saved_by_the_call.ui;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -8,12 +11,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.example.saved_by_the_call.R;
 import com.example.saved_by_the_call.ui.form_elements.DatePickerFragment;
 import com.example.saved_by_the_call.ui.form_elements.TimePickerFragment;
+import com.example.saved_by_the_call.ui.top_menu.TopMenu;
 
 public class NewCallActivity extends AppCompatActivity {
 
@@ -29,6 +35,9 @@ public class NewCallActivity extends AppCompatActivity {
         final EditText datePickerNewCall = findViewById(R.id.datePickerNewCall);
         final EditText timePickerNewCall = findViewById(R.id.timePickerNewCall);
         final Button btnAddNewCall = findViewById(R.id.btnAddNewCall);
+
+        final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
+        setSupportActionBar(toolbar);
 
         // launches DatePicker on a Dialog
         datePickerNewCall.setOnClickListener(view -> showDatePickerDialog(datePickerNewCall));
@@ -212,5 +221,30 @@ public class NewCallActivity extends AppCompatActivity {
      */
     private String formatTime(int hour, int min) {
         return formatNumber(hour) + ":" + formatNumber(min);
+    }
+
+    /**
+     * This method creates the top menu.
+     *
+     * @param menu menu
+     * @return true if the menu is created
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        TopMenu.inflateMenu(inflater, menu, R.menu.top_menu);
+        return true;
+    }
+
+    /**
+     * This method handles the top menu options.
+     *
+     * @param item selected item
+     * @return true if the option is handled
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return TopMenu.onOptionsItemSelected(this, item) ||
+                super.onOptionsItemSelected(item);
     }
 }
