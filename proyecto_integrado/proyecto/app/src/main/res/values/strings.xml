@@ -2,50 +2,58 @@
     <string name="app_name">saved_by_the_call</string>
 
     <!-- Form labels -->
-    <string name="contact_label">Contacto:</string>
-    <string name="phone_label">Teléfono:</string>
-    <string name="img_label">* Imagen:</string>
-    <string name="call_name_label">Nombre de la llamada:</string>
-    <string name="date_label">Fecha:</string>
-    <string name="time_label">Hora:</string>
-    <string name="choose_date_hint">Seleccionar fecha</string>
-    <string name="choose_time_hint">Seleccionar hora</string>
-    <string name="contact_added_img_hint">¡Imagen añadida!</string>
+    <string name="label_phone_colon">Teléfono:</string>
+    <string name="label_img_colon">* Imagen:</string>
+    <string name="label_call_name">Nombre de la llamada:</string>
+    <string name="label_date">Fecha:</string>
+    <string name="label_time">Hora:</string>
 
     <!-- Form info text -->
     <string name="asterisk">Los campos marcados con un asterisco son opcionales</string>
 
     <!-- Form warnings -->
-    <string name="all_fields_mandatory">Todos los campos son obligatorios</string>
-    <string name="call_name_min_char_warning">El nombre de la llamada debe tener al menos tres
+    <string name="warning_all_fields_mandatory">Todos los campos son obligatorios</string>
+    <string name="warning_call_name_min_char">El nombre de la llamada debe tener al menos tres
         caracteres</string>
-    <string name="contact_name_min_char_warning">El nombre del contacto debe tener al menos tres
+    <string name="warning_contact_name_min_char">El nombre del contacto debe tener al menos tres
         caracteres</string>
-    <string name="invalid_call_contact_name_warning">No existe un contacto con ese nombre, debe
+    <string name="warning_invalid_call_contact_name">No existe un contacto con ese nombre, debe
         crear antes un contacto válido</string>
-    <string name="call_date_warning">Debe escoger una fecha</string>
-    <string name="call_time_warning">Debe escoger una hora</string>
-    <string name="contact_phone_min_num_warning">El teléfono del contacto ha de tener un mínimo de
+    <string name="warning_call_date">Debe escoger una fecha</string>
+    <string name="warning_call_time">Debe escoger una hora</string>
+    <string name="warning_contact_phone_min_num">El teléfono del contacto ha de tener un mínimo de
         tres cifras</string>
-    <string name="new_contact_incorrect_fields_warning">Debe cumplimentar correctamente todos los
+    <string name="warning_new_contact_incorrect_fields">Debe cumplimentar correctamente todos los
         campos obligatorios</string>
 
-    <!-- Button text -->
-    <string name="add_contact">Agregar contacto</string>
-    <string name="add_call">Agregar llamada</string>
-    <string name="next">Siguiente</string>
-    <string name="previous">Previo</string>
+    <!-- Buttons text -->
+    <string name="btn_add_contact">Agregar contacto</string>
+    <string name="btn_add_call">Agregar llamada</string>
+    <string name="btn_next">Siguiente</string>
+    <string name="btn_previous">Previo</string>
 
     <!-- Toast text -->
-    <string name="no_img_selected">No ha seleccionado ninguna imagen</string>
-    <string name="call_created_confirmation_msg">Llamada creada correctamente</string>
-    <string name="contact_created_confirmation_msg">Nuevo contacto creado correctamente</string>
+    <string name="toast_no_img_selected">No ha seleccionado ninguna imagen</string>
+    <string name="toast_call_created_confirmation">Llamada creada correctamente</string>
+    <string name="toast_contact_created_confirmation">Nuevo contacto creado correctamente</string>
 
+    <!-- Edit text hints -->
     <string name="name">Nombre</string>
     <string name="phone">Teléfono</string>
-    <string name="upload_img_hint">Sube una imagen</string>
+    <string name="hint_upload_img">Sube una imagen</string>
+    <string name="hint_choose_date">Seleccionar fecha</string>
+    <string name="hint_choose_time">Seleccionar hora</string>
+    <string name="hint_contact_added_img">¡Imagen añadida!</string>
 
-    <string name="lorem_ipsum">
+    <!-- Top menú options -->
+    <string name="top_menu_contacts">Contactos</string>
+    <string name="top_menu_calls">Llamadas</string>
+    <string name="top_menu_list_edit_contacts">Ver/editar contactos</string>
+    <string name="top_menu_new_contact">Nuevo contacto</string>
+    <string name="top_menu_list_edit_calls">Ver/editar llamadas</string>
+    <string name="top_menu_new_call">Nueva llamada</string>
+
+    <string name="lorem_ipsum" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
         dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
@@ -81,7 +89,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-
+    <string name="contact_label">Contacto</string>
 
 
 </resources>

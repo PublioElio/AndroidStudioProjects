@@ -5,6 +5,5 @@
         <item name="colorPrimary">@color/pink</item>
         <item name="colorAccent">@color/pink</item>
     </style>
-
     <style name="Theme.Saved_by_the_call" parent="Base.Theme.Saved_by_the_call" />
 </resources>

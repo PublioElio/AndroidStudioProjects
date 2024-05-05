@@ -41,7 +41,7 @@ public class NewCallActivity extends AppCompatActivity {
             final TextView txtViewCallFormInfo = findViewById(R.id.txtViewCallFormInfo);
             if (checkFields(callName, contactName, datePickerNewCall, timePickerNewCall)) {
                 // TODO: CREAR LA LLAMADA EN LA BBDD
-                Toast.makeText(getApplicationContext(), R.string.call_created_confirmation_msg,
+                Toast.makeText(getApplicationContext(), R.string.toast_call_created_confirmation,
                         Toast.LENGTH_SHORT).show();
                 txtViewCallFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
                         R.color.black));
@@ -64,8 +64,8 @@ public class NewCallActivity extends AppCompatActivity {
                              EditText timePickerNewCall) {
         callName.setText(R.string.name);
         contactName.setText(R.string.name);
-        datePickerNewCall.setText(R.string.choose_date_hint);
-        timePickerNewCall.setText(R.string.choose_time_hint);
+        datePickerNewCall.setText(R.string.hint_choose_date);
+        timePickerNewCall.setText(R.string.hint_choose_time);
     }
 
     /**

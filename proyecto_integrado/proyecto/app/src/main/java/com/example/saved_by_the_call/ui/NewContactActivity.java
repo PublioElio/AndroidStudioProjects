@@ -41,10 +41,10 @@ public class NewContactActivity extends AppCompatActivity {
                 uri -> {
                     if (uri != null) {
                         Log.d("PhotoPicker", "Selected URI: " + uri);
-                        addContactImg.setText(R.string.contact_added_img_hint);
+                        addContactImg.setText(R.string.hint_contact_added_img);
                     } else {
                         Toast.makeText(NewContactActivity.this,
-                                R.string.no_img_selected,
+                                R.string.toast_no_img_selected,
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -68,7 +68,7 @@ public class NewContactActivity extends AppCompatActivity {
             if (checkFields(contactName, contactPhone)) {
                 // TODO: CREAR LA CONTACTO EN LA BBDD
                 Toast.makeText(getApplicationContext(),
-                        R.string.contact_created_confirmation_msg, Toast.LENGTH_SHORT).show();
+                        R.string.toast_contact_created_confirmation, Toast.LENGTH_SHORT).show();
                 txtViewContactFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
                         R.color.black));
                 txtViewContactFormInfo.setText(R.string.asterisk);
@@ -76,7 +76,7 @@ public class NewContactActivity extends AppCompatActivity {
             } else {
                 txtViewContactFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
                         R.color.red));
-                txtViewContactFormInfo.setText(R.string.new_contact_incorrect_fields_warning);
+                txtViewContactFormInfo.setText(R.string.warning_new_contact_incorrect_fields);
             }
         });
 
@@ -92,7 +92,7 @@ public class NewContactActivity extends AppCompatActivity {
     private void resetFields(EditText contactName, EditText contactPhone, TextView addContactImg) {
         contactName.setText(R.string.name);
         contactPhone.setText(R.string.phone);
-        addContactImg.setText(R.string.upload_img_hint);
+        addContactImg.setText(R.string.hint_upload_img);
     }
 
     /**

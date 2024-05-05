@@ -44,7 +44,7 @@
             android:id="@+id/edTxtNewContactNameWarning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/contact_name_min_char_warning"
+            android:text="@string/warning_contact_name_min_char"
             android:textColor="@color/red"
             android:textSize="12sp"
             android:visibility="invisible" />
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:text="@string/phone_label"
+            android:text="@string/label_phone_colon"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginBottom="5dp"/>
@@ -75,7 +75,7 @@
             android:id="@+id/edTxtNewContactPhoneWarning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/contact_phone_min_num_warning"
+            android:text="@string/warning_contact_phone_min_num"
             android:textColor="@color/red"
             android:textSize="12sp"
             android:visibility="invisible" />
@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:text="@string/img_label"
+            android:text="@string/label_img_colon"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginBottom="5dp"/>
@@ -96,7 +96,7 @@
             android:layout_marginBottom="15dp"
             android:clickable="true"
             android:focusable="false"
-            android:hint="@string/upload_img_hint"
+            android:hint="@string/hint_upload_img"
             android:inputType="text"
             android:maxLines="1"
             android:importantForAutofill="no"
@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/pink"
-            android:text="@string/add_contact"
+            android:text="@string/btn_add_contact"
             android:textColor="@color/white" />
 
         <TextView
