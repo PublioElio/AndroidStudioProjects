@@ -90,8 +90,8 @@ public class NewContactActivity extends AppCompatActivity {
      * @param addContactImg contact image TextView field
      */
     private void resetFields(EditText contactName, EditText contactPhone, TextView addContactImg) {
-        contactName.setText(R.string.name);
-        contactPhone.setText(R.string.phone);
+        contactName.setText("");
+        contactPhone.setText("");
         addContactImg.setText(R.string.hint_upload_img);
     }
 

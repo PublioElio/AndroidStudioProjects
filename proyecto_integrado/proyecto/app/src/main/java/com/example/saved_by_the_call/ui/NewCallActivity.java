@@ -62,8 +62,8 @@ public class NewCallActivity extends AppCompatActivity {
      */
     private void resetFields(EditText callName, EditText contactName, EditText datePickerNewCall,
                              EditText timePickerNewCall) {
-        callName.setText(R.string.name);
-        contactName.setText(R.string.name);
+        callName.setText("");
+        contactName.setText("");
         datePickerNewCall.setText(R.string.hint_choose_date);
         timePickerNewCall.setText(R.string.hint_choose_time);
     }
