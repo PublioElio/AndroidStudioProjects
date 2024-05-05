@@ -10,9 +10,10 @@
     <string name="time_label">Hora:</string>
     <string name="choose_date_hint">Seleccionar fecha</string>
     <string name="choose_time_hint">Seleccionar hora</string>
+    <string name="contact_added_img_hint">¡Imagen añadida!</string>
 
     <!-- Form info text -->
-    <string name="asterisk">Los campos marcados con un asterisco\nson opcionales</string>
+    <string name="asterisk">Los campos marcados con un asterisco son opcionales</string>
 
     <!-- Form warnings -->
     <string name="all_fields_mandatory">Todos los campos son obligatorios</string>
@@ -24,6 +25,10 @@
         crear antes un contacto válido</string>
     <string name="call_date_warning">Debe escoger una fecha</string>
     <string name="call_time_warning">Debe escoger una hora</string>
+    <string name="contact_phone_min_num_warning">El teléfono del contacto ha de tener un mínimo de
+        tres cifras</string>
+    <string name="new_contact_incorrect_fields_warning">Debe cumplimentar correctamente todos los
+        campos obligatorios</string>
 
     <!-- Button text -->
     <string name="add_contact">Agregar contacto</string>
@@ -38,7 +43,7 @@
 
     <string name="name">Nombre</string>
     <string name="phone">Teléfono</string>
-    <string name="upload_img">Sube una imagen</string>
+    <string name="upload_img_hint">Sube una imagen</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -76,7 +81,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="contact_phone_min_num_warning">El teléfono del contacto ha de tener un mínimo de tres cifras</string>
+
 
 
 </resources>

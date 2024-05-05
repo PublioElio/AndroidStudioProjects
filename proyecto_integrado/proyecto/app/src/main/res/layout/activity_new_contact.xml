@@ -41,7 +41,7 @@
             android:padding="15dp"/>
 
         <TextView
-            android:id="@+id/edTxNewContactNameWarning"
+            android:id="@+id/edTxtNewContactNameWarning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/contact_name_min_char_warning"
@@ -72,7 +72,7 @@
             android:padding="15dp"/>
 
         <TextView
-            android:id="@+id/edTxNewContactPhoneWarning"
+            android:id="@+id/edTxtNewContactPhoneWarning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/contact_phone_min_num_warning"
@@ -96,7 +96,8 @@
             android:layout_marginBottom="15dp"
             android:clickable="true"
             android:focusable="false"
-            android:hint="@string/upload_img"
+            android:hint="@string/upload_img_hint"
+            android:inputType="text"
             android:maxLines="1"
             android:importantForAutofill="no"
             android:textColorHint="@color/hint_grey"
@@ -105,7 +106,7 @@
             android:padding="15dp" />
 
         <Button
-            android:id="@+id/btnAddContact"
+            android:id="@+id/btnAddNewContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -115,7 +116,7 @@
 
         <TextView
             android:id="@+id/txtViewContactFormInfo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
             android:text="@string/asterisk"

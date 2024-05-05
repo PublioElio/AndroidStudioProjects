@@ -41,7 +41,7 @@
             android:textColorHint="@color/hint_grey" />
 
         <TextView
-            android:id="@+id/edTxCallNameWarning"
+            android:id="@+id/edTxtCallNameWarning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/call_name_min_char_warning"
@@ -72,7 +72,7 @@
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
-            android:id="@+id/edTxCallContactNameWarning"
+            android:id="@+id/edTxtCallContactNameWarning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/invalid_call_contact_name_warning"
@@ -106,7 +106,7 @@
             tools:ignore="KeyboardInaccessibleWidget" />
 
         <TextView
-            android:id="@+id/edTxCallDateWarning"
+            android:id="@+id/edTxtCallDateWarning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/call_date_warning"
@@ -139,7 +139,7 @@
             android:textColorHint="@color/hint_grey" />
 
         <TextView
-            android:id="@+id/edTxCallTimeWarning"
+            android:id="@+id/edTxtCallTimeWarning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/call_time_warning"
@@ -148,7 +148,7 @@
             android:visibility="invisible" />
 
         <Button
-            android:id="@+id/btnAddContact"
+            android:id="@+id/btnAddNewCall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
