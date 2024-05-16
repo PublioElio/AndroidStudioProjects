@@ -9,7 +9,7 @@ public class FakeCallsDB extends SQLiteOpenHelper {
             "CREATE TABLE contacts(_id_contact INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "name TEXT, " +
                     "phone TEXT, " +
-                    "img INTEGER)";
+                    "img BLOB)";
     String sqlCreateCalls =
             "CREATE TABLE calls(_id_call INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "name TEXT, " +
