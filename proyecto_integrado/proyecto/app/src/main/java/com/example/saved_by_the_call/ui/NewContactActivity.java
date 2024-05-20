@@ -2,6 +2,7 @@ package com.example.saved_by_the_call.ui;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -76,6 +77,9 @@ public class NewContactActivity extends AppCompatActivity {
             final TextView txtViewContactFormInfo = findViewById(R.id.txtViewContactFormInfo);
             if (checkFields(contactName, contactPhone)) {
                 // TODO: CREAR LA CONTACTO EN LA BBDD
+                if(createNewContact()){
+
+                }
                 Toast.makeText(getApplicationContext(),
                         R.string.toast_contact_created_confirmation, Toast.LENGTH_SHORT).show();
                 txtViewContactFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
@@ -89,6 +93,12 @@ public class NewContactActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private boolean createNewContact() {
+        boolean contactCreated = false;
+
+        return contactCreated;
     }
 
     /**

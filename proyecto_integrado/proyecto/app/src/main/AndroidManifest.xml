@@ -25,9 +25,13 @@
         </activity>
         <activity
             android:name=".ui.NewContactActivity"
-            android:exported="true"></activity>
+            android:exported="true"/>
         <activity
             android:name=".ui.NewCallActivity"
-            android:exported="true"></activity>
+            android:exported="true"/>
+        <provider
+            android:name=".cp.FakeCallsProvider"
+            android:authorities="com.example.saved_by_the_call.cp"
+            android:exported="false" />
     </application>
 </manifest>
