@@ -1,8 +1,11 @@
 package com.example.saved_by_the_call.ui;
 
 import android.Manifest;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.pm.PackageManager;
-import android.database.sqlite.SQLiteDatabase;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -25,6 +28,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.saved_by_the_call.R;
+import com.example.saved_by_the_call.cp.FakeCallsProvider;
 import com.example.saved_by_the_call.ui.top_menu.TopMenu;
 
 public class NewContactActivity extends AppCompatActivity {
@@ -76,16 +80,15 @@ public class NewContactActivity extends AppCompatActivity {
         btnAddContact.setOnClickListener(view -> {
             final TextView txtViewContactFormInfo = findViewById(R.id.txtViewContactFormInfo);
             if (checkFields(contactName, contactPhone)) {
-                // TODO: CREAR LA CONTACTO EN LA BBDD
-                if(createNewContact()){
-
+                // TODO: CREAR LA CONTACTO EN LA BBDD CON IMAGEN
+                if (createNewContact(contactName.getText().toString(), contactPhone.getText().toString())) {
+                    Toast.makeText(getApplicationContext(),
+                            R.string.toast_contact_created_confirmation, Toast.LENGTH_SHORT).show();
+                    txtViewContactFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
+                            R.color.black));
+                    txtViewContactFormInfo.setText(R.string.asterisk);
+                    resetFields(contactName, contactPhone, addContactImg);
                 }
-                Toast.makeText(getApplicationContext(),
-                        R.string.toast_contact_created_confirmation, Toast.LENGTH_SHORT).show();
-                txtViewContactFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
-                        R.color.black));
-                txtViewContactFormInfo.setText(R.string.asterisk);
-                resetFields(contactName, contactPhone, addContactImg);
             } else {
                 txtViewContactFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
                         R.color.red));
@@ -95,8 +98,27 @@ public class NewContactActivity extends AppCompatActivity {
 
     }
 
-    private boolean createNewContact() {
+    // TODO: MODIFICAR EL MÉTODO PARA QUE TAMBIÉN SE PUEDA AÑADIR UNA IMAGEN
+    /**
+     * This method creates a new contact in the database.
+     *
+     * @param name  contact name
+     * @param phone contact phone
+     * @return true if the contact is created
+     */
+    private boolean createNewContact(String name, String phone) {
         boolean contactCreated = false;
+
+        ContentValues values = new ContentValues();
+        values.put(FakeCallsProvider.Contacts.COL_NAME, name);
+        values.put(FakeCallsProvider.Contacts.COL_PHONE, phone);
+        //values.put(FakeCallsProvider.Contacts.COL_IMG, img);
+
+        ContentResolver cr = getContentResolver();
+        Uri newContactUri = cr.insert(FakeCallsProvider.CONTENT_URI_CONTACTS, values);
+        if (newContactUri != null) {
+            contactCreated = true;
+        }
 
         return contactCreated;
     }
@@ -104,8 +126,8 @@ public class NewContactActivity extends AppCompatActivity {
     /**
      * This method resets the fields to their default values.
      *
-     * @param contactName  contact name EditText field
-     * @param contactPhone contact phone EditText field
+     * @param contactName   contact name EditText field
+     * @param contactPhone  contact phone EditText field
      * @param addContactImg contact image TextView field
      */
     private void resetFields(EditText contactName, EditText contactPhone, TextView addContactImg) {
@@ -156,14 +178,42 @@ public class NewContactActivity extends AppCompatActivity {
         return allFieldsCorrect;
     }
 
-
+    /**
+     * This method checks that the name is at least 3 characters long, not empty and
+     * not repeated in the database.
+     *
+     * @param contactName name EditText field
+     * @return true if the field is correct
+     */
     private boolean checkFieldName(EditText contactName) {
-        boolean correctName = !contactName.getText().toString().isEmpty() &&
+        String name = contactName.getText().toString();
+        boolean correctName = !name.isEmpty() &&
                 contactName.getText().toString().length() >= 3;
         if (correctName) {
-            // TODO: AQUÍ SE DEBERÍA COMPROBAR QUE EL CONTACTO EXISTE EN LA BBDD
+            correctName = checkRepeatedName(name);
         }
         return correctName;
+    }
+
+    /**
+     * This method checks if the name is already in the database.
+     *
+     * @param name name to check
+     * @return true if the name is not repeated
+     */
+    private boolean checkRepeatedName(String name) {
+        boolean validName = false;
+        ContentResolver cr = getContentResolver();
+        String[] projection = {FakeCallsProvider.Contacts.COL_NAME};
+        String selection = FakeCallsProvider.Contacts.COL_NAME + " = ?";
+        String[] selectionArgs = {name};
+        Cursor cursor = cr.query(FakeCallsProvider.CONTENT_URI_CONTACTS, projection, selection,
+                selectionArgs,null);
+        if (cursor != null) {
+            validName = cursor.getCount() == 0;
+            cursor.close();
+        }
+        return validName;
     }
 
     /**

@@ -7,6 +7,7 @@
     <string name="label_call_name">Nombre de la llamada:</string>
     <string name="label_date">Fecha:</string>
     <string name="label_time">Hora:</string>
+    <string name="label_contact">Contacto:</string>
 
     <!-- Form info text -->
     <string name="asterisk">Los campos marcados con un asterisco son opcionales</string>
@@ -16,7 +17,7 @@
     <string name="warning_call_name_min_char">El nombre de la llamada debe tener al menos tres
         caracteres</string>
     <string name="warning_contact_name_min_char">El nombre del contacto debe tener al menos tres
-        caracteres</string>
+        caracteres y no puede estar repetido</string>
     <string name="warning_invalid_call_contact_name">No existe un contacto con ese nombre, debe
         crear antes un contacto válido</string>
     <string name="warning_call_date">Debe escoger una fecha</string>
@@ -89,7 +90,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="contact_label">Contacto</string>
+
 
 
 </resources>
