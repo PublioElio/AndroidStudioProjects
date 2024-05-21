@@ -6,4 +6,11 @@
         <item name="colorAccent">@color/pink</item>
     </style>
     <style name="Theme.Saved_by_the_call" parent="Base.Theme.Saved_by_the_call" />
+    <style name="Theme.Saved_by_the_call.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Saved_by_the_call.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Saved_by_the_call.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -20,6 +20,8 @@ public class TopMenu {
         Intent intent;
 
         if (id == R.id.topSubMenuOptionB1) {
+            intent = new Intent(activity, com.example.saved_by_the_call.ui.ContactList.class);
+            activity.startActivity(intent);
             result = true;
         }
         if (id == R.id.topSubMenuOptionB2) {

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/ToolbarContactList"
+        layout="@layout/toolbar_top_menu" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pattern1" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutTopLine"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/purple"
+        android:layout_below="@id/ToolbarContactList"
+        android:orientation="horizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LinearLayoutTopLine"
+        android:background="@color/pink"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="10dp"
+            android:text="Buscar contacto:"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edTxtCallName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:padding="15dp"
+            android:autofillHints="name"
+            android:background="@drawable/edit_text_rounded02"
+            android:hint="@string/name"
+            android:inputType="text"
+            android:textColorHint="@color/hint_grey" />
+
+        <Button
+            android:id="@+id/btnSearchContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/purple"
+            android:text="Buscar"
+            android:textColor="@color/white"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="25dp" />
+
+        <TextView
+            android:id="@+id/edTxtCallNameWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No existe ningún contacto con ese nombre."
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:textStyle="italic"
+            android:visibility="invisible" />
+
+
+    </LinearLayout>
+</RelativeLayout>
+
