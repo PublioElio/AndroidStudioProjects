@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
         setSupportActionBar(toolbar);
     }
+
     /**
      * This method creates the top menu.
      *
