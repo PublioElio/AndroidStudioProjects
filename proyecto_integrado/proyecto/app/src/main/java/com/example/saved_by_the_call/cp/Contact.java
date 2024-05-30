@@ -4,21 +4,21 @@ public class Contact {
     private long id;
     private String name;
     private String phone;
-    private String picture;
+    private String img;
 
-    public Contact(long id, String name, String phone, String picture){
+    public Contact(long id, String name, String phone, String img){
         this.id = id;
         this.name = name;
         this.phone = phone;
-        this.picture = picture;
+        this.img = img;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getImg() {
+        return img;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public long getId() {

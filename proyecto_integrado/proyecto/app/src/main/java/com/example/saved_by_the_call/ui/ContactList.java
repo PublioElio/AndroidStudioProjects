@@ -1,5 +1,7 @@
 package com.example.saved_by_the_call.ui;
 
+import android.content.ContentResolver;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,12 +16,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.saved_by_the_call.R;
 import com.example.saved_by_the_call.cp.Contact;
+import com.example.saved_by_the_call.cp.FakeCallsProvider;
 import com.example.saved_by_the_call.ui.adapters.ContactsAdapter;
 import com.example.saved_by_the_call.ui.top_menu.TopMenu;
 
 import java.util.ArrayList;
 
 public class ContactList extends AppCompatActivity {
+
+    private ListView listViewContactList;
+    private ContactsAdapter contactsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,31 +35,62 @@ public class ContactList extends AppCompatActivity {
 
         final Button btnSearchContact = findViewById(R.id.btnSearchContact);
         final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
+        listViewContactList= findViewById(R.id.listViewContactList);
         setSupportActionBar(toolbar);
 
-        final ListView listViewContactList = findViewById(R.id.listViewContactList);
-        ArrayList<Contact> contactData = new ArrayList<>();
-        enterData(contactData);
-
-        final ContactsAdapter contactsAdapter = new ContactsAdapter(this, contactData);
+        contactsAdapter = new ContactsAdapter(this, new ArrayList<>());
         listViewContactList.setAdapter(contactsAdapter);
+
 
         btnSearchContact.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(android.view.View view) {
+                ArrayList<Contact> contacts = enterData();
 
-            enterData(contactData);
+                // Actualizar los datos del adaptador y notificarle del cambio
+                contactsAdapter.clear();
+                contactsAdapter.addAll(contacts);
+                contactsAdapter.notifyDataSetChanged();
 
             }
         });
 
     }
 
-    private static void enterData(ArrayList<Contact> contactData) {
-        contactData.add(new Contact(1,"John Doe", "123456789", "test"));
-        contactData.add(new Contact(2, "Jane Doe", "987654321", "test"));
+    private ArrayList enterData() {
+        ArrayList<Contact> contactList = new ArrayList<>();
+        ContentResolver contentResolver = getContentResolver();
+        Cursor cursor = contentResolver.query(
+                FakeCallsProvider.CONTENT_URI_CONTACTS,
+                null,
+                null,
+                null,
+                null
+        );
+
+        if (cursor != null) {
+            int idIndex = cursor.getColumnIndex(FakeCallsProvider.Contacts.COL_ID);
+            int nameIndex = cursor.getColumnIndex(FakeCallsProvider.Contacts.COL_NAME);
+            int phoneIndex = cursor.getColumnIndex(FakeCallsProvider.Contacts.COL_PHONE);
+            int imgIndex = cursor.getColumnIndex(FakeCallsProvider.Contacts.COL_IMG);
+
+            while (cursor.moveToNext()) {
+                int id = cursor.getInt(idIndex);
+                String name = cursor.getString(nameIndex);
+                String phone = cursor.getString(phoneIndex);
+                String img = cursor.getString(imgIndex);
+
+                Contact contact = new Contact(id, name, phone, img);
+                contactList.add(contact);
+            }
+            cursor.close();
+        }
+        return contactList;
     }
 
+
+//    contacts.add(new Contact(1, "John Doe", "123456789", "test"));
+//    contacts.add(new Contact(2, "Jane Doe", "987654321", "test"));
 
 
 
