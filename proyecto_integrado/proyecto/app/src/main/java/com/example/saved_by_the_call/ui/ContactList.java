@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ public class ContactList extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_contact_list);
 
+        final Button tbnSearchContact = findViewById(R.id.btnSearchContact);
         final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
         setSupportActionBar(toolbar);
 

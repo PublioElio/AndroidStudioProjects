@@ -36,6 +36,7 @@
     <string name="btn_next">Siguiente</string>
     <string name="btn_previous">Previo</string>
     <string name="btn_search">Buscar</string>
+    <string name="btn_vertical_ellipsis">&#8942;</string>
 
     <!-- Toast text -->
     <string name="toast_no_img_selected">No ha seleccionado ninguna imagen</string>
