@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,10 +32,9 @@ public class ContactsAdapter extends ArrayAdapter {
 
         LayoutInflater show = LayoutInflater.from(getContext());
         View element = show.inflate(R.layout.element_contact, parent, false);
-        /*
+
         ImageView imagen = element.findViewById(R.id.imgViewContactList);
-        imagen.setImageResource(data.get(position).getImg());
-        */
+        //imagen.setImageResource(data.get(position).getImg());
 
         TextView name = element.findViewById(R.id.txtViewNameContactList);
         name.setText(data.get(position).getName());
@@ -41,6 +42,7 @@ public class ContactsAdapter extends ArrayAdapter {
         TextView phone = element.findViewById(R.id.txtViewPhoneContactList);
         phone.setText(data.get(position).getPhone());
 
+        Button btnEditContact = element.findViewById(R.id.btnEditContact);
 
 
         return element;

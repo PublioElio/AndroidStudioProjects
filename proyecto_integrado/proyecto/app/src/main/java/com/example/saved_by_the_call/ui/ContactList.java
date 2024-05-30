@@ -5,17 +5,19 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.saved_by_the_call.R;
+import com.example.saved_by_the_call.cp.Contact;
+import com.example.saved_by_the_call.ui.adapters.ContactsAdapter;
 import com.example.saved_by_the_call.ui.top_menu.TopMenu;
+
+import java.util.ArrayList;
 
 public class ContactList extends AppCompatActivity {
 
@@ -25,11 +27,35 @@ public class ContactList extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_contact_list);
 
-        final Button tbnSearchContact = findViewById(R.id.btnSearchContact);
+        final Button btnSearchContact = findViewById(R.id.btnSearchContact);
         final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
         setSupportActionBar(toolbar);
 
+        final ListView listViewContactList = findViewById(R.id.listViewContactList);
+        ArrayList<Contact> contactData = new ArrayList<>();
+        enterData(contactData);
+
+        final ContactsAdapter contactsAdapter = new ContactsAdapter(this, contactData);
+        listViewContactList.setAdapter(contactsAdapter);
+
+        btnSearchContact.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(android.view.View view) {
+
+            enterData(contactData);
+
+            }
+        });
+
     }
+
+    private static void enterData(ArrayList<Contact> contactData) {
+        contactData.add(new Contact(1,"John Doe", "123456789", "test"));
+        contactData.add(new Contact(2, "Jane Doe", "987654321", "test"));
+    }
+
+
+
 
     /**
      * This method creates the top menu.
