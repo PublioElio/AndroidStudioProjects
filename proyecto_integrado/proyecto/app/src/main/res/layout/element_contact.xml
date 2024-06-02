@@ -8,14 +8,13 @@
     android:layout_marginVertical="5dp"
     >
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgViewContactList"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:contentDescription="@string/contact_image_description"
-        android:background="@drawable/round_img"
-        android:src="@drawable/contact_def_img"/>
+        android:src="@drawable/contact_def_img"
+        android:contentDescription="@string/contact_image_description"/>
 
     <LinearLayout
         android:layout_width="0dp"

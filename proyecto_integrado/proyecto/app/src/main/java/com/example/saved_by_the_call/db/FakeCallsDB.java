@@ -9,7 +9,7 @@ public class FakeCallsDB extends SQLiteOpenHelper {
             "CREATE TABLE contacts(_id_contact INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "name TEXT, " +
                     "phone TEXT, " +
-                    "img BLOB)";
+                    "img TEXT)";
     String sqlCreateCalls =
             "CREATE TABLE calls(_id_call INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "name TEXT, " +
@@ -20,7 +20,7 @@ public class FakeCallsDB extends SQLiteOpenHelper {
                     "FOREIGN KEY(contact) REFERENCES contacts(_id_contact))";
     public FakeCallsDB(Context context, String name,
                        SQLiteDatabase.CursorFactory factory, int version){
-        super(context, name, factory, version);
+        super(context, name, factory, 2);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
