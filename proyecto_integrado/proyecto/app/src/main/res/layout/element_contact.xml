@@ -13,21 +13,22 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:contentDescription="Contact picture"
+        android:contentDescription="@string/contact_image_description"
+        android:background="@drawable/round_img"
         android:src="@drawable/contact_def_img"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center_vertical"
-        android:layout_weight="2">
+        android:layout_weight="1">
 
     <TextView
         android:id="@+id/txtViewNameContactList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NOMBRE DE CONTACTO"
+        android:text="@string/list_contact_name"
         android:textSize="16sp"
         android:layout_marginStart="5dp"
         android:textColor="@color/white"
@@ -40,7 +41,7 @@
         android:layout_marginStart="5dp"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:text="TELÉFONO DE CONTACTO"/>
+        android:text="@string/list_contact_phone"/>
 
     </LinearLayout>
 
