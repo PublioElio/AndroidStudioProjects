@@ -3,6 +3,7 @@ package com.example.saved_by_the_call.ui;
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -34,6 +35,7 @@ import com.example.saved_by_the_call.ui.top_menu.TopMenu;
 public class NewContactActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_READ_EXTERNAL_STORAGE = 1;
     ActivityResultLauncher<PickVisualMediaRequest> pickMedia;
+    private Uri selectedImageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,11 @@ public class NewContactActivity extends AppCompatActivity {
                     if (uri != null) {
                         Log.d("PhotoPicker", "Selected URI: " + uri);
                         addContactImg.setText(R.string.hint_contact_added_img);
+
+                        selectedImageUri = uri;
+                        final int takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION |
+                                Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
+                        getContentResolver().takePersistableUriPermission(selectedImageUri, takeFlags);
                     } else {
                         Toast.makeText(NewContactActivity.this,
                                 R.string.toast_no_img_selected,
@@ -80,14 +87,16 @@ public class NewContactActivity extends AppCompatActivity {
         btnAddContact.setOnClickListener(view -> {
             final TextView txtViewContactFormInfo = findViewById(R.id.txtViewContactFormInfo);
             if (checkFields(contactName, contactPhone)) {
-                // TODO: CREAR LA CONTACTO EN LA BBDD CON IMAGEN
-                if (createNewContact(contactName.getText().toString(), contactPhone.getText().toString())) {
+
+                if (createNewContact(contactName.getText().toString(),
+                        contactPhone.getText().toString(), selectedImageUri)) {
                     Toast.makeText(getApplicationContext(),
                             R.string.toast_contact_created_confirmation, Toast.LENGTH_SHORT).show();
                     txtViewContactFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
                             R.color.black));
                     txtViewContactFormInfo.setText(R.string.asterisk);
                     resetFields(contactName, contactPhone, addContactImg);
+                    selectedImageUri = null;
                 }
             } else {
                 txtViewContactFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
@@ -98,7 +107,6 @@ public class NewContactActivity extends AppCompatActivity {
 
     }
 
-    // TODO: MODIFICAR EL MÉTODO PARA QUE TAMBIÉN SE PUEDA AÑADIR UNA IMAGEN
     /**
      * This method creates a new contact in the database.
      *
@@ -106,13 +114,15 @@ public class NewContactActivity extends AppCompatActivity {
      * @param phone contact phone
      * @return true if the contact is created
      */
-    private boolean createNewContact(String name, String phone) {
+    private boolean createNewContact(String name, String phone, Uri imgUri) {
         boolean contactCreated = false;
 
         ContentValues values = new ContentValues();
         values.put(FakeCallsProvider.Contacts.COL_NAME, name);
         values.put(FakeCallsProvider.Contacts.COL_PHONE, phone);
-        //values.put(FakeCallsProvider.Contacts.COL_IMG, img);
+        if (imgUri != null) {
+            values.put(FakeCallsProvider.Contacts.COL_IMG, imgUri.toString());
+        }
 
         ContentResolver cr = getContentResolver();
         Uri newContactUri = cr.insert(FakeCallsProvider.CONTENT_URI_CONTACTS, values);
@@ -262,4 +272,5 @@ public class NewContactActivity extends AppCompatActivity {
         return TopMenu.onOptionsItemSelected(this, item) ||
                 super.onOptionsItemSelected(item);
     }
+
 }

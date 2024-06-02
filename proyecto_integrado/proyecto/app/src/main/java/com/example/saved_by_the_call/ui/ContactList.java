@@ -25,8 +25,6 @@ import com.example.saved_by_the_call.ui.top_menu.TopMenu;
 import java.util.ArrayList;
 
 public class ContactList extends AppCompatActivity {
-
-    private ListView listViewContactList;
     private ContactsAdapter contactsAdapter;
 
     @Override
@@ -38,17 +36,14 @@ public class ContactList extends AppCompatActivity {
         final Button btnSearchContact = findViewById(R.id.btnSearchContact);
         final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
         final EditText edTxtSearchContactName = findViewById(R.id.edTxtSearchContactName);
-        listViewContactList= findViewById(R.id.listViewContactList);
+        final ListView listViewContactList = findViewById(R.id.listViewContactList);
         setSupportActionBar(toolbar);
 
         contactsAdapter = new ContactsAdapter(this, new ArrayList<>());
         listViewContactList.setAdapter(contactsAdapter);
 
-
         btnSearchContact.setOnClickListener(view -> {
-            ArrayList contacts = enterData(edTxtSearchContactName.getText().toString());
-
-
+            ArrayList<Contact> contacts = enterData(edTxtSearchContactName.getText().toString());
             contactsAdapter.clear();
             contactsAdapter.addAll(contacts);
             contactsAdapter.notifyDataSetChanged();
@@ -63,13 +58,13 @@ public class ContactList extends AppCompatActivity {
      * @param name name of the contact
      * @return list of contacts
      */
-    private ArrayList enterData(String name) {
+    private ArrayList<Contact> enterData(String name) {
         ArrayList<Contact> contactList = new ArrayList<>();
         ContentResolver contentResolver = getContentResolver();
         Cursor cursor;
-        if(!name.isEmpty()){
+        if (!name.isEmpty()) {
             cursor = notEmptyNameQuery(name, contentResolver);
-        }else{
+        } else {
             cursor = emptyNameQuery(contentResolver);
         }
         if (cursor != null) {
@@ -82,7 +77,7 @@ public class ContactList extends AppCompatActivity {
     /**
      * This method adds the contacts to the contact list.
      *
-     * @param cursor cursor
+     * @param cursor      cursor
      * @param contactList list of contacts
      */
     private static void addContactsToContactList(Cursor cursor, ArrayList<Contact> contactList) {
@@ -124,7 +119,7 @@ public class ContactList extends AppCompatActivity {
     /**
      * This method queries the contacts with not empty name.
      *
-     * @param name name of the contact
+     * @param name            name of the contact
      * @param contentResolver content resolver
      * @return cursor
      */
