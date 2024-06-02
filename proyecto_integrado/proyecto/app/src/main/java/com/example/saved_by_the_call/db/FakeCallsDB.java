@@ -20,7 +20,7 @@ public class FakeCallsDB extends SQLiteOpenHelper {
                     "FOREIGN KEY(contact) REFERENCES contacts(_id_contact))";
     public FakeCallsDB(Context context, String name,
                        SQLiteDatabase.CursorFactory factory, int version){
-        super(context, name, factory, 2);
+        super(context, name, factory, 3);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {

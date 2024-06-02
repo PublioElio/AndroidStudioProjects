@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pattern3"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_top_menu" />
+
+    <io.github.florent37.shapeofview.shapes.DiagonalView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/yellow"
+        android:elevation="4dp"
+        app:shape_diagonal_angle="13"
+        app:shape_diagonal_position="bottom">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/contact_image_description"
+                android:scaleType="centerCrop"
+                android:src="@color/yellow" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgViewEditContact"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="25dp"
+
+                android:contentDescription="@string/contact_image_description"
+                android:src="@drawable/contact_def_img" />
+
+            <TextView
+                android:id="@+id/txtViewContactName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/imgViewEditContact"
+                android:layout_alignTop="@+id/imgViewEditContact"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp"
+                android:text="@string/default_text_username_upper" />
+
+            <TextView
+                android:id="@+id/txtViewContactPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtViewContactName"
+                android:layout_alignStart="@id/txtViewContactName"
+                android:layout_marginTop="5dp"
+                android:textSize="15sp"
+                android:text="@string/default_text_userphone_upper" />
+
+        </RelativeLayout>
+    </io.github.florent37.shapeofview.shapes.DiagonalView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:padding="15dp"
+        android:background="@drawable/rounded_background_yellow">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:text="@string/label_change_contact_name"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"/>
+
+        <EditText
+            android:id="@+id/edTxtContactName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:hint="@string/hint_new_name"
+            android:inputType="text"
+            android:textColorHint="@color/hint_grey"
+            android:background="@drawable/edit_text_rounded01"
+            android:padding="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:text="@string/label_new_contact_phone"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"/>
+
+        <EditText
+            android:id="@+id/edTxtContactPhone"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:autofillHints="phone"
+            android:hint="@string/hint_new_contact_phone"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:textColorHint="@color/hint_grey"
+            android:background="@drawable/edit_text_rounded01"
+            android:padding="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:text="@string/label_new_contact_img"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"/>
+
+        <EditText
+            android:id="@+id/edTxtChangeContactImg"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:hint="@string/hint_change_img"
+            android:inputType="text"
+            android:maxLines="1"
+            android:importantForAutofill="no"
+            android:textColorHint="@color/hint_grey"
+            android:background="@drawable/edit_text_rounded_pressed01"
+            android:textAlignment="center"
+            android:padding="15dp" />
+
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnModifyContact"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"
+                android:text="@string/btn_modify_contact"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnDeleteContact"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"
+                android:text="@string/btn_delete_contact"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

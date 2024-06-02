@@ -24,7 +24,7 @@ import com.example.saved_by_the_call.ui.top_menu.TopMenu;
 
 import java.util.ArrayList;
 
-public class ContactList extends AppCompatActivity {
+public class ContactListActivity extends AppCompatActivity {
     private ContactsAdapter contactsAdapter;
 
     @Override
@@ -47,7 +47,6 @@ public class ContactList extends AppCompatActivity {
             contactsAdapter.clear();
             contactsAdapter.addAll(contacts);
             contactsAdapter.notifyDataSetChanged();
-
         });
 
     }

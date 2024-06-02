@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Saved_by_the_call"
         tools:targetApi="31" >
         <activity
-            android:name=".ui.ContactList"
+            android:name=".ui.ContactListActivity"
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
@@ -32,7 +32,9 @@
         <activity
             android:name=".ui.NewCallActivity"
             android:exported="true" />
-
+        <activity
+            android:name=".ui.EditContactActivity"
+            android:exported="true" />
         <provider
             android:name=".cp.FakeCallsProvider"
             android:authorities="com.example.saved_by_the_call.cp"

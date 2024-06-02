@@ -9,6 +9,9 @@
     <string name="label_time">Hora:</string>
     <string name="label_contact">Contacto:</string>
     <string name="label_search_contact">Buscar contacto:</string>
+    <string name="label_change_contact_name">Cambiar nombre:</string>
+    <string name="label_new_contact_phone">Cambiar teléfono:</string>
+    <string name="label_new_contact_img">Nueva imagen de contacto:</string>
 
     <!-- Form info text -->
     <string name="asterisk">Los campos marcados con un asterisco son opcionales</string>
@@ -38,6 +41,8 @@
     <string name="btn_search">Buscar</string>
     <string name="btn_search_upper">BUSCAR</string>
     <string name="btn_vertical_ellipsis">&#8942;</string>
+    <string name="btn_delete_contact">Borrar</string>
+    <string name="btn_modify_contact">Modificar</string>
 
     <!-- Toast text -->
     <string name="toast_no_img_selected">No ha seleccionado ninguna imagen</string>
@@ -51,6 +56,10 @@
     <string name="hint_choose_date">Seleccionar fecha</string>
     <string name="hint_choose_time">Seleccionar hora</string>
     <string name="hint_contact_added_img">¡Imagen añadida!</string>
+    <string name="hint_new_name">Nuevo nombre</string>
+    <string name="hint_new_contact_phone">Nuevo teléfono</string>
+    <string name="hint_change_img">Cambiar imagen</string>
+
 
     <!-- Top menú options -->
     <string name="top_menu_contacts">Contactos</string>
@@ -59,6 +68,15 @@
     <string name="top_menu_new_contact">Nuevo contacto</string>
     <string name="top_menu_list_edit_calls">Ver/editar llamadas</string>
     <string name="top_menu_new_call">Nueva llamada</string>
+
+    <!-- Img descriptions -->
+    <string name="contact_image_description">Contact image</string>
+
+    <!-- Default text -->
+    <string name="list_contact_name">CONTACT NAME</string>
+    <string name="list_contact_phone">CONTACT PHONE</string>
+    <string name="default_text_username_upper">USERNAME</string>
+    <string name="default_text_userphone_upper">USERPHONE</string>
 
     <string name="lorem_ipsum" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -96,9 +114,5 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="contact_image_description">Contact image</string>
-    <string name="list_contact_name">CONTACT NAME</string>
-    <string name="list_contact_phone">CONTACT PHONE</string>
-
 
 </resources>

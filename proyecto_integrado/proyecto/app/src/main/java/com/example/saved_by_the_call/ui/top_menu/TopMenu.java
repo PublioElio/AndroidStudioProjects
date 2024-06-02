@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.saved_by_the_call.R;
+import com.example.saved_by_the_call.ui.ContactListActivity;
 
 public class TopMenu {
 
@@ -20,7 +21,7 @@ public class TopMenu {
         Intent intent;
 
         if (id == R.id.topSubMenuOptionB1) {
-            intent = new Intent(activity, com.example.saved_by_the_call.ui.ContactList.class);
+            intent = new Intent(activity, ContactListActivity.class);
             activity.startActivity(intent);
             result = true;
         }
