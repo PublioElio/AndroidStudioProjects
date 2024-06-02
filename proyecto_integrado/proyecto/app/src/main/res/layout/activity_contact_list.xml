@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/pattern1">
 
     <include
-        android:id="@+id/ToolbarContactList"
-        layout="@layout/toolbar_top_menu" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:contentDescription="@null"
-        android:scaleType="centerCrop"
-        android:src="@drawable/pattern1" />
+        layout="@layout/toolbar_top_menu"/>
 
     <LinearLayout
         android:id="@+id/LinearLayoutTopLine"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:background="@color/purple"
-        android:layout_below="@id/ToolbarContactList"
         android:orientation="horizontal"/>
 
     <LinearLayout
         android:id="@+id/LinearLayoutSearchContact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/LinearLayoutTopLine"
         android:background="@color/pink"
         android:gravity="center"
         android:orientation="vertical">
@@ -44,7 +34,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/edTxtCallName"
+            android:id="@+id/edTxtSearchContactName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -61,23 +51,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/purple"
-            android:text="@string/btn_search"
+            android:text="@string/btn_search_upper"
             android:textColor="@color/white"
             android:layout_marginVertical="5dp"
             android:layout_marginHorizontal="25dp" />
-
-        <TextView
-            android:id="@+id/edTxtCallNameWarning"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/warning_no_contact_name_match"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginHorizontal="20dp"
-            android:textStyle="italic"
-            android:visibility="invisible" />
-
 
     </LinearLayout>
 
@@ -85,10 +62,9 @@
         android:id="@+id/listViewContactList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/LinearLayoutSearchContact"
         android:divider="@android:color/transparent"
         android:dividerHeight="5dp"
         android:layout_marginTop="5dp"/>
 
-</RelativeLayout>
+</LinearLayout>
 

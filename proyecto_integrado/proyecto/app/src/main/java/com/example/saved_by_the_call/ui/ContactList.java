@@ -7,10 +7,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -35,6 +37,7 @@ public class ContactList extends AppCompatActivity {
 
         final Button btnSearchContact = findViewById(R.id.btnSearchContact);
         final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
+        final EditText edTxtSearchContactName = findViewById(R.id.edTxtSearchContactName);
         listViewContactList= findViewById(R.id.listViewContactList);
         setSupportActionBar(toolbar);
 
@@ -42,57 +45,99 @@ public class ContactList extends AppCompatActivity {
         listViewContactList.setAdapter(contactsAdapter);
 
 
-        btnSearchContact.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(android.view.View view) {
-                ArrayList<Contact> contacts = enterData();
+        btnSearchContact.setOnClickListener(view -> {
+            ArrayList contacts = enterData(edTxtSearchContactName.getText().toString());
 
-                // Actualizar los datos del adaptador y notificarle del cambio
-                contactsAdapter.clear();
-                contactsAdapter.addAll(contacts);
-                contactsAdapter.notifyDataSetChanged();
 
-            }
+            contactsAdapter.clear();
+            contactsAdapter.addAll(contacts);
+            contactsAdapter.notifyDataSetChanged();
+
         });
 
     }
 
-    private ArrayList enterData() {
+    /**
+     * This method queries the contacts.
+     *
+     * @param name name of the contact
+     * @return list of contacts
+     */
+    private ArrayList enterData(String name) {
         ArrayList<Contact> contactList = new ArrayList<>();
         ContentResolver contentResolver = getContentResolver();
-        Cursor cursor = contentResolver.query(
+        Cursor cursor;
+        if(!name.isEmpty()){
+            cursor = notEmptyNameQuery(name, contentResolver);
+        }else{
+            cursor = emptyNameQuery(contentResolver);
+        }
+        if (cursor != null) {
+            addContactsToContactList(cursor, contactList);
+            cursor.close();
+        }
+        return contactList;
+    }
+
+    /**
+     * This method adds the contacts to the contact list.
+     *
+     * @param cursor cursor
+     * @param contactList list of contacts
+     */
+    private static void addContactsToContactList(Cursor cursor, ArrayList<Contact> contactList) {
+        int idIndex = cursor.getColumnIndex(FakeCallsProvider.Contacts.COL_ID);
+        int nameIndex = cursor.getColumnIndex(FakeCallsProvider.Contacts.COL_NAME);
+        int phoneIndex = cursor.getColumnIndex(FakeCallsProvider.Contacts.COL_PHONE);
+        int imgIndex = cursor.getColumnIndex(FakeCallsProvider.Contacts.COL_IMG);
+
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(idIndex);
+            String nameContact = cursor.getString(nameIndex);
+            String phone = cursor.getString(phoneIndex);
+            String img = cursor.getString(imgIndex);
+
+            Contact contact = new Contact(id, nameContact, phone, img);
+            contactList.add(contact);
+        }
+    }
+
+    /**
+     * This method queries the contacts with empty name.
+     *
+     * @param contentResolver content resolver
+     * @return cursor
+     */
+    @Nullable
+    private static Cursor emptyNameQuery(ContentResolver contentResolver) {
+        Cursor cursor;
+        cursor = contentResolver.query(
                 FakeCallsProvider.CONTENT_URI_CONTACTS,
                 null,
                 null,
                 null,
                 null
         );
-
-        if (cursor != null) {
-            int idIndex = cursor.getColumnIndex(FakeCallsProvider.Contacts.COL_ID);
-            int nameIndex = cursor.getColumnIndex(FakeCallsProvider.Contacts.COL_NAME);
-            int phoneIndex = cursor.getColumnIndex(FakeCallsProvider.Contacts.COL_PHONE);
-            int imgIndex = cursor.getColumnIndex(FakeCallsProvider.Contacts.COL_IMG);
-
-            while (cursor.moveToNext()) {
-                int id = cursor.getInt(idIndex);
-                String name = cursor.getString(nameIndex);
-                String phone = cursor.getString(phoneIndex);
-                String img = cursor.getString(imgIndex);
-
-                Contact contact = new Contact(id, name, phone, img);
-                contactList.add(contact);
-            }
-            cursor.close();
-        }
-        return contactList;
+        return cursor;
     }
 
-
-//    contacts.add(new Contact(1, "John Doe", "123456789", "test"));
-//    contacts.add(new Contact(2, "Jane Doe", "987654321", "test"));
-
-
+    /**
+     * This method queries the contacts with not empty name.
+     *
+     * @param name name of the contact
+     * @param contentResolver content resolver
+     * @return cursor
+     */
+    @Nullable
+    private static Cursor notEmptyNameQuery(String name, ContentResolver contentResolver) {
+        return contentResolver.query(
+                FakeCallsProvider.CONTENT_URI_CONTACTS,
+                null,
+                FakeCallsProvider.Contacts.COL_NAME + " LIKE ?",
+                new String[]{"%" + name + "%"},
+                null
+        );
+    }
 
     /**
      * This method creates the top menu.
