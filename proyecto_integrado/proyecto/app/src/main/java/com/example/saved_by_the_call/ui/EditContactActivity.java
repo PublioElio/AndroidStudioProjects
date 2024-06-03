@@ -3,11 +3,14 @@ package com.example.saved_by_the_call.ui;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -26,6 +29,8 @@ public class EditContactActivity extends AppCompatActivity {
         final ImageView imgViewEditContact = findViewById(R.id.imgViewEditContact);
         final TextView txtViewEditContactName = findViewById(R.id.txtViewContactName);
         final TextView txtViewEditContactPhone = findViewById(R.id.txtViewContactPhone);
+        final Button btnEditContact = findViewById(R.id.btnEditContact);
+        final Button btnDeleteContact = findViewById(R.id.btnDeleteContact);
 
         if (contactId == -1) {
             Toast.makeText(this, "Problema al acceder al contacto seleccionado",
@@ -45,11 +50,30 @@ public class EditContactActivity extends AppCompatActivity {
                         .error(R.drawable.contact_def_img)
                         .placeholder(R.drawable.contact_def_img)
                         .into(imgViewEditContact);
+                btnDeleteContact.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(EditContactActivity.this);
+                        builder.setMessage("¿Estás seguro de que quieres borrar este contacto?").setPositiveButton("Sí", (dialog, which) -> {
+                            ContentResolver contentResolver = getContentResolver();
+                            contentResolver.delete(FakeCallsProvider.CONTENT_URI_CONTACTS,
+                                    "_id_contact = ?", new String[]{String.valueOf(contactId)});
+                        }).setNegativeButton("No", (dialog, which) -> {
+                        }).show();
+                    }
+                });
+
             }
         }
 
     }
 
+    /**
+     * This method queries the contact by its id.
+     *
+     * @param contactId id of the contact
+     * @return contact
+     */
     private Contact getContactById(int contactId) {
         Contact contact = null;
         ContentResolver contentResolver = getContentResolver();

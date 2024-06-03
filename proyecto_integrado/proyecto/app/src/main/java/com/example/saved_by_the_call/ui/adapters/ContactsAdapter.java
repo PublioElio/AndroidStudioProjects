@@ -68,7 +68,6 @@ public class ContactsAdapter extends ArrayAdapter<Contact> {
         viewHolder.phone.setText(data.get(position).getPhone());
 
         viewHolder.btnEditContact.setOnClickListener(view -> {
-            Toast.makeText(getContext(), "" + data.get(position).getId(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getContext(), EditContactActivity.class);
             intent.putExtra("contact_id", data.get(position).getId());
             getContext().startActivity(intent);
