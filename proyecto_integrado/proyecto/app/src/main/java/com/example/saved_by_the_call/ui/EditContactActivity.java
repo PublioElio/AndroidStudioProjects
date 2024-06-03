@@ -3,7 +3,7 @@ package com.example.saved_by_the_call.ui;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,29 +43,32 @@ public class EditContactActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 finish();
             } else {
-                txtViewEditContactName.setText(contact.getName());
-                txtViewEditContactPhone.setText(contact.getPhone());
-                Glide.with(this)
-                        .load(contact.getImg())
-                        .error(R.drawable.contact_def_img)
-                        .placeholder(R.drawable.contact_def_img)
-                        .into(imgViewEditContact);
-                btnDeleteContact.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(EditContactActivity.this);
-                        builder.setMessage("¿Estás seguro de que quieres borrar este contacto?").setPositiveButton("Sí", (dialog, which) -> {
-                            ContentResolver contentResolver = getContentResolver();
-                            contentResolver.delete(FakeCallsProvider.CONTENT_URI_CONTACTS,
-                                    "_id_contact = ?", new String[]{String.valueOf(contactId)});
-                        }).setNegativeButton("No", (dialog, which) -> {
-                        }).show();
-                    }
+                setContactData(contact, txtViewEditContactName, txtViewEditContactPhone, imgViewEditContact);
+                btnDeleteContact.setOnClickListener(view -> {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(EditContactActivity.this);
+                    builder.setMessage("¿Estás seguro de que quieres borrar este contacto?").setPositiveButton("Sí", (dialog, which) -> {
+                        ContentResolver contentResolver = getContentResolver();
+                        contentResolver.delete(FakeCallsProvider.CONTENT_URI_CONTACTS,
+                                "_id_contact = ?", new String[]{String.valueOf(contactId)});
+                        finish();
+                    }).setNegativeButton("No", (dialog, which) -> {
+                    }).show();
                 });
 
             }
         }
 
+    }
+
+    private void setContactData(Contact contact, TextView txtViewEditContactName,
+                                TextView txtViewEditContactPhone, ImageView imgViewEditContact) {
+        txtViewEditContactName.setText(contact.getName());
+        txtViewEditContactPhone.setText(contact.getPhone());
+        Glide.with(this)
+                .load(contact.getImg())
+                .error(R.drawable.contact_def_img)
+                .placeholder(R.drawable.contact_def_img)
+                .into(imgViewEditContact);
     }
 
     /**
@@ -93,7 +96,7 @@ public class EditContactActivity extends AppCompatActivity {
                 cursor.close();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("EditContactActivity", getString(R.string.error_accessing_to_database_and_get_contatc));
         }
         return contact;
     }

@@ -114,5 +114,6 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="error_accessing_to_database_and_get_contatc">Error al acceder a la base de datos para obtener el contacto.</string>
 
 </resources>
