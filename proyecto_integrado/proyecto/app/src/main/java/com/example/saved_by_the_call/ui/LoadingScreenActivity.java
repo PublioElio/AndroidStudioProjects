@@ -26,9 +26,9 @@ public class LoadingScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(LoadingScreenActivity.this, MainActivity.class);
             startActivity(intent);
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            overridePendingTransition(0, R.anim.fade_out);
             finish();
-        }, 3000);
+        }, 5000);
 
     }
 }
