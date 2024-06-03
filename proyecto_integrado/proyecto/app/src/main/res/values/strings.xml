@@ -4,6 +4,8 @@
     <!-- Toast error messages -->
     <string name="error_accessing_to_database_and_get_contact">Error al acceder a la base de datos para obtener el contacto.</string>
     <string name="error_accessing_contact_id">Error accediendo al contacto seleccionado</string>
+    <string name="error_deleting_contact">Error borrando contacto</string>
+    <string name="error_deleting_contact_related_uri">"Failed to delete contact. Related Uri: "</string>
 
     <!-- Form labels -->
     <string name="label_phone_colon">Teléfono:</string>
@@ -58,6 +60,8 @@
     <string name="toast_no_img_selected">No ha seleccionado ninguna imagen</string>
     <string name="toast_call_created_confirmation">Llamada creada correctamente</string>
     <string name="toast_contact_created_confirmation">Nuevo contacto creado correctamente</string>
+    <string name="toast_contact_modified_confirmation">¡Contacto modificado correctamente!</string>
+    <string name="toast_contact_deleted_confirmation">¡Contacto eliminado!</string>
 
     <!-- Edit text hints -->
     <string name="name">Nombre</string>
@@ -128,9 +132,5 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="toast_contact_deleted_confirmation">¡Contacto eliminado!</string>
-    <string name="error_deleting_contact">Error borrando contacto</string>
-    <string name="error_deleting_contact_related_uri">"Failed to delete contact. Related Uri: "</string>
-
 
 </resources>

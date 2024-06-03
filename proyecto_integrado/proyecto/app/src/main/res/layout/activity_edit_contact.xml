@@ -127,7 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:clickable="true"
-            android:focusable="true"
+            android:focusable="false"
             android:hint="@string/hint_change_img"
             android:inputType="text"
             android:maxLines="1"

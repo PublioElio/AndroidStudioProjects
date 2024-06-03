@@ -2,13 +2,13 @@ package com.example.saved_by_the_call.ui;
 
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -102,37 +102,62 @@ public class EditContactActivity extends AppCompatActivity {
                 });
 
                 // Click listener for delete button.
-                btnDeleteContact.setOnClickListener(view -> {
-                    confirmDeleteContact(contactId);
-                });
+                btnDeleteContact.setOnClickListener(view -> confirmDeleteContact(contactId));
 
                 // Click listener for edit button.
-                btnModifyContact.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Contact newContactData = new Contact(contactId,
-                                newContactName.getText().toString() != null ? newContactName.getText().toString() : contact.getName(),
-                                newContactPhone.getText().toString() != null ? newContactPhone.getText().toString() : contact.getPhone(),
-                                selectedImageUri != null ? selectedImageUri.toString() : contact.getImg());
-                        if (modifyContact(newContactData)) {
-                            setContactData(contact, currentContactName, currentContactPhone,
-                                    currentContactImg);
-                            resetFields(newContactName, newContactPhone, newContactImg);
-                        }
+                btnModifyContact.setOnClickListener(view -> {
+                    String newName = newContactName.getText().toString().isEmpty() ?
+                            contact.getName() : newContactName.getText().toString();
+                    String newPhone = newContactPhone.getText().toString().isEmpty() ?
+                            contact.getPhone() : newContactPhone.getText().toString();
+                    Contact newContactData = new Contact(contactId, newName, newPhone,
+                            selectedImageUri != null ? selectedImageUri.toString() : contact.getImg());
+                    if (modifyContact(newContactData)) {
+                        contact.setName(newName);
+                        contact.setPhone(newPhone);
+                        contact.setImg(newContactData.getImg());
+                        setContactData(contact, currentContactName, currentContactPhone,
+                                currentContactImg);
+                        resetFields(newContactName, newContactPhone, newContactImg);
                     }
                 });
 
             }
         }
-
     }
 
+    /**
+     * This method resets the fields.
+     *
+     * @param newContactName  EditText
+     * @param newContactPhone EditText
+     * @param newContactImg   TextView
+     */
     private void resetFields(EditText newContactName, EditText newContactPhone, TextView newContactImg) {
-
+        newContactName.setText("");
+        newContactPhone.setText("");
+        newContactImg.setText(R.string.hint_change_img);
     }
 
+    /**
+     * This method modifies the contact.
+     *
+     * @param newContactData Contact
+     * @return boolean
+     */
     private boolean modifyContact(Contact newContactData) {
-        return false;
+        Uri updateUri = Uri.withAppendedPath(FakeCallsProvider.CONTENT_URI_CONTACTS,
+                String.valueOf(newContactData.getId()));
+
+        ContentValues values = new ContentValues();
+        values.put(FakeCallsProvider.Contacts.COL_NAME, newContactData.getName());
+        values.put(FakeCallsProvider.Contacts.COL_PHONE, newContactData.getPhone());
+        values.put(FakeCallsProvider.Contacts.COL_IMG, newContactData.getImg());
+
+        ContentResolver contentResolver = getContentResolver();
+        int rowsUpdated = contentResolver.update(updateUri, values, null, null);
+
+        return rowsUpdated > 0;
     }
 
 
@@ -156,22 +181,31 @@ public class EditContactActivity extends AppCompatActivity {
                 R.style.AlertDialogCustom).setTitle(R.string.alert_dialog_title_upper);
         builder.setMessage(R.string.alert_verify_delete_contact_msg)
                 .setPositiveButton(R.string.btn_ok, (dialog, which) -> {
-                    ContentResolver contentResolver = getContentResolver();
-                    Uri deleteUri = Uri.withAppendedPath(FakeCallsProvider.CONTENT_URI_CONTACTS, String.valueOf(contactId));
-                    int rowsDeleted = contentResolver.delete(deleteUri, null, null);
-                    if (rowsDeleted > 0) {
-                        Toast.makeText(EditContactActivity.this,
-                                R.string.toast_contact_deleted_confirmation,
-                                Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(EditContactActivity.this,
-                                R.string.error_deleting_contact, Toast.LENGTH_SHORT).show();
-                        Log.e("EditContactActivity",
-                                R.string.error_deleting_contact_related_uri + String.valueOf(deleteUri));
-                    }
+                    deleteContact(contactId);
                     finish();
                 }).setNegativeButton(R.string.btn_no, (dialog, which) -> {
                 }).show();
+    }
+
+    /**
+     * This method deletes the contact by its id.
+     *
+     * @param contactId id of the contact
+     */
+    private void deleteContact(int contactId) {
+        ContentResolver contentResolver = getContentResolver();
+        Uri deleteUri = Uri.withAppendedPath(FakeCallsProvider.CONTENT_URI_CONTACTS, String.valueOf(contactId));
+        int rowsDeleted = contentResolver.delete(deleteUri, null, null);
+        if (rowsDeleted > 0) {
+            Toast.makeText(EditContactActivity.this,
+                    R.string.toast_contact_deleted_confirmation,
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(EditContactActivity.this,
+                    R.string.error_deleting_contact, Toast.LENGTH_SHORT).show();
+            Log.e("EditContactActivity",
+                    R.string.error_deleting_contact_related_uri + String.valueOf(deleteUri));
+        }
     }
 
     /**

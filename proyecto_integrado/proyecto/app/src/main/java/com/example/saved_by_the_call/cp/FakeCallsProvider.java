@@ -186,11 +186,11 @@ public class FakeCallsProvider extends ContentProvider {
         switch (match) {
             case CONTACTS_ID:
                 String contactsWhere = "_id_contact=" + uri.getLastPathSegment();
-                count = db.update(TABLE_CONTACTS, values, contactsWhere, selectionArgs);
+                count = db.update(TABLE_CONTACTS, values, contactsWhere, null);
                 break;
             case CALLS_ID:
                 String callsWhere = "_id_call=" + uri.getLastPathSegment();
-                count = db.update(TABLE_CALLS, values, callsWhere, selectionArgs);
+                count = db.update(TABLE_CALLS, values, callsWhere, null);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown URI " + uri);
