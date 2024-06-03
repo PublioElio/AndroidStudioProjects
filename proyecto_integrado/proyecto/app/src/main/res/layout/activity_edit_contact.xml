@@ -79,7 +79,7 @@
             android:layout_marginBottom="5dp"/>
 
         <EditText
-            android:id="@+id/edTxtContactName"
+            android:id="@+id/edTxtNewContactName"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:autofillHints="name"
@@ -100,7 +100,7 @@
             android:layout_marginBottom="5dp"/>
 
         <EditText
-            android:id="@+id/edTxtContactPhone"
+            android:id="@+id/edTxtNewContactPhone"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:autofillHints="phone"
@@ -122,7 +122,7 @@
             android:layout_marginBottom="5dp"/>
 
         <EditText
-            android:id="@+id/edTxtChangeContactImg"
+            android:id="@+id/edTxtNewContactImg"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
@@ -150,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/pink"
-                android:text="@string/btn_modify_contact"
+                android:text="@string/btn_modify"
                 android:textColor="@color/white" />
 
             <Button
@@ -160,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/pink"
-                android:text="@string/btn_delete_contact"
+                android:text="@string/btn_delete"
                 android:textColor="@color/white" />
 
         </LinearLayout>

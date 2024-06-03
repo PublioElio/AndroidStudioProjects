@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">saved_by_the_call</string>
 
+    <!-- Toast error messages -->
+    <string name="error_accessing_to_database_and_get_contact">Error al acceder a la base de datos para obtener el contacto.</string>
+    <string name="error_accessing_contact_id">Error accediendo al contacto seleccionado</string>
+
     <!-- Form labels -->
     <string name="label_phone_colon">Teléfono:</string>
     <string name="label_img_colon">* Imagen:</string>
@@ -41,8 +45,14 @@
     <string name="btn_search">Buscar</string>
     <string name="btn_search_upper">BUSCAR</string>
     <string name="btn_vertical_ellipsis">&#8942;</string>
-    <string name="btn_delete_contact">Borrar</string>
-    <string name="btn_modify_contact">Modificar</string>
+    <string name="btn_delete">Borrar</string>
+    <string name="btn_modify">Modificar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_accept">Aceptar</string>
+    <string name="btn_save">Guardar</string>
+    <string name="btn_save_upper">GUARDAR</string>
+    <string name="btn_ok">Sí</string>
+    <string name="btn_no">No</string>
 
     <!-- Toast text -->
     <string name="toast_no_img_selected">No ha seleccionado ninguna imagen</string>
@@ -60,7 +70,6 @@
     <string name="hint_new_contact_phone">Nuevo teléfono</string>
     <string name="hint_change_img">Cambiar imagen</string>
 
-
     <!-- Top menú options -->
     <string name="top_menu_contacts">Contactos</string>
     <string name="top_menu_calls">Llamadas</string>
@@ -77,6 +86,11 @@
     <string name="list_contact_phone">CONTACT PHONE</string>
     <string name="default_text_username_upper">USERNAME</string>
     <string name="default_text_userphone_upper">USERPHONE</string>
+
+    <!-- Alert dialog text -->
+    <string name="alert_verify_delete_contact_msg">¿Estás seguro de que deseas borrar este contacto?</string>
+    <string name="alert_dialog_title_upper">BORRAR CONTACTO</string>
+
 
     <string name="lorem_ipsum" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -114,6 +128,9 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="error_accessing_to_database_and_get_contatc">Error al acceder a la base de datos para obtener el contacto.</string>
+    <string name="toast_contact_deleted_confirmation">¡Contacto eliminado!</string>
+    <string name="error_deleting_contact">Error borrando contacto</string>
+    <string name="error_deleting_contact_related_uri">"Failed to delete contact. Related Uri: "</string>
+
 
 </resources>

@@ -157,4 +157,21 @@ public class ContactListActivity extends AppCompatActivity {
         return TopMenu.onOptionsItemSelected(this, item) ||
                 super.onOptionsItemSelected(item);
     }
+
+    /**
+     * This method refreshes the list view.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshListView();
+    }
+
+    /**
+     * This method refreshes the list view.
+     */
+    private void refreshListView() {
+        contactsAdapter.clear();
+        contactsAdapter.notifyDataSetChanged();
+    }
 }

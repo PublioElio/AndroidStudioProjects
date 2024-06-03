@@ -34,9 +34,8 @@ import com.example.saved_by_the_call.ui.top_menu.TopMenu;
 
 public class NewContactActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_READ_EXTERNAL_STORAGE = 1;
-    ActivityResultLauncher<PickVisualMediaRequest> pickMedia;
+    private static ActivityResultLauncher<PickVisualMediaRequest> pickMedia;
     private Uri selectedImageUri;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

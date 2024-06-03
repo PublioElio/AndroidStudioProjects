@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Use this to change the background color -->
+        <item name="android:background">@color/pink</item>
+
+        <!-- Change the background -->
+        <item name="android:windowBackground">@drawable/rounded_background_pink</item>
+
+        <!-- Change the color of the title -->
+        <item name="android:textColorPrimary">@color/white</item>
+
+        <!-- Change the color of the message text -->
+        <item name="android:textColor">@color/white</item>
+
+        <!-- Change the color of the button text -->
+        <item name="android:buttonBarButtonStyle">@color/white</item>
+
+    </style>
+
 </resources>
