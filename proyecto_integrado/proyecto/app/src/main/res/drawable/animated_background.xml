@@ -1,0 +1,12 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@drawable/pattern2"
+        android:duration="500" />
+    <item
+        android:drawable="@drawable/pattern1"
+        android:duration="500" />
+    <item
+        android:drawable="@drawable/pattern5"
+        android:duration="500" />
+</animation-list>
