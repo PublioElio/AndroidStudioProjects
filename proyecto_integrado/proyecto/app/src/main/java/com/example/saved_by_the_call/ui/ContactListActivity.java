@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 public class ContactListActivity extends AppCompatActivity {
     private ContactsAdapter contactsAdapter;
+    private EditText edTxtSearchContactName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class ContactListActivity extends AppCompatActivity {
 
         final Button btnSearchContact = findViewById(R.id.btnSearchContact);
         final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
-        final EditText edTxtSearchContactName = findViewById(R.id.edTxtSearchContactName);
+        edTxtSearchContactName = findViewById(R.id.edTxtSearchContactName);
         final ListView listViewContactList = findViewById(R.id.listViewContactList);
         setSupportActionBar(toolbar);
 
@@ -171,6 +172,7 @@ public class ContactListActivity extends AppCompatActivity {
      * This method refreshes the list view.
      */
     private void refreshListView() {
+        edTxtSearchContactName.setText("");
         contactsAdapter.clear();
         contactsAdapter.notifyDataSetChanged();
     }
