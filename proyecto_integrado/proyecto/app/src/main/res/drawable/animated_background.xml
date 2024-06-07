@@ -2,11 +2,11 @@
     android:oneshot="false">
     <item
         android:drawable="@drawable/pattern2"
-        android:duration="500" />
+        android:duration="300" />
     <item
         android:drawable="@drawable/pattern1"
-        android:duration="500" />
+        android:duration="300" />
     <item
         android:drawable="@drawable/pattern5"
-        android:duration="500" />
+        android:duration="300" />
 </animation-list>

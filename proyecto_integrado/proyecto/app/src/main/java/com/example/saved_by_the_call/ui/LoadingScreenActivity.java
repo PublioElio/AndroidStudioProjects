@@ -28,7 +28,7 @@ public class LoadingScreenActivity extends AppCompatActivity {
             startActivity(intent);
             overridePendingTransition(0, R.anim.fade_out);
             finish();
-        }, 5000);
+        }, 2000);
 
     }
 }
