@@ -5,7 +5,8 @@
     <string name="error_accessing_to_database_and_get_contact">Error al acceder a la base de datos para obtener el contacto.</string>
     <string name="error_accessing_contact_id">Error accediendo al contacto seleccionado</string>
     <string name="error_deleting_contact">Error borrando contacto</string>
-    <string name="error_deleting_contact_related_uri">"Failed to delete contact. Related Uri: "</string>
+    <string name="error_deleting_contact_related_uri">Failed to delete contact. Related Uri: </string>
+    <string name="error_parsing_date_time">Error parsing date and time</string>
 
     <!-- Form labels -->
     <string name="label_phone_colon">Teléfono:</string>

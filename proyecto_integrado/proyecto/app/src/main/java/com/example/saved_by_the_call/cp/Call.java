@@ -5,16 +5,12 @@ public class Call {
     private long id;
     private String name;
     private long contact;
-    private int hour;
-    private int min;
     private String date;
 
-    public Call(long id, String name, long contact, int hour, int min, String date) {
+    public Call(long id, String name, long contact, String date) {
         this.id = id;
         this.name = name;
         this.contact = contact;
-        this.hour = hour;
-        this.min = min;
         this.date = date;
     }
 
@@ -40,22 +36,6 @@ public class Call {
 
     public void setContact(long contact) {
         this.contact = contact;
-    }
-
-    public int getHour() {
-        return hour;
-    }
-
-    public void setHour(int hour) {
-        this.hour = hour;
-    }
-
-    public int getMin() {
-        return min;
-    }
-
-    public void setMin(int min) {
-        this.min = min;
     }
 
     public String getDate() {

@@ -14,13 +14,11 @@ public class FakeCallsDB extends SQLiteOpenHelper {
             "CREATE TABLE calls(_id_call INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "name TEXT, " +
                     "contact INTEGER, " +
-                    "hour INTEGER, " +
-                    "min INTEGER, " +
-                    "date DATE, " +
+                    "date TEXT, " +
                     "FOREIGN KEY(contact) REFERENCES contacts(_id_contact))";
     public FakeCallsDB(Context context, String name,
                        SQLiteDatabase.CursorFactory factory, int version){
-        super(context, name, factory, 3);
+        super(context, name, factory, 4);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {

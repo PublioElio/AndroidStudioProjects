@@ -1,8 +1,11 @@
 package com.example.saved_by_the_call.ui;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,6 +14,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -52,16 +59,49 @@ public class NewCallActivity extends AppCompatActivity {
         btnAddNewCall.setOnClickListener(view -> {
             final TextView txtViewCallFormInfo = findViewById(R.id.txtViewCallFormInfo);
             if (checkFields(callName, contactName, datePickerNewCall, timePickerNewCall)) {
-                // TODO: CREAR LA LLAMADA EN LA BBDD
-                Toast.makeText(getApplicationContext(), R.string.toast_call_created_confirmation,
-                        Toast.LENGTH_SHORT).show();
-                txtViewCallFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
-                        R.color.black));
-                resetFields(callName, contactName, datePickerNewCall, timePickerNewCall);
+                String name = String.valueOf(callName.getText());
+                String contactNameText = String.valueOf(contactName.getText());
+                String date = String.valueOf(datePickerNewCall.getText());
+                String time = String.valueOf(timePickerNewCall.getText());
+                if (createNewCall(name, contactNameText, date, time)) {
+                    Toast.makeText(getApplicationContext(), R.string.toast_call_created_confirmation,
+                            Toast.LENGTH_SHORT).show();
+                    txtViewCallFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
+                            R.color.black));
+                    resetFields(callName, contactName, datePickerNewCall, timePickerNewCall);
+                }
             } else
                 txtViewCallFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
                         R.color.red));
         });
+    }
+
+
+
+    private boolean createNewCall(String name, String contactName, String date, String time) {
+        boolean callCreated = false;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+        try {
+            String dateTime = date + " " + time;
+            Date callDate = sdf.parse(dateTime);
+            if (callDate != null) {
+
+                ContentValues values = new ContentValues();
+                values.put(FakeCallsProvider.Calls.COL_NAME, name);
+                values.put(FakeCallsProvider.Calls.COL_CONTACT, contactName);
+                values.put(FakeCallsProvider.Calls.COL_DATE, dateTime);
+
+                ContentResolver cr = getContentResolver();
+                Uri newContactUri = cr.insert(FakeCallsProvider.CONTENT_URI_CALLS, values);
+                if (newContactUri != null) {
+                    callCreated = true;
+                }
+            }
+        } catch (ParseException e) {
+            Log.e("NewCallActivity", String.valueOf(R.string.error_parsing_date_time), e);
+        }
+        return callCreated;
     }
 
     /**
@@ -158,7 +198,7 @@ public class NewCallActivity extends AppCompatActivity {
             String selection = FakeCallsProvider.Contacts.COL_NAME + " = ?";
             String[] selectionArgs = {name};
             Cursor cursor = cr.query(FakeCallsProvider.CONTENT_URI_CONTACTS, projection, selection,
-                    selectionArgs,null);
+                    selectionArgs, null);
             if (cursor != null) {
                 correctContact = cursor.getCount() > 0;
                 cursor.close();

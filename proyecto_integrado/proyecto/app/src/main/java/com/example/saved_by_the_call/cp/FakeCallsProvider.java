@@ -49,12 +49,9 @@ public class FakeCallsProvider extends ContentProvider {
     public static final class Calls implements BaseColumns {
         private Calls() {
         }
-
         public static final String COL_ID = "_id_call";
         public static final String COL_NAME = "name";
         public static final String COL_CONTACT = "contact";
-        public static final String COL_HOUR = "hour";
-        public static final String COL_MIN = "min";
         public static final String COL_DATE = "date";
     }
 
