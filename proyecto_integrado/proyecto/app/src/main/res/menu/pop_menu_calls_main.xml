@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/pop_menu_calls_main_option_1"
+        android:title="@string/top_menu_new_call" />
+    <item
+        android:id="@+id/pop_menu_calls_main_option_2"
+        android:title="@string/top_menu_list_edit_calls" />
+</menu>

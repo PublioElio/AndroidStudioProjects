@@ -1,30 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pattern4"
-    android:orientation="vertical">
+    android:background="@drawable/pattern4">
 
-    <include layout="@layout/toolbar_top_menu"/>
-
-    <ListView
-        android:id="@+id/lViewMain"
+    <TextView
+        android:id="@+id/txtViewMainContacts"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        android:text="@string/contacts"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:fontFamily="@font/retrocaps"
+        android:background="@drawable/rounded_background_black"
+        android:layout_centerHorizontal="true"/>
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/imgViewContactsMain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp"
+        android:layout_marginBottom="15dp"
+        android:contentDescription="@string/img_show_contacts_options"
+        android:src="@drawable/edit_contacts"
+        android:text="@string/img_show_contacts_options"
+        android:layout_below="@+id/txtViewMainContacts"
+        />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mantén pulsado un elemento del menú para ver más opciones"
-            android:textAlignment="center"
-            android:background="@drawable/rounded_background_white"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:padding="15dp"/>
-    </RelativeLayout>
-</LinearLayout>
+    <TextView
+        android:id="@+id/txtViewMainCalls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:padding="15dp"
+        android:text="@string/calls"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:fontFamily="@font/retrocaps"
+        android:background="@drawable/rounded_background_black"
+        android:layout_below="@+id/imgViewContactsMain"
+        android:layout_centerHorizontal="true"/>
 
+    <ImageView
+        android:id="@+id/imgViewCallsMain"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="@string/img_show_calls_options"
+        android:src="@drawable/edit_calls"
+        android:text="@string/img_show_calls_options"
+        android:layout_below="@+id/txtViewMainCalls"/>
+
+</RelativeLayout>
+
+<!--
+
+
+
+-->

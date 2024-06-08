@@ -84,12 +84,17 @@
 
     <!-- Img descriptions -->
     <string name="contact_image_description">Contact image</string>
+    <string name="img_show_contacts_options">Mostrar opciones de contactos</string>
+    <string name="img_show_calls_options">Mostrar opciones de llamadas</string>
 
     <!-- Default text -->
     <string name="list_contact_name">CONTACT NAME</string>
     <string name="list_contact_phone">CONTACT PHONE</string>
     <string name="default_text_username_upper">USERNAME</string>
     <string name="default_text_userphone_upper">USERPHONE</string>
+    <string name="contacts">contactos</string>
+    <string name="calls">llamadas</string>
+
 
     <!-- Alert dialog text -->
     <string name="alert_verify_delete_contact_msg">¿Estás seguro de que deseas borrar este contacto?</string>
