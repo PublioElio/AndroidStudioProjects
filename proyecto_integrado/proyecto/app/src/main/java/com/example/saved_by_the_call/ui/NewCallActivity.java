@@ -1,5 +1,7 @@
 package com.example.saved_by_the_call.ui;
 
+import android.content.ContentResolver;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.example.saved_by_the_call.R;
+import com.example.saved_by_the_call.cp.FakeCallsProvider;
 import com.example.saved_by_the_call.ui.form_elements.DatePickerFragment;
 import com.example.saved_by_the_call.ui.form_elements.TimePickerFragment;
 import com.example.saved_by_the_call.ui.top_menu.TopMenu;
@@ -139,11 +142,27 @@ public class NewCallActivity extends AppCompatActivity {
                 String.valueOf(callName.getText()).length() >= 3;
     }
 
-    // TODO: MODIFICAR ESTE MÉTODO PARA QUE COMPRUEBE LA BBDD BUSCANDO EL CONTACTO
+    /**
+     * This method checks that the contact name is at least 3 characters long and not empty.
+     * Also, checks that the contact name exists in the database.
+     *
+     * @param contactName contact name EditText field
+     * @return true if the field is correct
+     */
     private boolean checkFieldContact(EditText contactName) {
-        boolean correctContact = !contactName.getText().toString().isEmpty();
+        String name = String.valueOf(contactName.getText());
+        boolean correctContact = !name.isEmpty() && name.length() >= 3;
         if (correctContact) {
-    // TODO: AQUÍ SE DEBERÍA COMPROBAR QUE EL CONTACTO EXISTE EN LA BBDD
+            ContentResolver cr = getContentResolver();
+            String[] projection = {FakeCallsProvider.Contacts.COL_NAME};
+            String selection = FakeCallsProvider.Contacts.COL_NAME + " = ?";
+            String[] selectionArgs = {name};
+            Cursor cursor = cr.query(FakeCallsProvider.CONTENT_URI_CONTACTS, projection, selection,
+                    selectionArgs,null);
+            if (cursor != null) {
+                correctContact = cursor.getCount() > 0;
+                cursor.close();
+            }
         }
         return correctContact;
     }
