@@ -15,6 +15,9 @@ import androidx.annotation.Nullable;
 
 import com.example.saved_by_the_call.db.FakeCallsDB;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FakeCallsProvider extends ContentProvider {
     private static final String AUTHORITY = "com.example.saved_by_the_call.cp";
     private static final String URI_CONTACTS = "content://" + AUTHORITY + "/contacts";
@@ -247,5 +250,32 @@ public class FakeCallsProvider extends ContentProvider {
             contact = new Contact(contactId, contactName, phone, img);
         }
         return contact;
+    }
+
+    /**
+     * This method gets the calls by contact id.
+     *
+     * @param context   context
+     * @param contactId contact id
+     * @return calls
+     */
+    public static List<Call> getCallsByContactId(Context context, long contactId) {
+        List<Call> calls = new ArrayList<>();
+        String[] projection = {FakeCallsProvider.Calls.COL_ID, FakeCallsProvider.Calls.COL_NAME, FakeCallsProvider.Calls.COL_CONTACT, FakeCallsProvider.Calls.COL_DATE};
+        String selection = FakeCallsProvider.Calls.COL_CONTACT + " = ?";
+        String[] selectionArgs = {String.valueOf(contactId)};
+        Cursor cursor = context.getContentResolver().query(FakeCallsProvider.CONTENT_URI_CALLS, projection, selection, selectionArgs, null);
+
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                long id = cursor.getLong(cursor.getColumnIndexOrThrow(FakeCallsProvider.Calls.COL_ID));
+                String name = cursor.getString(cursor.getColumnIndexOrThrow(FakeCallsProvider.Calls.COL_NAME));
+                long contact = cursor.getLong(cursor.getColumnIndexOrThrow(FakeCallsProvider.Calls.COL_CONTACT));
+                String date = cursor.getString(cursor.getColumnIndexOrThrow(FakeCallsProvider.Calls.COL_DATE));
+                calls.add(new Call(id, name, contact, date));
+            }
+            cursor.close();
+        }
+        return calls;
     }
 }

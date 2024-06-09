@@ -93,6 +93,7 @@
     <string name="list_contact_phone">CONTACT PHONE</string>
     <string name="default_text_username_upper">USERNAME</string>
     <string name="default_text_userphone_upper">USERPHONE</string>
+    <string name="default_text_call_name_upper">CALL NAME</string>
     <string name="contacts">contactos</string>
     <string name="calls">llamadas</string>
 

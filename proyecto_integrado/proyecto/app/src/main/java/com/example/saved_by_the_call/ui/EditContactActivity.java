@@ -26,8 +26,11 @@ import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.saved_by_the_call.R;
+import com.example.saved_by_the_call.cp.Call;
 import com.example.saved_by_the_call.cp.Contact;
 import com.example.saved_by_the_call.cp.FakeCallsProvider;
+
+import java.util.List;
 
 public class EditContactActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_READ_EXTERNAL_STORAGE = 1;
@@ -194,6 +197,7 @@ public class EditContactActivity extends AppCompatActivity {
      */
     private void deleteContact(int contactId) {
         ContentResolver contentResolver = getContentResolver();
+        deleteContactCalls(contactId);
         Uri deleteUri = Uri.withAppendedPath(FakeCallsProvider.CONTENT_URI_CONTACTS, String.valueOf(contactId));
         int rowsDeleted = contentResolver.delete(deleteUri, null, null);
         if (rowsDeleted > 0) {
@@ -205,6 +209,22 @@ public class EditContactActivity extends AppCompatActivity {
                     R.string.error_deleting_contact, Toast.LENGTH_SHORT).show();
             Log.e("EditContactActivity",
                     R.string.error_deleting_contact_related_uri + String.valueOf(deleteUri));
+        }
+    }
+
+    /**
+     * This method deletes the calls related to the contact.
+     *
+     * @param contactId id of the contact
+     */
+    private void deleteContactCalls(int contactId) {
+        List<Call> callList = FakeCallsProvider.getCallsByContactId(EditContactActivity.this, contactId);
+        if (callList != null) {
+            for (Call call : callList) {
+                Uri deleteUri = Uri.withAppendedPath(FakeCallsProvider.CONTENT_URI_CALLS,
+                        String.valueOf(call.getId()));
+                getContentResolver().delete(deleteUri, null, null);
+            }
         }
     }
 
