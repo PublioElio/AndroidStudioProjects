@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.saved_by_the_call.R;
 import com.example.saved_by_the_call.ui.ContactListActivity;
 
@@ -13,6 +15,13 @@ public class TopMenu {
 
     public static void inflateMenu(MenuInflater inflater, Menu menu, int menuResourceId) {
         inflater.inflate(menuResourceId, menu);
+    }
+
+    public static void disableToolbarTitle(Toolbar toolbar) {
+        if (toolbar != null) {
+            toolbar.setTitle("");
+            toolbar.setSubtitle("");
+        }
     }
 
     public static boolean onOptionsItemSelected(Activity activity, MenuItem item) {

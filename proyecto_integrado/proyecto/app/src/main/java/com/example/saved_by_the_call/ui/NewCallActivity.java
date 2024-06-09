@@ -49,6 +49,11 @@ public class NewCallActivity extends AppCompatActivity {
 
         final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+        TopMenu.disableToolbarTitle(toolbar);
+
 
         // launches DatePicker on a Dialog
         datePickerNewCall.setOnClickListener(view -> showDatePickerDialog(datePickerNewCall));

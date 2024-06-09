@@ -35,6 +35,13 @@ public class CallListActivity extends AppCompatActivity {
         final ListView listViewCallList = findViewById(R.id.listViewCallList);
         setSupportActionBar(toolbar);
 
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+        TopMenu.disableToolbarTitle(toolbar);
+
+
         ArrayList<Call> calls = enterData();
         callsAdapter = new CallsAdapter(this, calls);
         listViewCallList.setAdapter(callsAdapter);

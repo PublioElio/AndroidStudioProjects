@@ -35,10 +35,14 @@ public class ContactListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact_list);
 
         final Button btnSearchContact = findViewById(R.id.btnSearchContact);
-        final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
         edTxtSearchContactName = findViewById(R.id.edTxtSearchContactName);
         final ListView listViewContactList = findViewById(R.id.listViewContactList);
+        final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+        TopMenu.disableToolbarTitle(toolbar);
 
         contactsAdapter = new ContactsAdapter(this, new ArrayList<>());
         listViewContactList.setAdapter(contactsAdapter);

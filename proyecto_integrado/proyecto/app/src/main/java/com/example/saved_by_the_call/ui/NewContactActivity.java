@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -50,6 +51,11 @@ public class NewContactActivity extends AppCompatActivity {
 
         final Toolbar toolbar = findViewById(R.id.toolbar_top_menu);
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+        TopMenu.disableToolbarTitle(toolbar);
+
 
         // Image picker
         pickMedia = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(),

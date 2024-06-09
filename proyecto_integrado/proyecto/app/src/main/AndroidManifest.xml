@@ -23,11 +23,15 @@
         <activity
             android:name=".ui.LoadingScreenActivity"
             android:exported="true">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.NewContactActivity"
-            android:exported="true" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".ui.NewCallActivity"
             android:exported="true" >
@@ -37,11 +41,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.CallListActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="true">
         </activity>
         <provider
             android:name=".cp.FakeCallsProvider"

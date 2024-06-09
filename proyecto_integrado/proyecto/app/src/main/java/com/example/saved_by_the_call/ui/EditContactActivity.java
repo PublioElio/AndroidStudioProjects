@@ -219,12 +219,10 @@ public class EditContactActivity extends AppCompatActivity {
      */
     private void deleteContactCalls(int contactId) {
         List<Call> callList = FakeCallsProvider.getCallsByContactId(EditContactActivity.this, contactId);
-        if (callList != null) {
-            for (Call call : callList) {
-                Uri deleteUri = Uri.withAppendedPath(FakeCallsProvider.CONTENT_URI_CALLS,
-                        String.valueOf(call.getId()));
-                getContentResolver().delete(deleteUri, null, null);
-            }
+        for (Call call : callList) {
+            Uri deleteUri = Uri.withAppendedPath(FakeCallsProvider.CONTENT_URI_CALLS,
+                    String.valueOf(call.getId()));
+            getContentResolver().delete(deleteUri, null, null);
         }
     }
 

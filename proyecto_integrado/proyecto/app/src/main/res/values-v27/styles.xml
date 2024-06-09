@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:navigationBarColor">@color/pink</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

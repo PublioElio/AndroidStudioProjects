@@ -4,10 +4,12 @@
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/pink</item>
         <item name="colorAccent">@color/pink</item>
+        <item name="android:navigationBarColor">@color/pink</item>
+        <item name="android:statusBarColor">@color/pink</item>
     </style>
     <style name="Theme.Saved_by_the_call" parent="Base.Theme.Saved_by_the_call" />
     <style name="Theme.Saved_by_the_call.NoActionBar">
-        <item name="windowActionBar">false</item>
+        <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
     </style>
     <style name="Theme.Saved_by_the_call.AppBarOverlay"
