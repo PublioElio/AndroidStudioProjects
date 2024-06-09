@@ -3,6 +3,7 @@ package com.example.saved_by_the_call.cp;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -194,5 +195,31 @@ public class FakeCallsProvider extends ContentProvider {
         }
 
         return count;
+    }
+
+    /**
+     * This method gets the contact by id.
+     *
+     * @param context context
+     * @param id      id
+     * @return contact
+     */
+    public static Contact getContactById(Context context, long id) {
+        Uri contactUri = ContentUris.withAppendedId(CONTENT_URI_CONTACTS, id);
+        String[] projection = {Contacts.COL_ID, Contacts.COL_NAME, Contacts.COL_PHONE, Contacts.COL_IMG};
+        Contact contact = null;
+        Cursor cursor = context.getContentResolver().query(contactUri, projection, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            long contactId = cursor.getLong(cursor.getColumnIndexOrThrow(Contacts.COL_ID));
+            String name = cursor.getString(cursor.getColumnIndexOrThrow(Contacts.COL_NAME));
+            String phone = cursor.getString(cursor.getColumnIndexOrThrow(Contacts.COL_PHONE));
+            String img = cursor.getString(cursor.getColumnIndexOrThrow(Contacts.COL_IMG));
+            cursor.close();
+
+            contact = new Contact(contactId, name, phone, img);
+        }
+
+        return contact;
     }
 }

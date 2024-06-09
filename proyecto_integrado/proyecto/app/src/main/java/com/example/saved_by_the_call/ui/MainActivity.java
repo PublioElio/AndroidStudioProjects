@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.pop_menu_calls_main_option_1,
                 NewCallActivity.class,
                 R.id.pop_menu_calls_main_option_2,
-                NewCallActivity.class);
+                CallListActivity.class);
     }
 
     /**

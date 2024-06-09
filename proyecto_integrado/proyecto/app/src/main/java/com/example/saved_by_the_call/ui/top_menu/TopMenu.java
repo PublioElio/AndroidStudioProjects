@@ -31,6 +31,8 @@ public class TopMenu {
             result = true;
         }
         if (id == R.id.topSubMenuOptionB3) {
+            intent = new Intent(activity, com.example.saved_by_the_call.ui.CallListActivity.class);
+            activity.startActivity(intent);
             result = true;
         }
         if (id == R.id.topSubMenuOptionB4) {
