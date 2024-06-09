@@ -1,6 +1,7 @@
 package com.example.saved_by_the_call.ui.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,17 +62,23 @@ public class CallsAdapter extends ArrayAdapter<Call> {
 
         Contact contact = FakeCallsProvider.getContactById(getContext(), data.get(position).getContact());
 
-        String imageUri = contact.getImg();
+        if (contact == null) {
+            Log.e("CallsAdapter", "Contact is null for contact ID: " + data.get(position).getContact());
+        } else {
+            Log.d("CallsAdapter", "Contact Name: " + contact.getName() + ", Phone: " + contact.getPhone());
 
-        Glide.with(getContext())
-                .load(imageUri)
-                .error(R.drawable.contact_def_img)
-                .placeholder(R.drawable.contact_def_img)
-                .into(viewHolder.callIgm);
+            String imageUri = contact.getImg();
+            Glide.with(getContext())
+                    .load(imageUri)
+                    .error(R.drawable.contact_def_img)
+                    .placeholder(R.drawable.contact_def_img)
+                    .into(viewHolder.callIgm);
 
-        viewHolder.callName.setText(data.get(position).getName());
-        viewHolder.contactName.setText(contact.getName());
-        viewHolder.phone.setText(contact.getPhone());
+            viewHolder.callName.setText(data.get(position).getName());
+            viewHolder.contactName.setText(contact.getName());
+            viewHolder.phone.setText(contact.getPhone());
+            viewHolder.date.setText(data.get(position).getDate());
+        }
 
         viewHolder.btnEditCall.setOnClickListener(view -> {
         });

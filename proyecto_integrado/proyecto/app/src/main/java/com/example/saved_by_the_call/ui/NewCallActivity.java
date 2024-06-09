@@ -14,10 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -30,6 +26,11 @@ import com.example.saved_by_the_call.cp.FakeCallsProvider;
 import com.example.saved_by_the_call.ui.form_elements.DatePickerFragment;
 import com.example.saved_by_the_call.ui.form_elements.TimePickerFragment;
 import com.example.saved_by_the_call.ui.top_menu.TopMenu;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class NewCallActivity extends AppCompatActivity {
 
@@ -86,10 +87,9 @@ public class NewCallActivity extends AppCompatActivity {
             String dateTime = date + " " + time;
             Date callDate = sdf.parse(dateTime);
             if (callDate != null) {
-
                 ContentValues values = new ContentValues();
                 values.put(FakeCallsProvider.Calls.COL_NAME, name);
-                values.put(FakeCallsProvider.Calls.COL_CONTACT, contactName);
+                values.put(FakeCallsProvider.Calls.COL_CONTACT, FakeCallsProvider.getContactByName(NewCallActivity.this, contactName).getId());
                 values.put(FakeCallsProvider.Calls.COL_DATE, dateTime);
 
                 ContentResolver cr = getContentResolver();

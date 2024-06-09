@@ -1,5 +1,7 @@
 package com.example.saved_by_the_call.ui;
 
+import android.content.ContentResolver;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.saved_by_the_call.R;
+import com.example.saved_by_the_call.cp.Call;
+import com.example.saved_by_the_call.cp.FakeCallsProvider;
 import com.example.saved_by_the_call.ui.adapters.CallsAdapter;
 import com.example.saved_by_the_call.ui.top_menu.TopMenu;
 
@@ -31,9 +35,54 @@ public class CallListActivity extends AppCompatActivity {
         final ListView listViewCallList = findViewById(R.id.listViewCallList);
         setSupportActionBar(toolbar);
 
-        callsAdapter = new CallsAdapter(this, new ArrayList<>());
+        ArrayList<Call> calls = enterData();
+        callsAdapter = new CallsAdapter(this, calls);
         listViewCallList.setAdapter(callsAdapter);
+    }
 
+    /**
+     * This method fills the list of calls.
+     *
+     * @return list of calls
+     */
+    private ArrayList<Call> enterData() {
+        ArrayList<Call> callsList = new ArrayList<>();
+        ContentResolver contentResolver = getContentResolver();
+        Cursor cursor = contentResolver.query(
+                FakeCallsProvider.CONTENT_URI_CALLS,
+                null,
+                null,
+                null,
+                null
+        );
+        if (cursor != null) {
+            addCallsToCallsList(cursor, callsList);
+            cursor.close();
+        }
+        return callsList;
+    }
+
+    /**
+     * This method adds the calls to the contact list.
+     *
+     * @param cursor    cursor
+     * @param callsList list of calls
+     */
+    private static void addCallsToCallsList(Cursor cursor, ArrayList<Call> callsList) {
+        int idIndex = cursor.getColumnIndex(FakeCallsProvider.Calls.COL_ID);
+        int nameIndex = cursor.getColumnIndex(FakeCallsProvider.Calls.COL_NAME);
+        int contactIdIndex = cursor.getColumnIndex(FakeCallsProvider.Calls.COL_CONTACT);
+        int dateIndex = cursor.getColumnIndex(FakeCallsProvider.Calls.COL_DATE);
+
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(idIndex);
+            String name = cursor.getString(nameIndex);
+            long contactId = cursor.getLong(contactIdIndex);
+            String date = cursor.getString(dateIndex);
+
+            Call call = new Call(id, name, contactId, date);
+            callsList.add(call);
+        }
     }
 
     /**
@@ -67,14 +116,10 @@ public class CallListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        refreshListView();
-    }
-
-    /**
-     * This method refreshes the list view.
-     */
-    private void refreshListView() {
+        ArrayList<Call> calls = enterData();
         callsAdapter.clear();
+        callsAdapter.addAll(calls);
         callsAdapter.notifyDataSetChanged();
     }
+
 }

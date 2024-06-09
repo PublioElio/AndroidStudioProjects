@@ -222,4 +222,30 @@ public class FakeCallsProvider extends ContentProvider {
 
         return contact;
     }
+
+    /**
+     * This method gets the contact by name.
+     *
+     * @param context context
+     * @param name    name
+     * @return contact
+     */
+    public static Contact getContactByName(Context context, String name) {
+        String[] projection = {Contacts.COL_ID, Contacts.COL_NAME, Contacts.COL_PHONE, Contacts.COL_IMG};
+        String selection = Contacts.COL_NAME + " = ?";
+        String[] selectionArgs = {name};
+        Contact contact = null;
+        Cursor cursor = context.getContentResolver().query(CONTENT_URI_CONTACTS, projection, selection, selectionArgs, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            long contactId = cursor.getLong(cursor.getColumnIndexOrThrow(Contacts.COL_ID));
+            String contactName = cursor.getString(cursor.getColumnIndexOrThrow(Contacts.COL_NAME));
+            String phone = cursor.getString(cursor.getColumnIndexOrThrow(Contacts.COL_PHONE));
+            String img = cursor.getString(cursor.getColumnIndexOrThrow(Contacts.COL_IMG));
+            cursor.close();
+
+            contact = new Contact(contactId, contactName, phone, img);
+        }
+        return contact;
+    }
 }
