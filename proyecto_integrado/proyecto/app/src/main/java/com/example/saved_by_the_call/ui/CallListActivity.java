@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -21,6 +20,7 @@ import com.example.saved_by_the_call.R;
 import com.example.saved_by_the_call.cp.Call;
 import com.example.saved_by_the_call.cp.FakeCallsProvider;
 import com.example.saved_by_the_call.ui.adapters.CallsAdapter;
+import com.example.saved_by_the_call.ui.toast_custom.ToastCustom;
 import com.example.saved_by_the_call.ui.top_menu.TopMenu;
 
 import java.util.ArrayList;
@@ -146,15 +146,13 @@ public class CallListActivity extends AppCompatActivity {
         Uri deleteUri = Uri.withAppendedPath(FakeCallsProvider.CONTENT_URI_CALLS, String.valueOf(callId));
         int rowsDeleted = contentResolver.delete(deleteUri, null, null);
         if (rowsDeleted > 0) {
-            Toast.makeText(CallListActivity.this,
-                    "Llamada eliminada correctamente",
-                    Toast.LENGTH_SHORT).show();
+            ToastCustom.showCustomToast(CallListActivity.this,
+                   getString(R.string.toast_call_deleted_confirmation));
         } else {
-            Toast.makeText(CallListActivity.this,
-                    "Error al eliminar la llamada",
-                    Toast.LENGTH_SHORT).show();
+            ToastCustom.showCustomToast(CallListActivity.this,
+                    getString(R.string.error_deleting_call));
             Log.e("CallListActivity",
-                    "Error. Failed to delete call: " + String.valueOf(deleteUri));
+                    R.string.error_deleting_call + String.valueOf(deleteUri));
         }
     }
 

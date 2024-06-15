@@ -7,6 +7,7 @@
     <string name="error_deleting_contact">Error borrando contacto</string>
     <string name="error_deleting_contact_related_uri">Failed to delete contact. Related Uri: </string>
     <string name="error_parsing_date_time">Error parsing date and time</string>
+    <string name="error_deleting_call">Error. No se ha podido eliminar la llamada</string>
 
     <!-- Form labels -->
     <string name="label_phone_colon">Teléfono:</string>
@@ -63,6 +64,7 @@
     <string name="toast_contact_created_confirmation">Nuevo contacto creado correctamente</string>
     <string name="toast_contact_modified_confirmation">¡Contacto modificado correctamente!</string>
     <string name="toast_contact_deleted_confirmation">¡Contacto eliminado!</string>
+    <string name="toast_call_deleted_confirmation">¡Llamada eliminada!</string>
 
     <!-- Edit text hints -->
     <string name="name">Nombre</string>
@@ -100,7 +102,9 @@
 
     <!-- Alert dialog text -->
     <string name="alert_verify_delete_contact_msg">¿Estás seguro de que deseas borrar este contacto?</string>
+    <string name="alert_verify_delete_call_msg">¿Estás seguro de que deseas borrar la llamada?</string>
     <string name="alert_dialog_title_upper">BORRAR CONTACTO</string>
+    <string name="alert_dialog_title_upper_call">BORRAR LLAMADA</string>
 
 
     <string name="lorem_ipsum" translatable="false">

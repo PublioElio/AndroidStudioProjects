@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -25,6 +24,7 @@ import com.example.saved_by_the_call.R;
 import com.example.saved_by_the_call.cp.FakeCallsProvider;
 import com.example.saved_by_the_call.ui.form_elements.DatePickerFragment;
 import com.example.saved_by_the_call.ui.form_elements.TimePickerFragment;
+import com.example.saved_by_the_call.ui.toast_custom.ToastCustom;
 import com.example.saved_by_the_call.ui.top_menu.TopMenu;
 
 import java.text.ParseException;
@@ -70,8 +70,8 @@ public class NewCallActivity extends AppCompatActivity {
                 String date = String.valueOf(datePickerNewCall.getText());
                 String time = String.valueOf(timePickerNewCall.getText());
                 if (createNewCall(name, contactNameText, date, time)) {
-                    Toast.makeText(getApplicationContext(), R.string.toast_call_created_confirmation,
-                            Toast.LENGTH_SHORT).show();
+                    ToastCustom.showCustomToast(getApplicationContext(),
+                            getString(R.string.toast_call_created_confirmation));
                     txtViewCallFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
                             R.color.black));
                     resetFields(callName, contactName, datePickerNewCall, timePickerNewCall);

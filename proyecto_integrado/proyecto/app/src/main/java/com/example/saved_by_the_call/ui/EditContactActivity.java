@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
@@ -29,6 +28,7 @@ import com.example.saved_by_the_call.R;
 import com.example.saved_by_the_call.cp.Call;
 import com.example.saved_by_the_call.cp.Contact;
 import com.example.saved_by_the_call.cp.FakeCallsProvider;
+import com.example.saved_by_the_call.ui.toast_custom.ToastCustom;
 
 import java.util.List;
 
@@ -57,15 +57,13 @@ public class EditContactActivity extends AppCompatActivity {
 
         // First, we check if the contact id is valid.
         if (contactId == -1) {
-            Toast.makeText(this, R.string.error_accessing_contact_id,
-                    Toast.LENGTH_SHORT).show();
+            ToastCustom.showCustomToast(this, getString(R.string.error_accessing_contact_id));
             finish();
         } else {
             // If the contact id is valid, we get the contact by its id.
             Contact contact = getContactById(contactId);
             if (contact == null) {
-                Toast.makeText(this, R.string.error_accessing_contact_id,
-                        Toast.LENGTH_SHORT).show();
+                ToastCustom.showCustomToast(this, getString(R.string.error_accessing_contact_id));
                 finish();
             } else {
                 // If the query is successful, we set the contact data to the view.
@@ -85,9 +83,8 @@ public class EditContactActivity extends AppCompatActivity {
                                 getContentResolver().takePersistableUriPermission(selectedImageUri,
                                         takeFlags);
                             } else {
-                                Toast.makeText(EditContactActivity.this,
-                                        R.string.toast_no_img_selected,
-                                        Toast.LENGTH_SHORT).show();
+                                ToastCustom.showCustomToast(EditContactActivity.this,
+                                        getString(R.string.toast_no_img_selected));
                             }
                         });
 
@@ -201,12 +198,11 @@ public class EditContactActivity extends AppCompatActivity {
         Uri deleteUri = Uri.withAppendedPath(FakeCallsProvider.CONTENT_URI_CONTACTS, String.valueOf(contactId));
         int rowsDeleted = contentResolver.delete(deleteUri, null, null);
         if (rowsDeleted > 0) {
-            Toast.makeText(EditContactActivity.this,
-                    R.string.toast_contact_deleted_confirmation,
-                    Toast.LENGTH_SHORT).show();
+            ToastCustom.showCustomToast(EditContactActivity.this,
+                    getString(R.string.toast_contact_deleted_confirmation));
         } else {
-            Toast.makeText(EditContactActivity.this,
-                    R.string.error_deleting_contact, Toast.LENGTH_SHORT).show();
+            ToastCustom.showCustomToast(EditContactActivity.this,
+                    getString(R.string.error_deleting_contact));
             Log.e("EditContactActivity",
                     R.string.error_deleting_contact_related_uri + String.valueOf(deleteUri));
         }

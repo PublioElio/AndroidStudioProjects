@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,7 +16,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
@@ -31,6 +29,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.saved_by_the_call.R;
 import com.example.saved_by_the_call.cp.FakeCallsProvider;
+import com.example.saved_by_the_call.ui.toast_custom.ToastCustom;
 import com.example.saved_by_the_call.ui.top_menu.TopMenu;
 
 public class NewContactActivity extends AppCompatActivity {
@@ -69,9 +68,8 @@ public class NewContactActivity extends AppCompatActivity {
                                 Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
                         getContentResolver().takePersistableUriPermission(selectedImageUri, takeFlags);
                     } else {
-                        Toast.makeText(NewContactActivity.this,
-                                R.string.toast_no_img_selected,
-                                Toast.LENGTH_SHORT).show();
+                        ToastCustom.showCustomToast(getApplicationContext(),
+                                getString(R.string.toast_no_img_selected));
                     }
                 });
 
@@ -95,8 +93,8 @@ public class NewContactActivity extends AppCompatActivity {
 
                 if (createNewContact(contactName.getText().toString(),
                         contactPhone.getText().toString(), selectedImageUri)) {
-                    Toast.makeText(getApplicationContext(),
-                            R.string.toast_contact_created_confirmation, Toast.LENGTH_SHORT).show();
+                    ToastCustom.showCustomToast(getApplicationContext(),
+                            getString(R.string.toast_contact_created_confirmation));
                     txtViewContactFormInfo.setTextColor(ContextCompat.getColor(view.getContext(),
                             R.color.black));
                     txtViewContactFormInfo.setText(R.string.asterisk);

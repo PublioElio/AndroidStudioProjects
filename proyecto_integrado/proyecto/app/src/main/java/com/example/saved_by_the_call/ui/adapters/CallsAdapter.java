@@ -86,13 +86,13 @@ public class CallsAdapter extends ArrayAdapter<Call> {
         viewHolder.btnEditCall.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(
                     getContext(),
-                    R.style.AlertDialogCustom).setTitle("Borrar llamada");
-            builder.setMessage("Está seguro que desea borrar la llamada?");
-            builder.setPositiveButton("Yes", (dialog, which) -> {
+                    R.style.AlertDialogCustom).setTitle(R.string.alert_dialog_title_upper_call);
+            builder.setMessage(R.string.alert_verify_delete_call_msg);
+            builder.setPositiveButton(R.string.btn_ok, (dialog, which) -> {
                 activity.deleteCall((int) data.get(position).getId());
                 activity.refreshActivity();
             });
-            builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
+            builder.setNegativeButton(R.string.btn_no, (dialog, which) -> dialog.dismiss());
             builder.show();
         });
 
