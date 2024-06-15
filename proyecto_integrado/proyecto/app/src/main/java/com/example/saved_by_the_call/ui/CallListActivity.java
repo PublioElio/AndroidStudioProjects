@@ -2,11 +2,14 @@ package com.example.saved_by_the_call.ui;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -123,10 +126,36 @@ public class CallListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        refreshActivity();
+    }
+
+    public void refreshActivity() {
         ArrayList<Call> calls = enterData();
         callsAdapter.clear();
         callsAdapter.addAll(calls);
         callsAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * This method deletes the call by its id.
+     *
+     * @param callId id of the contact
+     */
+    public void deleteCall(int callId) {
+        ContentResolver contentResolver = getContentResolver();
+        Uri deleteUri = Uri.withAppendedPath(FakeCallsProvider.CONTENT_URI_CALLS, String.valueOf(callId));
+        int rowsDeleted = contentResolver.delete(deleteUri, null, null);
+        if (rowsDeleted > 0) {
+            Toast.makeText(CallListActivity.this,
+                    "Llamada eliminada correctamente",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(CallListActivity.this,
+                    "Error al eliminar la llamada",
+                    Toast.LENGTH_SHORT).show();
+            Log.e("CallListActivity",
+                    "Error. Failed to delete call: " + String.valueOf(deleteUri));
+        }
     }
 
 }

@@ -1,6 +1,5 @@
 package com.example.saved_by_the_call.ui.adapters;
 
-import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,22 +11,26 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.bumptech.glide.Glide;
 import com.example.saved_by_the_call.R;
 import com.example.saved_by_the_call.cp.Call;
 import com.example.saved_by_the_call.cp.Contact;
 import com.example.saved_by_the_call.cp.FakeCallsProvider;
+import com.example.saved_by_the_call.ui.CallListActivity;
 
 import java.util.ArrayList;
 
 public class CallsAdapter extends ArrayAdapter<Call> {
 
     private final ArrayList<Call> data;
+    private final CallListActivity activity;
 
-    public CallsAdapter(Context context, ArrayList<Call> data) {
-        super(context, R.layout.element_call, data);
+    public CallsAdapter(CallListActivity activity, ArrayList<Call> data) {
+        super(activity, R.layout.element_call, data);
         this.data = data;
+        this.activity = activity;
     }
 
     private static class ViewHolder {
@@ -81,6 +84,16 @@ public class CallsAdapter extends ArrayAdapter<Call> {
         }
 
         viewHolder.btnEditCall.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    getContext(),
+                    R.style.AlertDialogCustom).setTitle("Borrar llamada");
+            builder.setMessage("Está seguro que desea borrar la llamada?");
+            builder.setPositiveButton("Yes", (dialog, which) -> {
+                activity.deleteCall((int) data.get(position).getId());
+                activity.refreshActivity();
+            });
+            builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
+            builder.show();
         });
 
         return convertView;

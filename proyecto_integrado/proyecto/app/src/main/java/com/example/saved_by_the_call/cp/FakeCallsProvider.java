@@ -1,6 +1,7 @@
 package com.example.saved_by_the_call.cp;
 
 import android.content.ContentProvider;
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,11 +10,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.saved_by_the_call.R;
 import com.example.saved_by_the_call.db.FakeCallsDB;
+import com.example.saved_by_the_call.ui.EditContactActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -278,4 +283,5 @@ public class FakeCallsProvider extends ContentProvider {
         }
         return calls;
     }
+
 }
