@@ -33,6 +33,7 @@ public class CallsAdapter extends ArrayAdapter<Call> {
         this.activity = activity;
     }
 
+    // test
     private static class ViewHolder {
         ImageView callIgm;
         TextView callName;
